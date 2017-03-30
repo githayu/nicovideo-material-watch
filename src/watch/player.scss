@@ -1,0 +1,743 @@
+// コンテキストメニューのクリックイベント領域確保のため Flex は使わない
+.MainContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 calc((var(--width) - 100vw) / 2);
+  padding: 20px 0;
+  width: var(--width);
+  background-color: #181818;
+  border-color: #181818;
+  border-width: 0 calc((100vw - var(--width)) / 2);
+  border-style: solid;
+  box-sizing: content-box;
+
+  // 左辺
+  &-player {
+    width: var(--left-width);
+    padding-bottom: 32px;
+
+    &:hover {
+      > .PlayerContainer {
+        .ControllerBoxContainer {
+          background: transparent linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        }
+
+        .SeekBarContainer,
+        .ControllerContainer {
+          opacity: 1;
+        }
+      }
+
+      + .MainContainer-commentPanel {
+        > .VideoMenuContainer {
+          > .VideoMenuContainer-area {
+            &:first-child {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.PlayerContainer {
+  background-color: transparent;
+  overflow: visible;
+}
+
+.ControllerBoxContainer {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  padding-top: 8px;
+  background-color: transparent;
+}
+
+.SeekBarContainer,
+.ControllerContainer {
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.ControllerContainer {
+  padding: 0;
+
+  .ControllerContainer-inner {
+    > .ControllerContainer-area {
+      &:nth-child(-n+2) {
+        flex: 0;
+      }
+    }
+
+    .ControllerContainer-centerArea {
+      padding-left: 8px;
+    }
+  }
+}
+
+// シークバー
+.SeekBar {
+  background-color: rgba(255,255,255,.3);
+
+  &-hover {
+    background-color: rgba(255,255,255,.7);
+  }
+
+  &-buffered {
+    background-color: rgba(255,255,255,.5);
+  }
+
+  &-played,
+  .SeekBarHandle-handle {
+    background-color: $mainColor;
+  }
+}
+
+// シークプレビュー
+.SeekBarStoryboard {
+  top: -10px;
+
+  .Storyboard {
+    border: 2px #121212 solid;
+  }
+
+  + .SeekBarTimeTip {
+    &-time {
+      border-radius: 2px 2px 0 0;
+
+      &::before {
+        border-top-color: rgba(0,0,0,.8);
+      }
+    }
+  }
+}
+
+.SeekBarTimeTip {
+  top: -12px;
+
+  &-time {
+    background-color: rgba(0,0,0,.8);
+    padding: 0 5px;
+    line-height: 2rem;
+    font-weight: bold;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: #121212 transparent transparent transparent;
+      position: absolute;
+      top: 100%;
+      left: calc(50% - 5px);
+    }
+  }
+}
+
+// コメント投稿
+.CommentPostContainer {
+  display: flex;
+  position: absolute;
+  top: 100%;
+
+  &.is-fullscreen {
+    position: relative;
+  }
+
+  > .GridCell {
+    background-color: #303030;
+    border: none;
+    color: #f0f0f0;
+  }
+
+  &-commandInput {
+    flex: 30%;
+
+    .CommentCommandInput {
+      color: currentColor;
+    }
+  }
+
+  &-commentInput {
+    flex: 50%;
+
+    .CommentInput-textarea {
+      color: currentColor;
+    }
+  }
+
+  &-postButton {
+    flex: 20%;
+
+    .CommentPostButton {
+      width: 100%;
+      background-color: #202020;
+      color: #f0f0f0;
+      transition: background .2s ease-out;
+
+      &:hover {
+        background-color: $mainColor;
+      }
+
+      &:active {
+        background-color: darken($mainColor, 5%);
+      }
+    }
+  }
+}
+
+// アイコン
+.ControllerButton {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: #e0e0e0;
+  text-shadow: 0 0 2px rgba(0,0,0,.3);
+
+  &:hover {
+    color: #f0f0f0;
+  }
+
+  &::before {
+    @include icon;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: currentColor;
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.SeekToHeadButton,
+.PlayerSeekBackwardButton,
+.PlayerSeekForwardButton,
+.PlayerSkipNextButton {
+  display: none;
+}
+
+.PlayerPlayTime {
+  text-shadow: none;
+  height: auto;
+}
+
+.PlayerPlayButton,
+.PlayerPauseButton {
+  width: 46px;
+}
+
+.PlayerPlayButton {
+  &::before {
+    content: '\f3aa';
+  }
+}
+
+.PlayerPauseButton {
+  &::before {
+    content: '\f3a7';
+  }
+}
+
+.MuteVideoButton {
+  &::before {
+    content: '\f3bc';
+  }
+
+  &:hover {
+    + .VolumeBarContainer {
+      width: 60px;
+    }
+  }
+}
+
+.UnMuteVideoButton {
+  &::before {
+    content: '\f3bb';
+  }
+}
+
+.PlayerRepeatOnButton {
+  &::before {
+    content: '\f3ae';
+  }
+}
+
+.PlayerRepeatOffButton {
+  &::before {
+    content: '\f3ad';
+  }
+}
+
+.CommentOnOffButton {
+  &[data-title='コメントを表示する']::before {
+    content: '\f261';
+  }
+
+  &[data-title='コメントを表示しない']::before {
+    content: '\f265';
+  }
+}
+
+.EnableFullScreenButton {
+  &::before {
+    content: '\f16d';
+  }
+}
+
+.DisableFullScreenButton {
+  &::before {
+    content: '\f16c';
+  }
+}
+
+.PlayerOptionButton {
+  &::before {
+    content: '\f1c6';
+  }
+}
+
+// 音量
+.VolumeBarContainer {
+  width: 0;
+  transition: width .2s ease-out;
+
+  &:hover {
+    width: 60px;
+  }
+
+  .VolumeBar {
+    background-color: rgba(255,255,255,.3);
+
+    &:hover {
+      height: 4px;
+
+      .ProgressBar {
+        height: 4px;
+        bottom: 4px;
+      }
+    }
+
+    .VolumeBar-progress {
+      background-color: $mainColor;
+    }
+  }
+}
+
+// ニコ割
+.MarqueeContainer {
+  display: none;
+}
+
+// コメント欄下部広告
+.NicoSpotAdContainer,
+.MiniBannerAdContainer {
+  display: none;
+}
+
+// 右辺
+.MainContainer-commentPanel {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  bottom: 20px;
+  width: var(--right-width);
+
+  .ActionButton {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    color: #424242;
+
+    &.is-active {
+      color: $mainColor;
+    }
+
+    &:hover:not(.is-active) {
+      color: #626262;
+    }
+
+    &::before {
+      @include icon;
+      font-size: 1.6rem;
+      line-height: 3.2rem;
+      width: 32px;
+      height: 32px;
+    }
+
+    > svg {
+      display: none;
+    }
+  }
+
+  // メニュー
+  .VideoMenuContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    z-index: 10;
+    width: auto;
+    height: auto;
+
+    &:before {
+      display: none;
+    }
+
+    .VideoMenuContainer-area {
+      padding: 0;
+
+      // 動画操作メニュー
+      &:first-child {
+        position: absolute;
+        right: 100%;
+        margin: 16px 16px 0 0;
+        opacity: 0;
+        transition: opacity .2s ease-out;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        > * {
+          + * {
+            margin-top: 10px;
+          }
+        }
+
+        .ActionButton {
+          &::before {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            line-height: 3.6rem;
+            background-color: rgba(0,0,0,.6);
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+            box-shadow: 0 1px 2px rgba(0,0,0,.3);
+          }
+        }
+      }
+
+      // 動画共有メニュー
+      &:last-child {
+        padding-left: 8px;
+      }
+    }
+
+    .ActionButton {
+      &.InstantMylistButton {
+        &::before {
+          content: '\f278';
+        }
+      }
+
+      &[data-title='マイリスト'] {
+        &::before {
+          content: '\f3ac';
+        }
+      }
+
+      &.UadButton {
+        &::before {
+          content: '\f166';
+        }
+      }
+
+      &.TwitterShareButton {
+        &:hover {
+          color: #55acee;
+        }
+
+        &::before {
+          content: '\f360';
+        }
+      }
+
+      &.FacebookShareButton {
+        &:hover {
+          color: #3b5999;
+        }
+
+        &::before {
+          content: '\f343';
+        }
+      }
+
+      &.LineShareButton {
+        &:hover {
+          color: #00c300;
+        }
+
+        &::before {
+          content: 'LINE';
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+
+      &.SharePanelVisibleButton {
+        background-color: transparent;
+
+        &::before {
+          content: '\f35b';
+        }
+      }
+    }
+
+    .UadButtonBalloon {
+      display: none;
+    }
+  }
+}
+
+.CommentPanelContainer {
+  top: 0;
+  bottom: 0;
+  width: var(--right-width);
+  background-color: #202020;
+
+  // コメントパネルメニュー
+  .CommentPanelMenuContainer {
+    border: none;
+
+    // 過去ログ
+    &.is-pastCommentMode {
+      // おまけにスレッドセレクトを表示
+      > .CommentPanelMenuContainer-mainMenu {
+        > .CommentPanelMenuContainer-mainMenuArea {
+          &:first-child {
+            display: block;
+          }
+        }
+      }
+
+      .CommentPanelMenuContainer-pastCommentMenu {
+        position: absolute;
+        background-color: #fff;
+        top: 50px;
+        left: calc(50% - 160px);
+        z-index: 10;
+        padding: 20px;
+        height: auto;
+        width: 320px;
+        box-shadow: 0 1px 15px rgba(0,0,0,.5);
+        border-radius: 2px;
+
+        > .GridCell {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .DateTimeInput {
+          margin: 0;
+          display: flex;
+
+          > input {
+            @include textField;
+            margin: 0;
+            box-shadow: none;
+            height: auto;
+
+            + input {
+              margin-left: 8px;
+            }
+
+            &.DateTimeInput-date {
+              flex: 1;
+            }
+
+            &.DateTimeInput-time {
+              width: 92px;
+            }
+          }
+        }
+
+        .PastCommentFetchButton {
+          @include raisedButton--primary;
+          width: auto;
+          height: auto;
+          line-height: inherit;
+          align-self: flex-end;
+          margin-top: 8px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .ActionButton {
+      &.CalendarButton {
+        &::before {
+          content: '\f331';
+        }
+      }
+
+      &.ReloadButton {
+        &::before {
+          content: '\f3b2';
+        }
+      }
+
+      &.CommentPanelAutoScrollButton {
+        &::before {
+          content: '\f2f1';
+        }
+      }
+
+      &[data-title='NG設定'] {
+        &::before {
+          content: '\f15b';
+        }
+      }
+    }
+
+    // コメント操作メニュー
+    .CommentPanelMenuContainer-mainMenu {
+      padding: 0;
+      width: auto;
+      height: auto;
+
+      .CommentPanelMenuContainer-mainMenuArea {
+        // スレッド変更メニュー
+        &:first-child {
+          display: none;
+          position: absolute;
+          left: 40px;
+          top: 108px;
+          z-index: 15;
+
+          > .DropDownMenu {
+            border: none;
+            background-color: transparent;
+            -webkit-appearance: none;
+            border-bottom: 1px #e0e0e0 solid;
+            border-radius: 0;
+            padding: 0 10px;
+            line-height: 2.8rem;
+            cursor: pointer;
+            outline: none;
+          }
+        }
+
+        // スレッド操作メニュー
+        &:last-child {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+
+  .CommentPanel {
+    top: 32px;
+    color: #888;
+
+    .react-grid-Header {
+      position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,.3);
+      z-index: 5;
+      background-color: #303030;
+    }
+
+    .react-grid-HeaderCell-sortable {
+      overflow: hidden;
+
+      &.react-grid-HeaderCell-sortable--ascending,
+      &.react-grid-HeaderCell-sortable--descending {
+        &::before {
+          @include icon;
+          font-size: 1.4rem;
+          line-height: 2.8rem;
+          margin-right: 6px;
+          color: #505050;
+          vertical-align: top;
+        }
+      }
+
+      &.react-grid-HeaderCell-sortable--ascending {
+        &::before {
+          content: '\f1cd';
+        }
+      }
+
+      &.react-grid-HeaderCell-sortable--descending {
+        &::before {
+          content: '\f1ce';
+        }
+      }
+
+      .pull-right {
+        display: none;
+      }
+    }
+
+    .react-grid-HeaderCell__draggable {
+      background-color: rgba(0,0,0,.15);
+      width: 5px;
+    }
+
+    .react-grid-Cell,
+    .react-grid-HeaderCell {
+      background-color: transparent;
+      border: none;
+      font-weight: normal;
+    }
+
+    .react-grid-Canvas {
+      @include commentPanelScrollbar;
+    }
+
+    .react-grid-Row {
+      &:hover {
+        background-color: #282828;
+      }
+
+      > div {
+        &:first-child {
+          color: #f0f0f0;
+        }
+      }
+    }
+  }
+}
+
+// コンテキストメニュー
+.ContextMenu {
+  position: absolute;
+  width: 300px;
+  box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.CommentPanelContextMenuContainer {
+  border: none;
+  max-width: initial;
+  padding: 50px 0 10px;
+
+  &-menuHeading,
+  &-menuItem {
+    font-size: 1.3rem;
+    padding: 0 16px;
+  }
+
+  &-menuHeading {
+    background-color: $mainColor;
+    color: $baseColor;
+    line-height: 4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &-menuItem {
+    line-height: 3.2rem;
+  }
+}

@@ -1,0 +1,565 @@
+body {
+  &.nofix {
+    #siteHeader {
+      position: fixed;
+    }
+  }
+}
+
+
+#siteHeader {
+  background-color: $mainColor;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px rgba(0,0,0,.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  a {
+    color: #222;
+    padding: 0;
+
+    > span {
+      padding: 0;
+      border: none;
+    }
+  }
+
+  #siteHeaderInner {
+    background-color: transparent;
+    width: 1064px;
+    height: 50px;
+
+    > ul {
+      display: flex;
+
+      > li {
+        &:hover {
+          background-color: transparent;
+        }
+
+        > a {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    ul.siteHeaderGlovalNavigation {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      bottom: 0;
+      width: 64px;
+      background-color: #fff;
+      box-shadow: 1px 0 2px rgba(0,0,0,.3);
+      flex-direction: column;
+      padding: 10px 0;
+
+      > li {
+        height: auto;
+        line-height: 4rem;
+
+        &:first-child {
+          position: absolute;
+          bottom: 100%;
+          height: 50px;
+          width: 200px;
+
+          a.iconNiconico {
+            width: 100%;
+            height: 100%;
+            background: url('http://res.nimg.jp/images/logo/logo.png') no-repeat center / 150px;
+
+            &::after,
+            > span {
+              display: none;
+            }
+          }
+        }
+
+        > a {
+          width: 100%;
+          text-align: center;
+          margin: 0;
+
+          &:before {
+            @include icon;
+            font-size: 2rem;
+            color: #787878;
+          }
+        }
+
+        // 汎用リンク
+        &:not(.siteHeaderOther) {
+          > a:not(.iconNiconico) {
+            &:hover {
+              background-color: #f2f2f2;
+
+              > span {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+
+            > span {
+              position: absolute;
+              left: calc(100% + 12px);
+              top: calc(50% - 25%);
+              white-space: nowrap;
+              background-color: rgba(0,0,0,.5);
+              line-height: 2rem;
+              color: #fff;
+              padding: 0 8px;
+              font-size: 1.1rem;
+              border-radius: 2px;
+              opacity: 0;
+              transform: scale(0);
+              pointer-events: none;
+              transition: all .2s ease-out;
+              transform-origin: left;
+            }
+
+            &[href*='www.nicovideo.jp/video_top'] {
+              &::before {
+                content: '\f3a9';
+              }
+            }
+
+            &[href*='seiga.nicovideo.jp'] {
+              &::before {
+                content: '\f17d';
+              }
+            }
+
+            &[href*='live.nicovideo.jp'] {
+              &::before {
+                content: '\f29c';
+              }
+            }
+
+            &[href*='ch.nicovideo.jp'] {
+              &::before {
+                content: '\f2dc';
+              }
+            }
+
+            &[href*='ch.nicovideo.jp/portal/blomaga'] {
+              &::before {
+                content: '\f3ea';
+              }
+            }
+
+            &[href*='game.nicovideo.jp/atsumaru'] {
+              &::before {
+                content: '\f298';
+              }
+            }
+          }
+        }
+
+        // その他
+        &.siteHeaderOther {
+          position: relative;
+
+          > a {
+            &::before {
+              content: '\f19c';
+            }
+
+            > span {
+              display: none;
+            }
+          }
+
+          &:hover {
+            background-color: #f2f2f2;
+
+            #siteHeaderLeftMenuContainer {
+              opacity: 1;
+              transform: scale(1) translate3d(0, -50%, 0);
+              transition: all .3s $ease-out-quint;
+            }
+          }
+
+          #siteHeaderLeftMenuContainer {
+            position: absolute;
+            right: auto;
+            box-shadow: 1px 0 5px rgba(0,0,0,.4);
+            top: 50%;
+            left: 100%;
+            width: 180px;
+            background-color: #fff;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+            transform: scale(0) translate3d(0, -50%, 0);
+            transform-origin: top left;
+            transition-property: opacity, transform;
+            transition-duration: .1s, 0s;
+            transition-delay: 0s, .1s;
+            transition-timing-function: ease-out;
+            opacity: 0;
+
+            > li {
+              width: auto;
+              height: auto;
+
+              > a {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 16px;
+                color: #282828;
+                line-height: 3.2rem;
+                font-size: 1.3rem;
+
+                &:hover {
+                  background-color: $baseColor;
+                }
+              }
+
+              &.menuServiceList {
+                border: none;
+
+                > a {
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    ul.siteHeaderMenuList {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      > li {
+        height: 100%;
+        float: none;
+        position: static;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        + li {
+          margin-right: 16px;
+        }
+
+        > a {
+          color: lighten($mainColor, 12%);
+
+          &:hover {
+            color: $baseColor;
+          }
+        }
+
+        &.siteHeaderOther {
+          margin: 0;
+          position: relative;
+          order: 5;
+
+          &:hover {
+            #siteHeaderRightMenuContainer {
+              opacity: 1;
+              transform: scale(1);
+              transition: all .3s $ease-out-quint;
+            }
+          }
+
+          > a {
+            color: #f2f2f2;
+            margin: 0;
+
+            &::before {
+              @include icon;
+              content: '\f19b';
+              color: currentColor;
+              width: 32px;
+              height: 100%;
+              line-height: 5rem;
+              font-size: 2rem;
+              cursor: pointer;
+            }
+
+            > span {
+              display: none;
+            }
+          }
+
+          #siteHeaderRightMenuContainer {
+            all: unset;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            top: 10px;
+            right: 0;
+            position: absolute;
+            box-shadow: 0 0 10px rgba(0,0,0,.5);
+            padding: 10px 0;
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: top right;
+            transition-property: opacity, transform;
+            transition-duration: .1s, 0s;
+            transition-delay: 0s, .1s;
+            transition-timing-function: ease-out;
+
+            > li {
+              height: auto;
+
+              &#siteHeaderRightMenuUnfix,
+              &#siteHeaderRightMenuFix {
+                display: none;
+              }
+
+              > a {
+                padding: 0 20px;
+                display: block;
+                line-height: 3.2rem;
+                margin: 0;
+                font-size: 1.3rem;
+
+                &:hover {
+                  background-color: #f2f2f2;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      #siteHeaderNotification {
+        flex-direction: row-reverse;
+        padding: 0;
+        order: 4;
+        margin-right: 8px;
+
+        // ユーザー
+        #siteHeaderUserContainer {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+
+          &:hover {
+            ~ span.siteHeaderNicopo {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+
+          #siteHeaderUserNickNameContainer,
+          span.userNickNameSuffix {
+            display: none;
+          }
+
+          #siteHeaderUserIconContainer {
+            background: none;
+            position: static;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            > img {
+              width: 32px;
+              height: 32px;
+              border-radius: 100%;
+              margin: 0;
+            }
+          }
+        }
+
+        // Notifcation
+        #siteHeaderNotificationContainer {
+          width: 24px;
+          height: 24px;
+          margin-right: 16px;
+          position: static;
+
+          // お知らせポップアップ
+          > dl {
+            top: 60px;
+            right: 0;
+            width: 350px;
+            padding: 0 0 16px;
+            border-radius: 0;
+            background: #f2f2f2;
+            box-shadow: 0 1px 10px rgba(0,0,0,.3);
+            position: absolute;
+            border: 1px solid #c2c2c2;
+            box-sizing: border-box;
+
+            &::after,
+            &::before {
+              bottom: 100%;
+              right: 100px;
+              border: solid transparent;
+              content: '';
+              height: 0;
+              width: 0;
+              position: absolute;
+              pointer-events: none;
+            }
+
+            &::after {
+              border-color: rgba(255, 255, 255, 0);
+              border-bottom-color: #fff;
+              border-width: 6px;
+              margin-right: -6px;
+            }
+
+            &::before {
+              border-color: rgba(226, 226, 226, 0);
+              border-bottom-color: #c2c2c2;
+              border-width: 7px;
+              margin-right: -7px;
+            }
+
+            // タイトル
+            > dt {
+              color: #323232;
+              margin: 0 0 16px;
+              border-bottom: 1px #d2d2d2 solid;
+              background-color: #fff;
+
+              // 三角形
+              > span {
+                display: none;
+              }
+            }
+
+            // 通知カード
+            > dd:not(:last-child) {
+              width: auto;
+              margin: 0 16px;
+              box-shadow: none;
+              padding: 0;
+
+              + dd:not(:last-child) {
+                margin-top: 16px;
+              }
+
+              > a {
+                width: 100%;
+                box-sizing: border-box;
+                background-color: #fff;
+                border-radius: 0;
+                line-height: inherit;
+                box-shadow: 0 0px 5px rgba(0,0,0,.3);
+                font-size: 1.2rem;
+                padding: 8px 16px;
+
+                &:hover {
+                  background-color: #f2f2f2;
+                }
+              }
+            }
+
+            // トグルスイッチ
+            .siteHeaderSwitch {
+              padding: 0;
+              line-height: 2rem;
+              font-size: 1.2rem;
+              border: none;
+            }
+
+            // 通知設定
+            .siteHeaderInformationOption {
+              position: absolute;
+              text-align: initial;
+              margin: 0;
+              top: 0;
+              right: 0;
+              width: auto;
+              height: 36px;
+              display: flex;
+              align-items: center;
+
+              #siteHeaderNotificationWithNotificationShowConfig {
+                font-size: 0;
+                width: auto;
+                margin: 0;
+                color: #626262;
+
+                &:hover {
+                  color: #323232;
+                }
+
+                &::before {
+                  @include icon;
+                  content: '\f1c6';
+                  font-size: 2rem;
+                  line-height: 3.2rem;
+                  width: 32px;
+                  height: 32px;
+                  color: currentColor;
+                }
+              }
+            }
+
+            // 適用ボタン
+            #siteHeaderApplyConfigButton {
+              background: none;
+              margin: 0;
+              height: auto;
+              @include raisedButton--primary;
+            }
+          }
+
+
+          // お知らせ共通
+          span.siteHeaderNotifications,
+          span.siteHeaderNotNotifications {
+            all: unset;
+            cursor: pointer;
+            display: block;
+          }
+
+          // お知らせがある
+          span.siteHeaderNotifications {
+            text-align: center;
+            line-height: 2.4rem;
+            font-weight: bold;
+            color: #f2f2f2;
+            font-size: 1rem;
+            border-radius: 100%;
+            background-color: #e53935;
+          }
+
+          // お知らせはない
+          span.siteHeaderNotNotifications {
+            font-size: 0;
+            width: 100%;
+            height: 100%;
+
+            &::before {
+              @include icon;
+              content: '\f1fe';
+              color: #fff;
+              width: 100%;
+              height: 100%;
+              line-height: 2.4rem;
+              background-color: #323232;
+              border-radius: 100%;
+              font-size: 1.4rem;
+              display: block;
+            }
+          }
+        }
+
+        span.siteHeaderNicopo {
+          display: none;
+        }
+      }
+    }
+  }
+}

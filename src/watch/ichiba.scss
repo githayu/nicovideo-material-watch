@@ -1,0 +1,201 @@
+.IchibaContainer {
+  padding: 0;
+}
+
+#ichibaMain {
+  padding: 16px 8px;
+  margin: 64px 0 32px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: darken($backgroundColor, 5%);
+  border-radius: 4px;
+  position: relative;
+
+  .rowJustify {
+    display: none;
+  }
+
+  .ichiba_mainitem {
+    margin: 0 0 16px;
+    width: 190px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    position: relative;
+
+    &:hover {
+      .ichiba_item {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    > div {
+      height: 100%;
+
+      // ドワンゴ
+      &[id^='ichibaitem_watch_dw'] {
+        .thumbnail {
+          height: 100%;
+
+          .ichiba_item {
+            padding: 10px 10px 60px;
+            background-color: #303030;
+            border-bottom: 60px $mainColor solid;
+            height: 100%;
+            border-radius: 2px;
+
+            &::before {
+              content: '着うたフル';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              background-color: rgba(0,0,0,.5);
+              width: 100%;
+              height: 50px;
+              text-align: center;
+              line-height: 5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .thumbnail {
+      margin: 0;
+
+      img {
+        border: none;
+        width: auto;
+        height: auto;
+      }
+
+      span {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+      }
+    }
+
+    .ichiba_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 200px;
+      font-family: $fontFamily;
+      color: #f0f0f0;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        opacity: 0;
+        transition: opacity .2s ease-out;
+        border-radius: 2px;
+      }
+
+      > span {
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+
+    .itemname {
+      margin: 0;
+      height: 60px;
+
+      > a {
+        height: 60px;
+        border: 10px transparent solid;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        font-feature-settings: 'palt';
+        color: #303030;
+        font-weight: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+    }
+
+    .price {
+      margin: 0;
+      padding: 0 8px;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      font-weight: bold;
+      color: #f0f0f0;
+      position: absolute;
+      bottom: 68px;
+      right: 8px;
+      background-color: rgba(0,0,0,.6);
+      border-radius: 2px;
+      font-family: 'Avenir Next', $fontFamily;
+      pointer-events: none;
+
+      > span {
+        display: none;
+      }
+    }
+
+    .lock,
+    .mobile,
+    .maker,
+    .release,
+    .action,
+    .goIchiba,
+    .nicoru {
+      display: none;
+    }
+  }
+}
+
+#ichiba_mainpiaitem {
+  display: none;
+}
+
+#ichibaMainLogo {
+  position: absolute;
+  bottom: 100%;
+  top: auto;
+  left: 0;
+  flex: 0 0 100%;
+  padding: 0 0 16px;
+  width: 100%;
+  text-align: center;
+
+  > a {
+    font-size: 1.6rem;
+    line-height: 3.2rem
+  }
+}
+
+#ichibaMainFooter {
+  position: absolute;
+  padding: 0 0 16px;
+  min-height: initial;
+  bottom: 100%;
+  right: 0;
+
+  .commandArea {
+    > input[type='button'] {
+      @include raisedButton--default;
+      margin: 0;
+    }
+  }
+
+  .info,
+  .associate {
+    display: none;
+  }
+}

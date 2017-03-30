@@ -1,0 +1,21 @@
+{
+  "name": "nicovideo-material-watch",
+  "version": "1.0.0",
+  "author": "Hayu <admin@hayu.io>",
+  "license": "CC-BY-NC-SA-4.0",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build --production",
+    "debug": "node --inspect ./node_modules/gulp/bin/gulp"
+  },
+  "devDependencies": {
+    "cssnano": "^3.10.0",
+    "del": "^2.2.2",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-if": "^2.0.2",
+    "gulp-postcss": "^6.4.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.0",
+    "minimist": "^1.2.0"
+  }
+}

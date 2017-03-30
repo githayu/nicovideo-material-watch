@@ -1,0 +1,76 @@
+@mixin textField {
+  border: none;
+  outline: none;
+  border: 1px #e2e2e2 solid;
+  border-radius: 2px;
+  padding: 4px 8px;
+
+  &:focus {
+    border-color: $mainColor;
+  }
+}
+
+@mixin flatButton {
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+  padding: 8px 16px;
+  user-select: none;
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,.1);
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,.2);
+  }
+}
+
+@mixin raisedButton--base {
+  border: none;
+  border-radius: 2px;
+  padding: 8px 16px;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  cursor: pointer;
+  transition: all .2s ease-out;
+  user-select: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,.3) inset;
+  }
+}
+
+@mixin raisedButton--default {
+  @include raisedButton--base;
+  background-color: #fff;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+
+  &:active {
+    background-color: #e2e2e2;
+  }
+}
+
+@mixin raisedButton--primary {
+  @include raisedButton--base;
+  background-color: $mainColor;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($mainColor, 3%);
+  }
+
+  &:active {
+    background-color: darken($mainColor, 6%);
+  }
+}

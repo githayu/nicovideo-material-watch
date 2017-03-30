@@ -1,0 +1,36 @@
+$mainColor: #009688;
+$baseColor: #f0f0f0;
+$backgroundColor: #ECEFF1;
+
+$fontFamily: 'Roboto', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+
+@mixin icon {
+  font-family: icon, $fontFamily;
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+@mixin commentPanelScrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #202020;
+
+    &:horizontal {
+      height: 10px;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: #202020;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #303030;
+
+    &:hover {
+      background-color: #404040;
+    }
+  }
+}

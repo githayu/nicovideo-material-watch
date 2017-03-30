@@ -1,0 +1,533 @@
+.HeaderContainer {
+  position: relative;
+  padding: 0;
+  margin: var(--content-top) 0 0;
+  width: var(--left-content-width);
+  float: left;
+  box-shadow: 0 0 2px rgba(0,0,0,.4);
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+
+  &-row {
+    margin: 0;
+
+    // タイトル・検索フォーム
+    &:first-child {
+      background-color: #fff;
+      width: var(--left-content-width);
+      order: 1;
+    }
+
+    &:nth-child(3) {
+      order: 2;
+      display: flex;
+      flex-direction: column;
+      position: static;
+
+      > .GridCell {
+        // 投稿者
+        &:first-child {
+          position: absolute;
+          top: 0;
+          left: calc(100% + 20px);
+          width: 350px;
+          height: 132px;
+          margin: 0;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+        }
+
+        // メタ情報
+        &:last-child {
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &-videoTitle {
+    padding: 30px;
+    text-align: center;
+
+    .VideoTitle {
+      font-size: 1.8rem;
+      line-height: 2rem;
+      font-feature-settings: 'palt';
+      color: #202020;
+    }
+  }
+
+  // 検索フォーム
+  &-searchBox {
+    position: fixed;
+    top: 0;
+    left: 200px;
+    height: 50px;
+    z-index: 10000;
+    width: auto;
+    padding: 7px 0;
+  }
+}
+
+.SearchBox {
+  width: 320px;
+  height: 100%;
+  border: none;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: 0;
+  background-color: transparent;
+
+  // 検索ワード
+  &-input {
+    width: auto;
+    padding: 0 40px 0 16px;
+    box-shadow: none;
+    flex: 1;
+    color: #f2f2f2;
+    background-color: darken($mainColor, 5%);
+    border-radius: 2px;
+    transition: all .2s ease-out;
+
+    &:focus {
+      background-color: #fff;
+      box-shadow: 0 1px 5px rgba(0,0,0,.2);
+      color: #222;
+
+      + .SearchBox-submitButton {
+        color: #222
+      }
+    }
+  }
+
+  // 検索ボタン
+  &-submitButton {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    bottom: 0;
+    padding: 0;
+    width: 32px;
+    color: #f2f2f2;
+
+    &::before {
+      @include icon;
+      content: '\f1c3';
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+
+    > svg {
+      display: none;
+    }
+  }
+
+  // 検索オプション
+  &-optionButton {
+    display: none;
+  }
+}
+
+// 動画説明文
+.VideoDescriptionContainer {
+  width: var(--left-content-width);
+  background-color: #fff;
+  padding: 20px 30px;
+  margin: 0;
+  order: 3;
+  border-bottom: 1px #e2e2e2 solid;
+
+  &-expander {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+.VideoDescription {
+  padding: 0;
+
+  &-plain {
+    color: #c0c0c0;
+  }
+}
+
+// 動画説明文の開閉
+.VideoDescriptionExpander {
+  position: static;
+
+  &:hover {
+    .VideoDescriptionExpander-switch {
+      text-decoration: none;
+    }
+  }
+
+  &-switch {
+    @include flatButton;
+    color: #323232;
+    position: static;
+    line-height: inherit;
+    font-size: 1.3rem;
+    background: none;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+/* ユーザー・チャンネル情報
+------------------------------------------------- */
+.ChannelInfo,
+.VideoOwnerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  // 投稿者情報
+  &-links {
+    max-width: initial;
+    height: 60px;
+    overflow: visible;
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 11px 20px;
+  }
+
+  // 投稿者リンク
+  &-pageLinks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 0 0 80px;
+    height: 80px;
+    line-height: 80px;
+
+    .Link {
+      color: #f2f2f2;
+      font-size: 1.4rem;
+    }
+  }
+
+  // パンくずリスト
+  &-breadcrumbContainer {
+    display: none;
+  }
+
+  &-linkButtons {
+    position: static;
+  }
+
+  .FollowButton {
+    @include raisedButton--primary;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: calc(100% + 10px);
+    right: 20px;
+    left: auto;
+
+    > svg {
+      display: none;
+    }
+
+    &::after {
+      content: attr(data-title);
+      all: unset;
+    }
+  }
+}
+
+// 投稿者アイコン
+.ChannelIcon,
+.VideoOwnerIcon {
+  width: 100%;
+  flex: 0 0 80px;
+  padding: 10px 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,.6)), #303030 url('https://api.nicofinder.net/v2/video/thumbnail') no-repeat center / cover;
+  display: flex;
+  align-items: center;
+
+  .Image {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+  }
+}
+
+.VideoOwnerChannelLink,
+.VideoOwnerUploadedLink {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+
+  &-button {
+    @include flatButton;
+    display: block;
+    color: #323232;
+    line-height: 1.4rem;
+  }
+}
+
+/* メタ情報
+------------------------------------------------- */
+.VideoMetaContainer {
+  display: flex;
+  height: auto;
+  padding: 0 30px;
+
+  > div:not(.CategoryRankMeta) {
+    border: none;
+    box-shadow: none;
+
+    > p {
+      display: none;
+    }
+
+    // カウンター
+    &:nth-child(n+2):nth-last-child(n+3) {
+      text-align: center;
+
+      + div {
+        margin-left: 16px;
+      }
+    }
+  }
+}
+
+.VideoUploadDateMeta,
+.VideoViewCountMeta,
+.CommentCountMeta,
+.MylistCountMeta {
+  min-width: initial;
+
+  &::before {
+    @include icon;
+    margin-right: 12px;
+    font-size: 1.6rem;
+    width: 32px;
+    height: 32px;
+    line-height: 3.2rem;
+    color: #c0c0c0;
+    background-color: #f0f0f0;
+    border-radius: 100%;
+  }
+}
+
+.VideoUploadDateMeta-dateTimeLabel,
+.VideoViewCountMeta-counter,
+.CommentCountMeta-counter,
+.MylistCountMeta-counter {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  margin: 0;
+  color: #383838;
+  font-weight: 600;
+  font-family: 'Avenir Next', 'Roboto', sans-serif;
+}
+
+.VideoUploadDateMeta {
+  flex: 1;
+
+  &::before {
+    content: '\f21e';
+  }
+}
+
+.VideoViewCountMeta {
+  &::before {
+    content: '\f3aa';
+    font-size: 2rem;
+    text-indent: 4px;
+  }
+}
+
+.CommentCountMeta {
+  &::before {
+    content: '\f265';
+    font-size: 1.4rem;
+  }
+}
+
+.MylistCountMeta {
+  &::before {
+    content: '\f228';
+  }
+}
+
+.CategoryRankMeta {
+  display: none;
+}
+
+.VideoMetaOverflowMenuContainer {
+  position: absolute;
+  top: -75px;
+  right: 0;
+
+  // メタメニュー
+  &-menu {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 200px;
+    min-width: auto;
+    padding: 10px 0;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    transform: scale(0);
+    opacity: 0;
+    animation: videoMetaOverflowMenu .3s $ease-out-quint forwards;
+    transform-origin: top right;
+
+    > .CloseButton {
+      display: none;
+    }
+  }
+
+  &-menuBlock {
+    padding: 0;
+    border: none;
+
+    > ul {
+      > li {
+        font-size: 0;
+        line-height: 0;
+
+        > a {
+          display: block;
+          padding: 0 20px;
+          line-height: 3.2rem;
+          font-size: 1.3rem;
+          color: #323232;
+
+          &:hover {
+            text-decoration: none;
+            background-color: #f2f2f2;
+          }
+        }
+      }
+    }
+  }
+
+  &-menuHeading {
+    display: none;
+  }
+
+  &-dicIconLink {
+    &:first-child {
+      display: none;
+    }
+  }
+}
+
+.VideoMetaOverflowMenuOpenButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #d8d8d8;
+
+  &:before {
+    @include icon;
+    content: '\f19b';
+    font-size: 2.2rem;
+    width: 100%;
+    line-height: 3.2rem;
+  }
+
+  &:hover {
+    color: #c0c0c0;
+  }
+
+  > svg {
+    display: none;
+  }
+}
+
+@keyframes videoMetaOverflowMenu {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 生放送
+.OwnerNicoliveBannerContainer {
+  order: 5;
+  background-color: #f2f2f2;
+}
+
+
+.OwnerNicoliveBanner {
+  background-color: transparent;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 30px 20px;
+
+  &-message {
+    display: none;
+  }
+
+  &-time {
+    color: #787878;
+    font-size: 1.3rem;
+    margin: 0;
+    line-height: inherit;
+  }
+
+  &-title {
+    color: #222;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 8px;
+  }
+
+  &-left {
+    flex: 0 0 64px;
+
+    > .Link {
+      display: block;
+    }
+  }
+
+  &-liveLogo {
+    border-radius: 2px;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  &-thumbnail {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    margin: 0;
+  }
+
+  &-right {
+    flex: 0 0 auto;
+  }
+
+  &-lead {
+    all: unset;
+    @include raisedButton--default;
+  }
+
+  > .GridCell {
+    width: auto;
+
+    &.col-fill {
+      flex: 1;
+      padding: 0 16px;
+    }
+  }
+}

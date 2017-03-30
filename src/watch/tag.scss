@@ -1,0 +1,287 @@
+.TagContainer {
+  margin: 0;
+  padding: 20px 30px 12px;
+  background-color: #f2f2f2;
+  order: 4;
+  border-radius: 0;
+  box-shadow: none;
+
+  &.is-editing {
+    .TagContainer-editArea {
+      display: flex;
+    }
+  }
+
+  &-area {
+    margin: 0;
+    float: none;
+    overflow: visible;
+  }
+
+  &-TagEditButtonArea {
+    float: left;
+  }
+
+  &-editArea {
+    margin: 0;
+    width: auto;
+    clear: left;
+    display: none;
+    flex-direction: column-reverse;
+    padding-top: 20px;
+
+    > .GridCell {
+      width: auto;
+
+      &:last-child {
+        padding: 0;
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &-editButton {
+    line-height: 3.2rem;
+    height: 32px;
+    border-radius: 16px;
+    padding: 0 16px;
+    background-color: #b0b0b0;
+    color: $baseColor;
+    font-weight: bold;
+    transition: background .2s $ease-out-quint;
+    font-size: 1.2rem;
+    margin-right: 8px;
+
+    &:hover {
+      background-color: #a0a0a0;
+      box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    }
+  }
+}
+
+.TagList {
+  overflow: visible;
+  min-height: initial;
+}
+
+.TagItem {
+  margin: 0 8px 8px 0;
+  border: none;
+  height: auto;
+  background-color: #e0e0e0;
+  padding: 0 16px 0 16px;
+  border-radius: 32px;
+  transition: all .2s $ease-out-quint;
+
+  &:hover {
+    background-color: #d8d8d8;
+
+    &.is-nicodicAvailable {
+      .TagItem-nicoDicLink {
+        > .NicoDicIcon {
+          color: #d8d8d8;
+        }
+      }
+    }
+  }
+
+  // カテゴリ
+  &.is-category {
+    background-color: $mainColor;
+
+    &:hover {
+      background-color: darken($mainColor, 2%);
+
+      &.is-nicodicAvailable {
+        .TagItem-nicoDicLink {
+          > .NicoDicIcon {
+            color: darken($mainColor, 2%);
+          }
+        }
+      }
+    }
+
+    .TagItem-name {
+      color: $baseColor;
+    }
+
+    &.is-nicodicAvailable {
+      .TagItem-nicoDicLink {
+        > .NicoDicIcon {
+          color: $mainColor;
+
+          &:hover {
+            color: darken($mainColor, 2%);
+          }
+        }
+      }
+    }
+  }
+
+  // 投稿者ロック
+  &.is-locked {
+    padding-left: 0;
+
+    &::before {
+      @include icon;
+      content: '\f191';
+      width: 32px;
+      line-height: 32px;
+      font-size: 1.4rem;
+      background-color: rgba(0,0,0,.1);
+      border-radius: 100%;
+      margin-right: 8px;
+      color: rgba(0,0,0,.5);
+    }
+  }
+
+  // 大百科がある
+  &.is-nicodicAvailable {
+    &:not(.is-editing) {
+      padding-right: 36px;
+    }
+
+    .TagItem-nicoDicLink {
+      position: absolute;
+      top: calc(50% - 11px);
+      right: 6px;
+      width: auto;
+      height: auto;
+      bottom: auto;
+
+      > .NicoDicIcon {
+        background-color: transparent;
+        padding: 0;
+        width: auto;
+        height: auto;
+        border-radius: 0;
+        color: #e0e0e0;
+        transition: all .2s $ease-out-quint;
+
+        &:hover {
+          color: #d8d8d8;
+
+          &::before {
+            background-color: rgba(0,0,0,.25);
+          }
+        }
+
+        &::before {
+          @include icon;
+          content: '\f11e';
+          font-size: 1.2rem;
+          line-height: 2.2rem;
+          background-color: rgba(0,0,0,.2);
+          border-radius: 100%;
+          width: 22px;
+          font-weight: bold;
+        }
+
+        > svg {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // 大百科がない
+  &:not(.is-nicodicAvailable) {
+    .TagItem-nicoDicLink {
+      display: none;
+    }
+  }
+
+  // 編集中
+  &.is-editing {
+    .TagItem-lockButton,
+    .TagItem-categoryTag {
+      display: none;
+    }
+
+    // 編集可能
+    &:not(.is-locked) {
+      padding-right: 36px;
+    }
+
+    // 削除ボタン
+    .TagItem-deleteButton {
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      padding: 0;
+      position: absolute;
+      top: calc(50% - 11px);
+      right: 6px;
+      bottom: auto;
+      color: #e0e0e0;
+
+      &:hover {
+        color: #d8d8d8;
+
+        &::before {
+          background-color: rgba(0,0,0,.25);
+        }
+      }
+
+      &::before {
+        @include icon;
+        content: '\f136';
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        background-color: rgba(0,0,0,.2);
+        border-radius: 100%;
+        width: 22px;
+        font-weight: bold;
+      }
+
+      > svg {
+        display: none;
+      }
+    }
+  }
+
+  // 検索リンク
+  &-name {
+    background-color: transparent;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    color: #323232;
+    font-weight: normal;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.TagEditForm {
+  width: auto;
+  background-color: transparent;
+  height: auto;
+  overflow: visible;
+  border-radius: 0;
+  display: flex;
+  align-items: flex-end;
+
+  &-input {
+    width: auto;
+    padding: 0 16px;
+    box-shadow: none;
+    border-radius: 0;
+    line-height: 3rem;
+    height: 32px;
+    background-color: transparent;
+    box-shadow: 0 -1px #d8d8d8 inset;
+    transition: box-shadow .2s $ease-out-quint;
+    flex: 1;
+    margin-right: 16px;
+
+    &:focus {
+      box-shadow: 0 -2px $mainColor inset;
+    }
+  }
+
+  &-submitButton {
+    @include raisedButton--primary;
+  }
+}

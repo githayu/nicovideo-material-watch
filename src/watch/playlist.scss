@@ -1,0 +1,247 @@
+
+// プレイリスト操作ボタン
+.PlaylistShuffleButton,
+.PlaylistContinuousActiveButton,
+.PlaylistContinuousInactiveButton {
+  @include flatButton;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  height: auto;
+  background-color: transparent;
+  color: #323232;
+  width: 32px;
+  height: 32px;
+
+  &::before {
+    @include icon;
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+}
+
+.PlaylistShuffleButton {
+  &::before {
+    content: '\f3b3';
+  }
+}
+
+.PlaylistContinuousActiveButton {
+  color: $mainColor;
+
+  &::before {
+    content: '\f3a9';
+  }
+}
+
+.PlaylistContinuousInactiveButton {
+  &::before {
+    content: '\f3a8';
+  }
+}
+
+
+.PlaylistContainer {
+  overflow: visible;
+  background-color: transparent;
+
+  .PlaylistPager-arrow {
+    @include flatButton;
+    padding: 0;
+    background-color: transparent;
+    height: 32px;
+    width: 32px;
+    transform: none;
+    position: absolute;
+    top: calc(100% + 10px);
+
+    > svg {
+      display: none;
+    }
+
+    &::before {
+      @include icon;
+      font-weight: bold;
+    }
+
+    &.PlaylistPagerArrowLeftButton {
+      left: 20px;
+
+      &::before {
+        content: '\f2ea';
+      }
+    }
+
+    &.PlaylistPagerArrowRightButton {
+      right: 20px;
+
+      &::before {
+        content: '\f2ee';
+      }
+    }
+  }
+}
+
+.PlaylistPager-inner {
+  transition: left .2s linear;
+}
+
+.PlaylistPager {
+  padding: 0;
+}
+
+.PlaylistCardList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 350px;
+}
+
+// アイテムベース
+.PlaylistEmptyCardItem,
+.PlaylistCardItem {
+  width: 600px;
+  height: 100px;
+  margin: 0;
+  background-color: #fff;
+  border-bottom: 1px #e2e2e2 solid;
+}
+
+// アイテム
+.PlaylistCardItem {
+  padding: 0 250px 0 0;
+
+  &.is-playing {
+    .PlaylistItemContent-thumbnail {
+      > .Image {
+        border: 5px $mainColor solid;
+      }
+    }
+
+    .PlaylistItemContent-title {
+      color: $mainColor;
+    }
+  }
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+
+.PlaylistItemContent {
+  width: auto;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  transition: background .2s ease-out;
+
+  &:hover {
+    .PlaylistItemContent-metaContainer {
+      opacity: 1;
+    }
+
+    .PlaylistItemContent-playTime {
+      display: initial;
+      opacity: 0;
+    }
+  }
+
+  &-metaContainer {
+    padding: 0 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transition: all .2s ease-out;
+
+    > li {
+      display: flex;
+      justify-content: space-between;
+
+      &::before {
+        @include icon;
+        font-size: 1.4rem;
+        color: #c2c2c2;
+        margin-right: 6px;
+        line-height: 1.6rem;
+        width: 16px;
+      }
+    }
+  }
+
+  &-metaTitle {
+    display: none;
+  }
+
+  &-metCount,
+  &-metaCount {
+    letter-spacing: .5px;
+    font-family: 'Avenir Next', 'Roboto', sans-serif;
+  }
+
+  &-viewCount {
+    &::before {
+      content: '\f3aa';
+    }
+  }
+
+  &-commentCount {
+    &::before {
+      content: '\f265';
+    }
+  }
+
+  &-mylistCount {
+    &::before {
+      content: '\f228';
+    }
+  }
+
+  &-thumbnail {
+    margin: 0;
+    width: 130px;
+    flex: 0 0 130px;
+    height: 73px;
+    overflow: visible;
+    align-self: center;
+
+    .Image {
+      position: static;
+      transform: none;
+      width: 130px;
+      height: 73px;
+      object-fit: cover;
+    }
+  }
+
+  &-playTime {
+    right: 2px;
+    bottom: 2px;
+    border-radius: 2px;
+    background-color: rgba(0,0,0,.7);
+    font-size: 1.0rem;
+    transition: all .2s ease-out;
+  }
+
+  &-title {
+    margin-left: 12px;
+    font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    height: 4rem;
+    line-height: 2rem;
+    color: #323232;
+  }
+
+  > .RouterLink {
+    height: 100%;
+    padding: 12px 16px;
+    display: flex;
+  }
+}

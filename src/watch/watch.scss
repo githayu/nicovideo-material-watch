@@ -1,0 +1,290 @@
+body {
+  --right-width: 360px;
+  --right-content-width: calc(var(--right-width) - 10px);
+
+  background-color: $backgroundColor;
+
+  &.is-middle {
+    --width: 1000px;
+    --left-width: 640px;
+    --left-content-width: calc(var(--left-width) - 10px);
+    --content-top: calc(432px + 20px);
+  }
+
+  &.is-large {
+    --width: 1214px;
+    --left-width: 854px;
+    --left-content-width: calc(var(--left-width) - 10px);
+    --content-top: calc(552px + 20px);
+  }
+
+  &.is-fullscreen {
+    padding: 0;
+
+    .MainContainer {
+      transform: none;
+    }
+  }
+}
+
+.Grid,
+.GridCell {
+  display: block;
+}
+
+.SwitchToFlashLead {
+  display: none;
+}
+
+.EditorMenuContainer {
+  margin: 0;
+  height: auto;
+  background-color: #fff;
+  position: relative;
+  z-index: 100;
+
+  &-inner {
+    width: var(--width);
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  &-menuBox {
+    height: auto;
+    float: none;
+
+    &-menu {
+      line-height: 4rem;
+      height: 40px;
+      padding: 0 8px;
+      font-weight: normal;
+      display: flex;
+      justify-content: center;
+      color: #303030;
+      position: relative;
+
+      &.is-open {
+        .EditorMenuContainer-menuBox-menu-child {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      &:first-child {
+        display: none;
+      }
+
+      > span {
+        margin: 0;
+        width: calc(100% - 1rem);
+        overflow: hidden;
+        line-height: inherit;
+        height: 100%;
+
+        > svg {
+          display: none;
+        }
+      }
+
+      // メニューコンテンツ
+      &-child {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        bottom: auto;
+        padding: 10px 0;
+        display: block;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: top left;
+        transition: all .3s $ease-out-quint;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border: none;
+
+        > .menuItem {
+          line-height: 3.2rem;
+          height: 3.2rem;
+          background-color: transparent;
+
+          > .Link {
+            padding: 0 16px;
+            color: #303030;
+
+            &:hover {
+              background-color: #f0f0f0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-updateMessage {
+    display: none;
+  }
+}
+
+.WatchAppContainer {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  &-main {
+    position: relative;
+    width: var(--width);
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+.BottomContainer {
+  width: auto;
+  margin: 0;
+
+  > div {
+    &:first-child {
+      > .Grid {
+        position: static;
+      }
+    }
+  }
+}
+
+.BottomContainer-card {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.BottomContainer-cardHeader,
+.BottomContainer-cardMain {
+  padding: 0;
+}
+
+.BottomContainer-main {
+  padding: 0;
+
+  .BottomContainer-card {
+    margin: 0;
+
+    // プレイリスト
+    &:first-child {
+      width: var(--right-content-width);
+      float: right;
+      position: relative;
+      box-shadow: 0 0 2px rgba(0,0,0,.4);
+      padding: 0 0 52px;
+      background-color: #f2f2f2;
+      margin: calc(var(--content-top) + 132px + 20px) 0 0;
+
+      .BottomContainer-cardHeader {
+        padding: 16px;
+        border-bottom: 1px #ddd solid;
+        position: static;
+      }
+
+      .BottomContainer-cardTitle {
+        width: auto;
+      }
+
+      .BottomContainer-cardMenu {
+        right: auto;
+        position: absolute;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+
+        .ToggleAndDisplayPattern {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    // コンテンツツリー
+    &:nth-child(2) {
+      clear: left;
+      float: left;
+      position: relative;
+      width: var(--left-content-width);
+      margin: 20px 0 0;
+
+      .BottomContainer-cardHeader {
+        display: none;
+      }
+
+      .BottomContainer-cardMain {
+        padding: 0;
+      }
+    }
+
+    // 市場
+    &:last-child {
+      clear: left;
+      float: left;
+      width: var(--left-content-width);
+      position: relative;
+      margin-top: 20px;
+    }
+  }
+}
+
+.ContentTree-parentSummary {
+  padding: 0;
+  width: auto;
+}
+
+// サービスリンク / 広告
+.BottomContainer-side,
+.BottomContainer-adContainer {
+  display: none;
+}
+
+// フッター
+.FooterContainer {
+  clear: both;
+  min-width: var(--width);
+  background-color: #181818;
+  background-image: linear-gradient(45deg, #181818 40%, #202020 40%);
+  margin: 16px 0 0;
+
+  &-content {
+    width: var(--width);
+    padding: 30px;
+    position: static;
+    display: flex;
+
+    > .GridCell {
+      flex: 1;
+    }
+  }
+
+  &-logo {
+    margin: 0;
+    width: 150px;
+    height: auto;
+  }
+
+  &-group {
+    display: flex;
+    padding: 0;
+
+    + .FooterContainer-group {
+      margin-top: 16px;
+    }
+  }
+
+  &-links {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+}
