@@ -3,12 +3,12 @@
 }
 
 #ichibaMain {
-  padding: 16px 8px;
+  padding: 16px 0;
   margin: 64px 0 32px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   background-color: darken($backgroundColor, 5%);
   border-radius: 4px;
   position: relative;
@@ -18,12 +18,17 @@
   }
 
   .ichiba_mainitem {
-    margin: 0 0 16px;
+    margin: 0 16px 16px 0;
     width: 190px;
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
     position: relative;
+
+    &:nth-of-type(3n),
+    &:last-of-type {
+      margin-right: 0;
+    }
 
     &:hover {
       .ichiba_item {
