@@ -44,50 +44,87 @@
     > div {
       height: 100%;
 
-      // dowango.jp
-      &[id^='ichibaitem_watch_dw'] {
-        &:hover {
-          .maker {
-            opacity: .5;
+      .mobile {
+        > a {
+          background: none;
+          width: auto;
+          height: 36px;
+          text-indent: initial;
+          position: absolute;
+          bottom: 0;
+          left: 0;background-color: $mainColor;
+          width: 100%;
+          text-align: center;
+          line-height: 3.6rem;
+          z-index: 5;
+          color: #f0f0f0;
+          border-radius: 0 0 2px 2px;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          &::before {
+            content: '';
+          }
+
+          &.uta {
+            &::before {
+              content: '着うた';
+            }
+          }
+
+          &.utafull {
+            &::before {
+              content: '着うたフル';
+            }
+          }
+
+          &.machiuke {
+            &::before {
+              content: '待受Flash';
+            }
+          }
+
+          &.kashi {
+            &::before {
+              content: '歌詞';
+            }
           }
         }
+      }
 
+      // dowango.jp
+      &[id^='ichibaitem_watch_dw'] {
         .thumbnail {
           height: 100%;
 
           .ichiba_item {
-            padding: 10px 10px 60px;
+            padding: 10px 10px 82px;
             background-color: #303030;
             height: 100%;
             border-radius: 2px;
-
-            &::before {
-              content: '着うたフル';
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              background-color: rgba(0,0,0,.5);
-              width: 100%;
-              height: 50px;
-              text-align: center;
-              line-height: 5rem;
-            }
           }
         }
 
         .maker {
           display: block;
           position: absolute;
-          bottom: 50px;
+          bottom: 36px;
           right: 0;
           left: 0;
           text-align: center;
           font-size: 1.2rem;
+          line-height: 3.6rem;
           color: #f0f0f0;
-          padding: 8px;
+          padding: 0 8px;
           pointer-events: none;
           margin: 0;
           transition: .3s opacity $ease-out-quad;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          background-color: rgba(0,0,0,.5);
         }
       }
 
@@ -182,7 +219,6 @@
     }
 
     .lock,
-    .mobile,
     .maker,
     .release,
     .action,
