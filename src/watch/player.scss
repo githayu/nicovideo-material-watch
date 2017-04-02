@@ -66,16 +66,14 @@
 .ControllerContainer {
   padding: 0;
 
-  .ControllerContainer-inner {
-    > .ControllerContainer-area {
-      &:nth-child(-n+2) {
-        flex: 0;
-      }
+  &-area {
+    &:nth-child(-n+2) {
+      flex: 0;
     }
+  }
 
-    .ControllerContainer-centerArea {
-      padding-left: 8px;
-    }
+  &-centerArea {
+    padding-left: 8px;
   }
 }
 
@@ -348,7 +346,11 @@
   right: 0;
   bottom: 20px;
   width: var(--right-width);
+}
 
+// メニュー内アクションボタン共通設定
+.VideoMenuContainer,
+.CommentPanelMenuContainer {
   .ActionButton {
     width: auto;
     height: auto;
@@ -376,127 +378,164 @@
       display: none;
     }
   }
+}
 
-  // メニュー
-  .VideoMenuContainer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    z-index: 10;
-    width: auto;
-    height: auto;
+// メニュー
+.VideoMenuContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  z-index: 10;
+  width: auto;
+  height: auto;
 
-    &:before {
-      display: none;
-    }
+  &:before {
+    display: none;
+  }
 
-    .VideoMenuContainer-area {
-      padding: 0;
+  .ActionButton {
+    // とりあえずマイリスト
+    &.InstantMylistButton {
+      &::before {
+        content: '\f278';
+      }
 
-      // 動画操作メニュー
-      &:first-child {
-        position: absolute;
-        right: 100%;
-        margin: 16px 16px 0 0;
-        opacity: 0;
-        transition: opacity .2s ease-out;
+      &::after {
+      }
 
-        &:hover {
-          opacity: 1;
-        }
-
-        > * {
-          + * {
-            margin-top: 10px;
-          }
-        }
-
-        .ActionButton {
-          &::before {
-            font-size: 1.8rem;
-            color: #f0f0f0;
-            line-height: 3.6rem;
-            background-color: rgba(0,0,0,.6);
-            width: 36px;
-            height: 36px;
-            border-radius: 100%;
-            box-shadow: 0 1px 2px rgba(0,0,0,.3);
-          }
+      &.is-succeeded,
+      &.is-failed {
+        &::after {
+          padding: 0 8px;
+          line-height: 2.5rem;
+          border-radius: 2px;
         }
       }
 
-      // 動画共有メニュー
-      &:last-child {
-        padding-left: 8px;
-      }
-    }
-
-    .ActionButton {
-      &.InstantMylistButton {
+      // 登録成功!
+      &.is-succeeded {
         &::before {
-          content: '\f278';
+          content: '\f26b';
+        }
+
+        &::after {
+          background-color: $mainColor;
         }
       }
 
-      &[data-title='マイリスト'] {
-        &::before {
-          content: '\f3ac';
-        }
-      }
-
-      &.UadButton {
-        &::before {
-          content: '\f166';
-        }
-      }
-
-      &.TwitterShareButton {
-        &:hover {
-          color: #55acee;
-        }
-
-        &::before {
-          content: '\f360';
-        }
-      }
-
-      &.FacebookShareButton {
-        &:hover {
-          color: #3b5999;
-        }
-
-        &::before {
-          content: '\f343';
-        }
-      }
-
-      &.LineShareButton {
-        &:hover {
-          color: #00c300;
-        }
-
-        &::before {
-          content: 'LINE';
-          font-size: 1rem;
-          font-weight: bold;
-        }
-      }
-
-      &.SharePanelVisibleButton {
-        background-color: transparent;
-
-        &::before {
-          content: '\f35b';
+      // 登録失敗...
+      &.is-failed {
+        &::after {
+          background-color: #ef5350;
         }
       }
     }
 
-    .UadButtonBalloon {
-      display: none;
+    &[data-title='マイリスト'] {
+      &::before {
+        content: '\f3ac';
+      }
+    }
+
+    &.UadButton {
+      &::before {
+        content: '\f166';
+      }
+    }
+
+    &.TwitterShareButton {
+      &:hover {
+        color: #55acee;
+      }
+
+      &::before {
+        content: '\f360';
+      }
+    }
+
+    &.FacebookShareButton {
+      &:hover {
+        color: #3b5999;
+      }
+
+      &::before {
+        content: '\f343';
+      }
+    }
+
+    &.LineShareButton {
+      &:hover {
+        color: #00c300;
+      }
+
+      &::before {
+        content: 'LINE';
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+
+    &.SharePanelVisibleButton {
+      background-color: transparent;
+
+      &::before {
+        content: '\f35b';
+      }
+    }
+  }
+
+  .UadButtonBalloon {
+    display: none;
+  }
+
+  &-area {
+    padding: 0;
+
+    // 動画操作メニュー
+    &:first-child {
+      position: absolute;
+      right: 100%;
+      margin: 16px 16px 0 0;
+      opacity: 0;
+      transition: opacity .2s ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      > * {
+        + * {
+          margin-top: 10px;
+        }
+      }
+
+      .ActionButton {
+        color: #f0f0f0;
+
+        &::before {
+          font-size: 1.8rem;
+          line-height: 3.6rem;
+          background-color: rgba(0,0,0,.6);
+          width: 36px;
+          height: 36px;
+          border-radius: 100%;
+          box-shadow: 0 1px 2px rgba(0,0,0,.3);
+        }
+
+        &:hover {
+          color: $mainColor;
+        }
+      }
+    }
+
+    // 動画共有メニュー
+    &:last-child {
+      padding-left: 8px;
     }
   }
 }
+
 
 .CommentPanelContainer {
   top: 0;
@@ -504,196 +543,226 @@
   width: var(--right-width);
   background-color: #202020;
 
-  // コメントパネルメニュー
-  .CommentPanelMenuContainer {
-    border: none;
+  // 読み込み中
+  &-loadingContainer {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    // 過去ログ
-    &.is-pastCommentMode {
-      // おまけにスレッドセレクトを表示
-      > .CommentPanelMenuContainer-mainMenu {
-        > .CommentPanelMenuContainer-mainMenuArea {
-          &:first-child {
-            display: block;
-          }
-        }
-      }
+    @include spinner(
+      $circleSize: 40px,
+      $lineWidth: 5px,
+      $lineColor: $mainColor,
+      $backgroundColor: #222
+    );
 
-      .CommentPanelMenuContainer-pastCommentMenu {
-        position: absolute;
-        background-color: #fff;
-        top: 50px;
-        left: calc(50% - 160px);
-        z-index: 10;
-        padding: 20px;
-        height: auto;
-        width: 320px;
-        box-shadow: 0 1px 15px rgba(0,0,0,.5);
-        border-radius: 2px;
-
-        > .GridCell {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .DateTimeInput {
-          margin: 0;
-          display: flex;
-
-          > input {
-            @include textField;
-            margin: 0;
-            box-shadow: none;
-            height: auto;
-
-            + input {
-              margin-left: 8px;
-            }
-
-            &.DateTimeInput-date {
-              flex: 1;
-            }
-
-            &.DateTimeInput-time {
-              width: 92px;
-            }
-          }
-        }
-
-        .PastCommentFetchButton {
-          @include raisedButton--primary;
-          width: auto;
-          height: auto;
-          line-height: inherit;
-          align-self: flex-end;
-          margin-top: 8px;
-          font-size: 1.2rem;
-        }
+    .Spinner {
+      > svg {
+        display: none;
       }
     }
+  }
+}
 
-    .ActionButton {
-      &.CalendarButton {
-        &::before {
-          content: '\f331';
-        }
-      }
+// コメントパネルメニュー
+.CommentPanelMenuContainer {
+  border: none;
 
-      &.ReloadButton {
-        &::before {
-          content: '\f3b2';
-        }
-      }
-
-      &.CommentPanelAutoScrollButton {
-        &::before {
-          content: '\f2f1';
-        }
-      }
-
-      &[data-title='NG設定'] {
-        &::before {
-          content: '\f15b';
-        }
-      }
-    }
-
-    // コメント操作メニュー
-    .CommentPanelMenuContainer-mainMenu {
-      padding: 0;
-      width: auto;
-      height: auto;
-
-      .CommentPanelMenuContainer-mainMenuArea {
-        // スレッド変更メニュー
+  // 過去ログ
+  &.is-pastCommentMode {
+    // おまけにスレッドセレクトを表示
+    > .CommentPanelMenuContainer-mainMenu {
+      > .CommentPanelMenuContainer-mainMenuArea {
         &:first-child {
-          display: none;
-          position: absolute;
-          left: 40px;
-          top: 108px;
-          z-index: 15;
+          display: block;
+        }
+      }
+    }
 
-          > .DropDownMenu {
-            border: none;
-            background-color: transparent;
-            -webkit-appearance: none;
-            border-bottom: 1px #e0e0e0 solid;
-            border-radius: 0;
-            padding: 0 10px;
-            line-height: 2.8rem;
-            cursor: pointer;
-            outline: none;
+    .CommentPanelMenuContainer-pastCommentMenu {
+      position: absolute;
+      background-color: #fff;
+      top: 50px;
+      left: calc(50% - 160px);
+      z-index: 10;
+      padding: 20px;
+      height: auto;
+      width: 320px;
+      box-shadow: 0 1px 15px rgba(0,0,0,.5);
+      border-radius: 2px;
+
+      > .GridCell {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .DateTimeInput {
+        margin: 0;
+        display: flex;
+
+        > input {
+          @include textField;
+          margin: 0;
+          box-shadow: none;
+          height: auto;
+
+          + input {
+            margin-left: 8px;
+          }
+
+          &.DateTimeInput-date {
+            flex: 1;
+          }
+
+          &.DateTimeInput-time {
+            width: 92px;
           }
         }
+      }
 
-        // スレッド操作メニュー
-        &:last-child {
-          padding-right: 8px;
-        }
+      .PastCommentFetchButton {
+        @include raisedButton--primary;
+        width: auto;
+        height: auto;
+        line-height: inherit;
+        align-self: flex-end;
+        margin-top: 8px;
+        font-size: 1.2rem;
       }
     }
   }
 
-  .CommentPanel {
-    top: 32px;
-    color: #888;
+  .ActionButton {
+    &.CalendarButton {
+      &::before {
+        content: '\f331';
+      }
+    }
 
-    .react-grid-Header {
+    &.ReloadButton {
+      &::before {
+        content: '\f3b2';
+      }
+    }
+
+    &.CommentPanelAutoScrollButton {
+      &::before {
+        content: '\f2f1';
+      }
+    }
+
+    &[data-title='NG設定'] {
+      &::before {
+        content: '\f15b';
+      }
+    }
+  }
+
+  // コメント操作メニュー
+  &-mainMenu {
+    padding: 0;
+    width: auto;
+    height: auto;
+
+    &Area {
+      // スレッド変更メニュー
+      &:first-child {
+        display: none;
+        position: absolute;
+        left: 40px;
+        top: 108px;
+        z-index: 15;
+
+        > .DropDownMenu {
+          border: none;
+          background-color: transparent;
+          -webkit-appearance: none;
+          border-bottom: 1px #e0e0e0 solid;
+          border-radius: 0;
+          padding: 0 10px;
+          line-height: 2.8rem;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+
+      // スレッド操作メニュー
+      &:last-child {
+        padding-right: 8px;
+      }
+    }
+  }
+}
+
+.CommentPanel {
+  top: 32px;
+  color: #888;
+
+  .react-grid {
+    &-Header {
       position: relative;
       box-shadow: 0 1px 2px rgba(0,0,0,.3);
       z-index: 5;
       background-color: #303030;
     }
 
-    .react-grid-HeaderCell-sortable {
-      overflow: hidden;
+    &-HeaderCell {
+      &-sortable {
+        overflow: hidden;
 
-      &.react-grid-HeaderCell-sortable--ascending,
-      &.react-grid-HeaderCell-sortable--descending {
-        &::before {
-          @include icon;
-          font-size: 1.4rem;
-          line-height: 2.8rem;
-          margin-right: 6px;
-          color: #505050;
-          vertical-align: top;
+        &--ascending,
+        &--descending {
+          &::before {
+            @include icon;
+            font-size: 1.4rem;
+            line-height: 2.8rem;
+            margin-right: 6px;
+            color: #505050;
+            vertical-align: top;
+          }
+        }
+
+        &--ascending {
+          &::before {
+            content: '\f1cd';
+          }
+        }
+
+        &--descending {
+          &::before {
+            content: '\f1ce';
+          }
+        }
+
+        .pull-right {
+          display: none;
         }
       }
 
-      &.react-grid-HeaderCell-sortable--ascending {
-        &::before {
-          content: '\f1cd';
-        }
-      }
-
-      &.react-grid-HeaderCell-sortable--descending {
-        &::before {
-          content: '\f1ce';
-        }
-      }
-
-      .pull-right {
-        display: none;
+      &__draggable {
+        background-color: rgba(0,0,0,.15);
+        width: 5px;
       }
     }
 
-    .react-grid-HeaderCell__draggable {
-      background-color: rgba(0,0,0,.15);
-      width: 5px;
-    }
-
-    .react-grid-Cell,
-    .react-grid-HeaderCell {
+    &-Cell,
+    &-HeaderCell {
       background-color: transparent;
       border: none;
       font-weight: normal;
     }
 
-    .react-grid-Canvas {
+    &-Canvas {
       @include commentPanelScrollbar;
     }
 
-    .react-grid-Row {
+    &-Row {
       &:hover {
         background-color: #282828;
       }
@@ -729,7 +798,7 @@
 
   &-menuHeading {
     background-color: $mainColor;
-    color: $baseColor;
+    color: #f0f0f0;
     line-height: 4rem;
     position: absolute;
     top: 0;
@@ -739,5 +808,257 @@
 
   &-menuItem {
     line-height: 3.2rem;
+  }
+}
+
+// NGパネル
+.NGSettingPanelContainer {
+  top: 42px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  border-radius: 2px;
+  z-index: 10;
+  background-color: #fff;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top right;
+  flex-direction: column;
+  transition: .3s all $ease-out-quart;
+  display: flex;
+
+  &:not([hidden]) {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &-header {
+    background-color: transparent;
+    height: auto;
+    position: static;
+    padding: 8px 0 0;
+  }
+
+  &-headerText {
+    line-height: 3.2rem;
+    padding: 0 16px;
+    font-size: 1.3rem;
+    color: #303030;
+    text-align: center;
+  }
+
+  &-contentTop {
+    padding: 12px 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+  }
+
+  &-num,
+  &-enableCheckbox {
+    line-height: inherit;
+    color: #888;
+  }
+
+  &-enableCheckbox {
+    .CheckboxInput {
+      &:checked {
+        + .Checkbox-check {
+          background-color: lighten($mainColor, 5%);
+
+          &::before {
+            background-color: $mainColor;
+            transform: translate3d(100%, 0, 0);
+          }
+        }
+      }
+
+      + .Checkbox-check {
+        width: 36px;
+        height: 14px;
+        background-color: #e0e0e0;
+        border-radius: 18px;
+        margin: 5px 0;
+        transition: all .3s $ease-out-quart;
+
+        &::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          border: none;
+          background-color: #f0f0f0;
+          border-radius: 100%;
+          box-shadow: 0 1px 2px rgba(0,0,0,.4);
+          position: absolute;
+          top: calc(50% - 10px);
+          left: 0;
+          transition: inherit;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    .CheckboxLabel {
+      display: none;
+    }
+  }
+
+  &-contentMain {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    background: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px #e0e0e0 solid;
+    padding: 4px 0 0;
+  }
+
+  &-contentBottom {
+    position: static;
+    text-align: right;
+    padding: 10px 16px;
+    height: auto;
+  }
+
+  &-removeButton {
+    all: unset;
+    @include flatButton;
+    background: none;
+  }
+
+  &-close {
+    all: unset;
+    @include flatButton;
+    position: absolute;
+    top: auto;
+    right: 168px;
+    bottom: 10px;
+
+    &::before {
+      content: 'キャンセル';
+    }
+
+    > svg {
+      display: none;
+    }
+  }
+}
+
+.NGClientList {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  line-height: 3rem;
+
+  .Checkbox {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &Input {
+      &:checked {
+        + .Checkbox-check {
+          border-color: $mainColor;
+          background-color: $mainColor;
+
+          &::before {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    &-check {
+      border: 2px #e0e0e0 solid;
+      border-radius: 2px;
+      width: 16px;
+      height: 16px;
+      box-sizing: content-box;
+      background-color: #fff;
+      transition: all .3s $ease-out-quart;
+
+      &::before {
+        all: unset;
+        @include icon;
+        content: '\f26b';
+        line-height: 1.6rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        color: #fff;
+        transform: scale(0);
+        transition: inherit;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .GridCell {
+    border: none;
+    padding: 0 0 0 8px;
+
+    &:first-child {
+      padding-left: 16px;
+    }
+  }
+
+  &-header {
+    padding: 0;
+    background: none;
+    color: #b0b0b0;
+    line-height: inherit;
+    border-bottom: 1px #e0e0e0 solid;
+  }
+
+  &-items {
+    position: static;
+    flex: 1;
+    color: #303030;
+  }
+
+  &-item {
+    padding: 0;
+    line-height: inherit;
+    font-size: 1.2rem;
+    border: none;
+
+    &.is-checked {
+      background-color: #f0f0f0;
+    }
+  }
+
+  &-headerCheck,
+  &-itemCheck {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  &-itemType {
+    flex: 0 0 80px;
+  }
+
+  &-itemSource {
+    max-width: initial;
   }
 }

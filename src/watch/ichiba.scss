@@ -3,7 +3,7 @@
 }
 
 #ichibaMain {
-  padding: 16px 0;
+  padding: 16px 0 0;
   margin: 64px 0 32px;
   width: 100%;
   display: flex;
@@ -17,6 +17,7 @@
     display: none;
   }
 
+  #ichiba_mainpiaitem,
   .ichiba_mainitem {
     margin: 0 16px 16px 0;
     width: 190px;
@@ -24,7 +25,9 @@
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
     position: relative;
+  }
 
+  .ichiba_mainitem {
     &:nth-of-type(3n),
     &:last-of-type {
       margin-right: 0;
@@ -41,15 +44,20 @@
     > div {
       height: 100%;
 
-      // ドワンゴ
+      // dowango.jp
       &[id^='ichibaitem_watch_dw'] {
+        &:hover {
+          .maker {
+            opacity: .5;
+          }
+        }
+
         .thumbnail {
           height: 100%;
 
           .ichiba_item {
             padding: 10px 10px 60px;
             background-color: #303030;
-            border-bottom: 60px $mainColor solid;
             height: 100%;
             border-radius: 2px;
 
@@ -66,6 +74,26 @@
             }
           }
         }
+
+        .maker {
+          display: block;
+          position: absolute;
+          bottom: 50px;
+          right: 0;
+          left: 0;
+          text-align: center;
+          font-size: 1.2rem;
+          color: #f0f0f0;
+          padding: 8px;
+          pointer-events: none;
+          margin: 0;
+          transition: .3s opacity $ease-out-quad;
+        }
+      }
+
+      // ブロマガ
+      &[id^='ichibaitem_watch_ncar'] {
+
       }
     }
 
@@ -90,7 +118,7 @@
       align-items: center;
       position: relative;
       min-height: 200px;
-      font-family: $fontFamily;
+      font-family: var(--fontFamily);
       color: #f0f0f0;
       overflow: hidden;
 
@@ -103,7 +131,7 @@
         height: 100%;
         background-color: rgba(0,0,0,.3);
         opacity: 0;
-        transition: opacity .2s ease-out;
+        transition: opacity .2s $ease-out-quad;
         border-radius: 2px;
       }
 
@@ -145,7 +173,7 @@
       right: 8px;
       background-color: rgba(0,0,0,.6);
       border-radius: 2px;
-      font-family: 'Avenir Next', $fontFamily;
+      font-family: 'Avenir Next', var(--fontFamily);
       pointer-events: none;
 
       > span {
@@ -163,10 +191,15 @@
       display: none;
     }
   }
-}
 
-#ichiba_mainpiaitem {
-  display: none;
+  .noItem {
+    margin: 8px 0 24px;
+
+    .intro,
+    .navigate {
+      font-size: 1.8rem;
+    }
+  }
 }
 
 #ichibaMainLogo {
@@ -182,6 +215,30 @@
   > a {
     font-size: 1.6rem;
     line-height: 3.2rem
+  }
+}
+
+// チケットぴあ
+#ichiba_mainpiaitem {
+  .pia {
+    width: auto;
+    height: 100%;
+    border: none;
+    padding: 0;
+    background: none;
+
+    > a {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .ichiba,
+  .nicoruPia {
+    display: none;
   }
 }
 

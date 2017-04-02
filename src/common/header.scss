@@ -179,7 +179,7 @@ body {
             #siteHeaderLeftMenuContainer {
               opacity: 1;
               transform: scale(1) translate3d(0, -50%, 0);
-              transition: all .3s $ease-out-quint;
+              transition: all .3s $ease-out-quart;
             }
           }
 
@@ -216,7 +216,7 @@ body {
                 font-size: 1.3rem;
 
                 &:hover {
-                  background-color: $baseColor;
+                  background-color: #f0f0f0;
                 }
               }
 
@@ -258,7 +258,7 @@ body {
           color: lighten($mainColor, 12%);
 
           &:hover {
-            color: $baseColor;
+            color: #f0f0f0;
           }
         }
 
@@ -271,7 +271,7 @@ body {
             #siteHeaderRightMenuContainer {
               opacity: 1;
               transform: scale(1);
-              transition: all .3s $ease-out-quint;
+              transition: all .3s $ease-out-quart;
             }
           }
 

@@ -1,11 +1,8 @@
 $mainColor: #009688;
-$baseColor: #f0f0f0;
 $backgroundColor: #ECEFF1;
 
-$fontFamily: 'Roboto', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
-
 @mixin icon {
-  font-family: icon, $fontFamily;
+  font-family: icon, var(--fontFamily);
   display: inline-block;
   text-align: center;
   font-weight: normal;

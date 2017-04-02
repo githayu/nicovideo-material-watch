@@ -27,15 +27,20 @@ body {
   }
 }
 
-.Grid,
+.Grid {
+  display: flex;
+}
+
 .GridCell {
-  display: block;
+  flex: 1;
+  display: initial;
 }
 
 .SwitchToFlashLead {
   display: none;
 }
 
+// 投稿者専用
 .EditorMenuContainer {
   margin: 0;
   height: auto;
@@ -101,7 +106,7 @@ body {
         opacity: 0;
         transform: scale(0);
         transform-origin: top left;
-        transition: all .3s $ease-out-quint;
+        transition: all .3s $ease-out-quart;
         background-color: #fff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         border: none;
@@ -154,25 +159,26 @@ body {
     &:first-child {
       > .Grid {
         position: static;
+        display: block;
       }
     }
   }
-}
 
-.BottomContainer-card {
-  background-color: transparent;
-  border-radius: 0;
-}
+  &-card {
+    background-color: transparent;
+    border-radius: 0;
+  }
 
-.BottomContainer-cardHeader,
-.BottomContainer-cardMain {
-  padding: 0;
-}
+  &-cardHeader,
+  &-cardMain {
+    padding: 0;
+  }
 
-.BottomContainer-main {
-  padding: 0;
+  &-main {
+    padding: 0;
+  }
 
-  .BottomContainer-card {
+  &-card {
     margin: 0;
 
     // プレイリスト
@@ -192,7 +198,7 @@ body {
       }
 
       .BottomContainer-cardTitle {
-        width: auto;
+        width: 100%;
       }
 
       .BottomContainer-cardMenu {
@@ -235,17 +241,17 @@ body {
       margin-top: 20px;
     }
   }
+
+  // サービスリンク / 広告
+  &-side,
+  &-adContainer {
+    display: none;
+  }
 }
 
 .ContentTree-parentSummary {
   padding: 0;
   width: auto;
-}
-
-// サービスリンク / 広告
-.BottomContainer-side,
-.BottomContainer-adContainer {
-  display: none;
 }
 
 // フッター

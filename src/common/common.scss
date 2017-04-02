@@ -1,3 +1,7 @@
+:root {
+  --fontFamily: 'Roboto', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -5,7 +9,7 @@ html {
 body {
   margin: 50px 0 0;
   padding: 0 0 0 64px;
-  font-family: $fontFamily;
+  font-family: var(--fontFamily);
   font-size: 1.3rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

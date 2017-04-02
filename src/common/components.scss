@@ -74,3 +74,70 @@
     background-color: darken($mainColor, 6%);
   }
 }
+
+@mixin spinner($circleSize: 40px, $lineWidth: 5px, $lineColor: #1E88E5, $backgroundColor: #fff) {
+  .Spinner {
+    $circleRadius: $circleSize / 2;
+    $LineWidth: $circleRadius - $lineWidth;
+
+    all: unset;
+    width: $circleSize;
+    height: $circleSize;
+    position: relative;
+    border-radius: 100%;
+    background-color: $lineColor;
+    animation: spinnerRotate 2s $ease-out-cubic infinite;
+    background-image: radial-gradient(circle, $backgroundColor $LineWidth, transparent $LineWidth);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: $circleRadius;
+      height: 100%;
+      background-color: $backgroundColor;
+      background-color: $backgroundColor;
+      transform-origin: $circleRadius;
+      animation-duration: 2s;
+      animation-timing-function: $ease-in-out-sine;
+      animation-iteration-count: infinite;
+    }
+
+    &::before {
+      animation-name: spinnerBefore;
+      animation-delay: .8s;
+    }
+
+    &::after {
+      animation-name: spinnerAfter;
+    }
+  }
+}
+
+
+@keyframes spinnerRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerBefore {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerAfter {
+  0%, 25%, 45% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
