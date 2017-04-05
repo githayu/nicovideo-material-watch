@@ -48,6 +48,391 @@
   overflow: visible;
 }
 
+.VideoContainer {
+  // 準備中...
+  &.is-preparing {
+    > .Spinner {
+      display: block;
+    }
+  }
+
+  // 読み込み中...
+  @include spinner(
+    $selector: '> .Spinner',
+    $circleSize: 40px,
+    $lineWidth: 5px,
+    $lineColor: $primaryColor1,
+    $backgroundColor: #000
+  ) {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    z-index: 10;
+    display: none;
+
+    > svg {
+      display: none;
+    }
+  }
+}
+
+// 再生ボタン
+.VideoStartButtonContainer {
+  position: absolute;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  height: 100%;
+
+  &-button {
+    width: 100%;
+    height: 100%;
+    cursor: default;
+
+    > svg {
+      display: none;
+    }
+  }
+}
+
+// 設定
+.PlayerOptionContainer {
+  position: absolute;
+  top: 42px;
+  bottom: -22px;
+  left: calc(100% + 10px);
+  right: auto;
+  padding: 0;
+  background-color: #fff;
+  width: 340px;
+  border-radius: 2px;
+  overflow: auto;
+  transition: .3s all $ease-out-quart;
+  transform-origin: left calc(100% - 22px);
+  display: block;
+
+  &.is-hidden {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  &-area {
+    + .PlayerOptionContainer-area {
+      border-top: 1px #e0e0e0 solid;
+    }
+  }
+
+  .PlayerOptionMenu {
+    height: auto;
+    display: block;
+    padding: 10px 0;
+  }
+
+  .PlayerOptionMenuItem {
+    background-color: transparent;
+    padding: 8px 16px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    + .PlayerOptionMenuItem {
+      border-top: 1px #e0e0e0 solid;
+    }
+
+    &-title {
+      color: #303030;
+      margin: 0;
+      font-size: 1.2rem;
+      flex: 2;
+    }
+
+    &-content {
+      flex: 1;
+
+      // アンケート設定リンク
+      .NicoenqueteSettingItem-link {
+        @include flatButton;
+        font-size: 0;
+        height: auto;
+        background-color: transparent;
+        line-height: inherit;
+        min-width: initial;
+        color: #c0c0c0;
+
+        &:hover {
+          color: #808080;
+        }
+
+        &:active {
+          color: #f0f0f0;
+        }
+
+        &::before {
+          @include icon;
+          content: '\f1a3';
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .HelpLink {
+      display: none;
+    }
+
+    // 無理やりトグルスイッチにする呪文
+    &.AutoPlayMenuItem,
+    &.ResumeMenuItem,
+    &.DisabledPrerollAdsMenuItem {
+      .PlayerOptionRadioGroup {
+        &-inner {
+          flex-direction: row;
+        }
+      }
+
+      .RadioItem {
+        padding: 5px 0;
+        margin: 0;
+        overflow: hidden;
+
+        &:first-child {
+          padding-left: 5px;
+          margin-left: -5px;
+        }
+
+        &:last-child {
+          padding-right: 5px;
+        }
+
+        input[type="radio"] {
+          &:checked {
+            + .RadioItem-label {
+              &[for$="-on"] {
+                background-color: $primaryColor2;
+
+                &::before {
+                  transform: translate3d(0, 0, 0);
+                  background-color: $primaryColor1;
+                }
+              }
+
+              &[for$="off"] {
+                background-color: #d0d0d0;
+
+                &::before {
+                  transform: translate3d(0, 0, 0);
+                  background-color: #fff;
+                }
+              }
+            }
+          }
+        }
+
+        &-label {
+          font-size: 0;
+          width: 20px;
+          height: 16px;
+          padding: 0;
+          min-width: initial;
+          line-height: inherit;
+          position: relative;
+
+          &[for$="-on"] {
+            background-color: #d0d0d0;
+            border-radius: 0 8px 8px 0;
+
+            &::before {
+              transform: translate3d(-100%, 0, 0);
+              background-color: #fff;
+            }
+          }
+
+          &[for$="-off"] {
+            background-color: $primaryColor2;
+            border-radius: 8px 0 0 8px;
+
+            &::before {
+              transform: translate3d(100%, 0, 0);
+              background-color: $primaryColor1;
+            }
+          }
+
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            box-shadow: 0 1px 2px rgba(0,0,0,.3);
+            position: absolute;
+            top: calc(50% - 10px);
+            left: 0;
+            transition: all .3s $ease-out-quart;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ラジオボタン
+.PlayerOptionRadioGroup {
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+  }
+}
+
+.RadioItem {
+  + .RadioItem {
+    margin-top: 8px;
+  }
+
+  input[type="radio"]:not([id$="-on"]):not([id$="-off"]) {
+    &:checked {
+      + .RadioItem-label {
+        color: inherit;
+        background-color: transparent;
+        border-radius: 0;
+
+        &::before {
+          background-color: $primaryColor1;
+          box-shadow: 0 0 0 2px $primaryColor1;
+          animation: radioButton .3s $ease-out-quart;
+        }
+      }
+    }
+  }
+
+  &-label:not([for$="-on"]):not([for$="-off"]) {
+    padding: 0;
+    font-size: 1.2rem;
+    text-align: left;
+    line-height: 2rem;
+    height: auto;
+    min-width: initial;
+
+    &::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      border: 3px #fff solid;
+      box-shadow: 0 0 0 2px #333;
+      box-sizing: border-box;
+      border-radius: 100%;
+      margin-right: 8px;
+      vertical-align: middle;
+      transition: all .3s $ease-out-quart;
+    }
+  }
+}
+
+@keyframes radioButton {
+  0% {
+    transform: scale(.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// セレクトフィールド
+.PlayerOptionDropdown {
+  width: 100%;
+  line-height: 3rem;
+
+  &.dropdown--active {
+    .dropdown__content {
+      transition: all .3s $ease-out-quart;
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  &-toggle {
+    background-color: transparent;
+    height: auto;
+    line-height: inherit;
+    font-size: inherit;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 1px #e0e0e0 solid;
+    position: relative;
+    width: 100%;
+  }
+
+  &-toggleLabel {
+    color: #888;
+    margin: 0;
+  }
+
+  &-toggleArrow {
+    width: auto;
+    height: auto;
+    position: static;
+
+    &::after {
+      border-top-color: #888;
+      border-width: 5px 5px 0;
+      position: absolute;
+      top: calc(50% - 2.5px);
+      right: 4px;
+      transform: none;
+    }
+  }
+
+  &-menu {
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+    padding: 10px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,.4);
+    display: block;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity .3s $ease-out-quart, transform 0s .5s;
+    top: -10px;
+    left: 0;
+    right: 0;
+  }
+}
+
+.PlayerOptionDropdownItem {
+  margin: 0;
+  height: auto;
+
+  &:hover,
+  &.is-selected {
+    .PlayerOptionDropdownItem-inner {
+      color: inherit;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &-inner {
+    width: 100%;
+    line-height: 3rem;
+    padding: 0 16px;
+    font-size: 1.3rem;
+    text-align: left;
+    color: #303030;
+    border-radius: 0;
+    overflow: visible;
+    cursor: pointer;
+    transition: background-color .3s $ease-out-quart;
+
+    &:hover {
+      all: inherit;
+    }
+  }
+}
+
 .ControllerBoxContainer {
   position: absolute;
   bottom: 0;
@@ -91,7 +476,7 @@
 
   &-played,
   .SeekBarHandle-handle {
-    background-color: $mainColor;
+    background-color: $primaryColor1;
   }
 }
 
@@ -180,11 +565,11 @@
       transition: background .2s ease-out;
 
       &:hover {
-        background-color: $mainColor;
+        background-color: $primaryColor1;
       }
 
       &:active {
-        background-color: darken($mainColor, 5%);
+        background-color: darken($primaryColor1, 5%);
       }
     }
   }
@@ -323,7 +708,7 @@
     }
 
     .VolumeBar-progress {
-      background-color: $mainColor;
+      background-color: $primaryColor1;
     }
   }
 }
@@ -359,7 +744,7 @@
     color: #424242;
 
     &.is-active {
-      color: $mainColor;
+      color: $primaryColor1;
     }
 
     &:hover:not(.is-active) {
@@ -420,7 +805,7 @@
         }
 
         &::after {
-          background-color: $mainColor;
+          background-color: $primaryColor1;
         }
       }
 
@@ -524,7 +909,7 @@
         }
 
         &:hover {
-          color: $mainColor;
+          color: $primaryColor1;
         }
       }
     }
@@ -556,14 +941,13 @@
     justify-content: center;
 
     @include spinner(
+      $selector: '> .Spinner',
       $circleSize: 40px,
       $lineWidth: 5px,
-      $lineColor: $mainColor,
+      $lineColor: $primaryColor1,
       $backgroundColor: #222
-    );
-
-    .Spinner {
-      > svg {
+    ) {
+      svg {
         display: none;
       }
     }
@@ -797,7 +1181,7 @@
   }
 
   &-menuHeading {
-    background-color: $mainColor;
+    background-color: $primaryColor1;
     color: #f0f0f0;
     line-height: 4rem;
     position: absolute;
@@ -868,10 +1252,10 @@
     .CheckboxInput {
       &:checked {
         + .Checkbox-check {
-          background-color: lighten($mainColor, 5%);
+          background-color: $primaryColor2;
 
           &::before {
-            background-color: $mainColor;
+            background-color: $primaryColor1;
             transform: translate3d(100%, 0, 0);
           }
         }
@@ -970,8 +1354,8 @@
     &Input {
       &:checked {
         + .Checkbox-check {
-          border-color: $mainColor;
-          background-color: $mainColor;
+          border-color: $primaryColor1;
+          background-color: $primaryColor1;
 
           &::before {
             opacity: 1;

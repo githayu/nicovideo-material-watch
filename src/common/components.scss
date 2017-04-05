@@ -6,7 +6,7 @@
   padding: 4px 8px;
 
   &:focus {
-    border-color: $mainColor;
+    border-color: $primaryColor1;
   }
 }
 
@@ -63,20 +63,20 @@
 
 @mixin raisedButton--primary {
   @include raisedButton--base;
-  background-color: $mainColor;
+  background-color: $primaryColor1;
   color: #fff;
 
   &:hover {
-    background-color: darken($mainColor, 3%);
+    background-color: darken($primaryColor1, 3%);
   }
 
   &:active {
-    background-color: darken($mainColor, 6%);
+    background-color: darken($primaryColor1, 6%);
   }
 }
 
-@mixin spinner($circleSize: 40px, $lineWidth: 5px, $lineColor: #1E88E5, $backgroundColor: #fff) {
-  .Spinner {
+@mixin spinner($selector, $circleSize: 40px, $lineWidth: 5px, $lineColor: #1E88E5, $backgroundColor: #fff) {
+  #{$selector} {
     $circleRadius: $circleSize / 2;
     $LineWidth: $circleRadius - $lineWidth;
 
@@ -88,6 +88,10 @@
     background-color: $lineColor;
     animation: spinnerRotate 2s $ease-out-cubic infinite;
     background-image: radial-gradient(circle, $backgroundColor $LineWidth, transparent $LineWidth);
+    display: block;
+    pointer-events: none;
+
+    @content;
 
     &::before,
     &::after {
@@ -103,12 +107,12 @@
     }
 
     &::before {
-      animation-name: spinnerBefore;
+      animation-name: spinnerRotate;
       animation-delay: .8s;
     }
 
     &::after {
-      animation-name: spinnerAfter;
+      animation-name: spinnerRotate2;
     }
   }
 }
@@ -123,16 +127,7 @@
   }
 }
 
-@keyframes spinnerBefore {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spinnerAfter {
+@keyframes spinnerRotate2 {
   0%, 25%, 45% {
     transform: rotate(0deg);
   }
