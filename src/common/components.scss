@@ -6,7 +6,7 @@
   padding: 4px 8px;
 
   &:focus {
-    border-color: $primaryColor1;
+    border-color: var(--primary-color-1);
   }
 }
 
@@ -63,15 +63,15 @@
 
 @mixin raisedButton--primary {
   @include raisedButton--base;
-  background-color: $primaryColor1;
+  background-color: var(--primary-color-1);
   color: #fff;
 
   &:hover {
-    background-color: darken($primaryColor1, 3%);
+    background-color: var(--primary-color-4);
   }
 
   &:active {
-    background-color: darken($primaryColor1, 6%);
+    background-color: var(--primary-color-5);
   }
 }
 

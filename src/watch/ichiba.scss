@@ -9,7 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: darken($backgroundColor, 5%);
+  background-color: var(--background-color-2);
   border-radius: 4px;
   position: relative;
 
@@ -52,7 +52,7 @@
           text-indent: initial;
           position: absolute;
           bottom: 0;
-          left: 0;background-color: $primaryColor1;
+          left: 0;background-color: var(--primary-color-1);
           width: 100%;
           text-align: center;
           line-height: 3.6rem;

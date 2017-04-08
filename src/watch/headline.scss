@@ -72,7 +72,7 @@
     box-shadow: none;
     flex: 1;
     color: #f2f2f2;
-    background-color: darken($primaryColor1, 5%);
+    background-color: var(--primary-color-4);
     border-radius: 2px;
     transition: all .2s ease-out;
 

@@ -2,7 +2,7 @@ body {
   --right-width: 360px;
   --right-content-width: calc(var(--right-width) - 10px);
 
-  background-color: $backgroundColor;
+  background-color: var(--background-color);
 
   &.is-middle {
     --width: 1000px;

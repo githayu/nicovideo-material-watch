@@ -1,11 +1,10 @@
 const gulp = require('gulp');
-const gulpif = require('gulp-if');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const minimist = require('minimist');
 const cssnano = require('cssnano');
 const del = require('del');
-const forceImportant = require('./lib/postcss-force-important');
+const postcssStylish = require('./lib/postcss-stylish');
 
 const options = minimist(process.argv.slice(2));
 
@@ -19,15 +18,27 @@ const entries = {
   }
 };
 
-const postcssOptions = [ forceImportant ];
+const postcssOptions = [];
 
 if (options.production) {
   postcssOptions.push(
+    postcssStylish,
     cssnano({
       safe: true,
-      discardComments: {
-        removeAll: true
-      }
+      discardComments: false
+    })
+  );
+
+} else {
+  postcssOptions.push(
+    postcssStylish({
+      isProduction: options.production,
+      options: [
+        {
+          installKey: 'theme',
+          value: require('fs').readFileSync('./src/optionals/theme/hatsune-miku.scss', 'utf-8')
+        }
+      ]
     })
   );
 }

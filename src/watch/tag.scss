@@ -87,15 +87,15 @@
 
   // カテゴリ
   &.is-category {
-    background-color: $primaryColor1;
+    background-color: var(--primary-color-1);
 
     &:hover {
-      background-color: darken($primaryColor1, 2%);
+      background-color: var(--primary-color-4);
 
       &.is-nicodicAvailable {
         .TagItem-nicoDicLink {
           > .NicoDicIcon {
-            color: darken($primaryColor1, 2%);
+            color: var(--primary-color-4);
           }
         }
       }
@@ -108,10 +108,10 @@
     &.is-nicodicAvailable {
       .TagItem-nicoDicLink {
         > .NicoDicIcon {
-          color: $primaryColor1;
+          color: var(--primary-color-1);
 
           &:hover {
-            color: darken($primaryColor1, 2%);
+            color: var(--primary-color-4);
           }
         }
       }
@@ -277,7 +277,7 @@
     margin-right: 16px;
 
     &:focus {
-      box-shadow: 0 -2px $primaryColor1 inset;
+      box-shadow: 0 -2px var(--primary-color-1) inset;
     }
   }
 

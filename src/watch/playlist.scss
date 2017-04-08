@@ -26,7 +26,7 @@
 }
 
 .PlaylistContinuousActiveButton {
-  color: $primaryColor1;
+  color: var(--primary-color-1);
 
   &::before {
     content: '\f3a9';
@@ -114,12 +114,12 @@
   &.is-playing {
     .PlaylistItemContent-thumbnail {
       > .Image {
-        border: 5px $primaryColor1 solid;
+        border: 5px var(--primary-color-1) solid;
       }
     }
 
     .PlaylistItemContent-title {
-      color: $primaryColor1;
+      color: var(--primary-color-1);
     }
   }
 

@@ -61,7 +61,7 @@
     $selector: '> .Spinner',
     $circleSize: 40px,
     $lineWidth: 5px,
-    $lineColor: $primaryColor1,
+    $lineColor: var(--primary-color-1),
     $backgroundColor: #000
   ) {
     position: absolute;
@@ -209,11 +209,11 @@
           &:checked {
             + .RadioItem-label {
               &[for$="-on"] {
-                background-color: $primaryColor2;
+                background-color: var(--primary-color-2);
 
                 &::before {
                   transform: translate3d(0, 0, 0);
-                  background-color: $primaryColor1;
+                  background-color: var(--primary-color-1);
                 }
               }
 
@@ -249,12 +249,12 @@
           }
 
           &[for$="-off"] {
-            background-color: $primaryColor2;
+            background-color: var(--primary-color-2);
             border-radius: 8px 0 0 8px;
 
             &::before {
               transform: translate3d(100%, 0, 0);
-              background-color: $primaryColor1;
+              background-color: var(--primary-color-1);
             }
           }
 
@@ -300,8 +300,8 @@
         border-radius: 0;
 
         &::before {
-          background-color: $primaryColor1;
-          box-shadow: 0 0 0 2px $primaryColor1;
+          background-color: var(--primary-color-1);
+          box-shadow: 0 0 0 2px var(--primary-color-1);
           animation: radioButton .3s $ease-out-quart;
         }
       }
@@ -476,7 +476,7 @@
 
   &-played,
   .SeekBarHandle-handle {
-    background-color: $primaryColor1;
+    background-color: var(--primary-color-1);
   }
 }
 
@@ -565,11 +565,11 @@
       transition: background .2s ease-out;
 
       &:hover {
-        background-color: $primaryColor1;
+        background-color: var(--primary-color-1);
       }
 
       &:active {
-        background-color: darken($primaryColor1, 5%);
+        background-color: var(--primary-color-5);
       }
     }
   }
@@ -708,7 +708,7 @@
     }
 
     .VolumeBar-progress {
-      background-color: $primaryColor1;
+      background-color: var(--primary-color-1);
     }
   }
 }
@@ -744,7 +744,7 @@
     color: #424242;
 
     &.is-active {
-      color: $primaryColor1;
+      color: var(--primary-color-1);
     }
 
     &:hover:not(.is-active) {
@@ -805,7 +805,7 @@
         }
 
         &::after {
-          background-color: $primaryColor1;
+          background-color: var(--primary-color-1);
         }
       }
 
@@ -909,7 +909,7 @@
         }
 
         &:hover {
-          color: $primaryColor1;
+          color: var(--primary-color-1);
         }
       }
     }
@@ -944,7 +944,7 @@
       $selector: '> .Spinner',
       $circleSize: 40px,
       $lineWidth: 5px,
-      $lineColor: $primaryColor1,
+      $lineColor: var(--primary-color-1),
       $backgroundColor: #222
     ) {
       svg {
@@ -1181,7 +1181,7 @@
   }
 
   &-menuHeading {
-    background-color: $primaryColor1;
+    background-color: var(--primary-color-1);
     color: #f0f0f0;
     line-height: 4rem;
     position: absolute;
@@ -1252,10 +1252,10 @@
     .CheckboxInput {
       &:checked {
         + .Checkbox-check {
-          background-color: $primaryColor2;
+          background-color: var(--primary-color-2);
 
           &::before {
-            background-color: $primaryColor1;
+            background-color: var(--primary-color-1);
             transform: translate3d(100%, 0, 0);
           }
         }
@@ -1354,8 +1354,8 @@
     &Input {
       &:checked {
         + .Checkbox-check {
-          border-color: $primaryColor1;
-          background-color: $primaryColor1;
+          border-color: var(--primary-color-1);
+          background-color: var(--primary-color-1);
 
           &::before {
             opacity: 1;

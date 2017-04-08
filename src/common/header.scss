@@ -8,7 +8,7 @@ body {
 
 
 #siteHeader {
-  background-color: $primaryColor1;
+  background-color: var(--primary-color-1);
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 5px rgba(0,0,0,.4);
@@ -255,7 +255,7 @@ body {
         }
 
         > a {
-          color: lighten($primaryColor1, 12%);
+          color: var(--primary-color-3);
 
           &:hover {
             color: #f0f0f0;

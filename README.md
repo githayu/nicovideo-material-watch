@@ -1,6 +1,4 @@
 # Material Watch
-![スクリーンショット](https://www.dropbox.com/s/hzah85scwfez0cg/screenshot.jpg?dl=1)
-
 ## Overview
 ニコニコ動画をマテリアルデザインっぽくする CSS です。
 
