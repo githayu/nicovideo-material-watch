@@ -132,6 +132,23 @@
       &[id^='ichibaitem_watch_ncar'] {
 
       }
+
+      // アニメイト
+      &[id^='ichibaitem_watch_an'] {
+        > .itemname + span {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          right: 10px;
+          width: auto;
+          height: auto;
+          line-height: 2.5rem;
+          padding: 0 8px;
+          border-radius: 2px;
+          background-color: var(--primary-color-1);
+          pointer-events: none;
+        }
+      }
     }
 
     .thumbnail {

@@ -5,12 +5,7 @@
   order: 4;
   border-radius: 0;
   box-shadow: none;
-
-  &.is-editing {
-    .TagContainer-editArea {
-      display: flex;
-    }
-  }
+  display: block;
 
   &-area {
     margin: 0;
@@ -20,6 +15,7 @@
 
   &-TagEditButtonArea {
     float: left;
+    padding: 0;
   }
 
   &-editArea {
@@ -29,6 +25,10 @@
     display: none;
     flex-direction: column-reverse;
     padding-top: 20px;
+
+    .TagContainer.is-editing & {
+      display: flex;
+    }
 
     > .GridCell {
       width: auto;
@@ -265,23 +265,30 @@
 
   &-input {
     width: auto;
-    padding: 0 16px;
-    box-shadow: none;
-    border-radius: 0;
-    line-height: 3rem;
     height: 32px;
-    background-color: transparent;
-    box-shadow: 0 -1px #d8d8d8 inset;
-    transition: box-shadow .2s $ease-out-quart;
     flex: 1;
     margin-right: 16px;
-
-    &:focus {
-      box-shadow: 0 -2px var(--primary-color-1) inset;
-    }
+    box-shadow: none;
+    border-radius: 0;
   }
 
   &-submitButton {
     @include raisedButton--primary;
+  }
+
+  .TagSuggestionInput {
+    &-input {
+      padding: 0 16px;
+      box-shadow: none;
+      border-radius: 0;
+      line-height: 3rem;
+      background-color: transparent;
+      box-shadow: 0 -1px #d8d8d8 inset;
+      transition: box-shadow .2s $ease-out-quart;
+
+      &:focus {
+        box-shadow: 0 -2px var(--primary-color-1) inset;
+      }
+    }
   }
 }

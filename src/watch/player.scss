@@ -85,6 +85,10 @@
   width: 100%;
   height: 100%;
 
+  &:empty {
+    display: none;
+  }
+
   &-button {
     width: 100%;
     height: 100%;
@@ -182,9 +186,7 @@
     }
 
     // 無理やりトグルスイッチにする呪文
-    &.AutoPlayMenuItem,
-    &.ResumeMenuItem,
-    &.DisabledPrerollAdsMenuItem {
+    &.PlayerOptionPremiumMenuItem {
       .PlayerOptionRadioGroup {
         &-inner {
           flex-direction: row;
@@ -400,6 +402,7 @@
     top: -10px;
     left: 0;
     right: 0;
+    white-space: nowrap;
   }
 }
 
@@ -438,6 +441,7 @@
   bottom: 0;
   z-index: 10;
   width: 100%;
+  height: auto;
   padding-top: 8px;
   background-color: transparent;
 }
@@ -1220,32 +1224,54 @@
     background-color: transparent;
     height: auto;
     position: static;
-    padding: 8px 0 0;
   }
 
   &-headerText {
-    line-height: 3.2rem;
-    padding: 0 16px;
-    font-size: 1.3rem;
-    color: #303030;
-    text-align: center;
+    display: none;
   }
 
   &-contentTop {
-    padding: 12px 16px 0;
+    padding: 10px 16px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
-    width: 100%
+    width: 100%;
+
+    > .GridCell {
+      flex: 0 0 auto;
+    }
+  }
+
+  // NG登録数
+  &-num {
+    width: auto;
+    order: 2;
+  }
+
+  // NG追加
+  &-openViewerNGRegisterButtonCell {
+    all: unset;
+    order: 1;
+  }
+
+  &-openViewerNGRegisterButton {
+    all: unset;
+    @include flatButton;
   }
 
   &-num,
   &-enableCheckbox {
     line-height: inherit;
     color: #888;
+  }
+
+  // NGトグル
+  &-enableSettingArea {
+    all: unset;
+    order: 3;
   }
 
   &-enableCheckbox {
@@ -1294,6 +1320,13 @@
     }
   }
 
+  &-content {
+    position: static;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   &-contentMain {
     position: relative;
     top: auto;
@@ -1339,7 +1372,7 @@
   }
 }
 
-.NGClientList {
+.ViewerNGList {
   position: static;
   display: flex;
   flex-direction: column;

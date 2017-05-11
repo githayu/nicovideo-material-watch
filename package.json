@@ -12,7 +12,7 @@
     "cssnano": "^3.10.0",
     "del": "^2.2.2",
     "gulp": "gulpjs/gulp#4.0",
-    "gulp-postcss": "^6.4.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
     "minimist": "^1.2.0"
   }

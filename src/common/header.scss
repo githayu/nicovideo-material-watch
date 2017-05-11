@@ -156,6 +156,12 @@ body {
                 content: '\f298';
               }
             }
+
+            &[href*='rd.nicovideo.jp/cc/app/mastodon'] {
+              &::before {
+                content: '\f262';
+              }
+            }
           }
         }
 
