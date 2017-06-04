@@ -2,7 +2,7 @@
 @import "./easings";
 @import "./config";
 
-@import "./common/components.scss";
+@import "./common/components";
 @import "./common/common";
 @import "./common/header";
 
@@ -12,3 +12,5 @@
 @import "./watch/playlist";
 @import "./watch/tag";
 @import "./watch/ichiba";
+@import "./watch/koukoku";
+@import "./watch/content";

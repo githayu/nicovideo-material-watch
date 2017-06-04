@@ -3,14 +3,20 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin: 0 calc((var(--width) - 100vw) / 2);
   padding: 20px 0;
   width: var(--width);
   background-color: #181818;
-  border-color: #181818;
-  border-width: 0 calc((100vw - var(--width)) / 2);
-  border-style: solid;
   box-sizing: content-box;
+
+  &:before {
+    content: '';
+    height: 100%;
+    background-color: #181818;
+    position: absolute;
+    top: 0;
+    left: calc((var(--width) - 100vw) / 2);
+    right: calc((var(--width) - 100vw) / 2);
+  }
 
   // 左辺
   &-player {

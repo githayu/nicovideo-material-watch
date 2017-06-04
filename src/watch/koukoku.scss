@@ -1,0 +1,86 @@
+.UadVideosContainer {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 16px;
+}
+
+.UadVideoItem {
+  all: unset;
+  margin: 0;
+  position: relative;
+  width: 130px;
+
+  &::before {
+    content: attr(data-title);
+    background-color: #fff;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    height: 4rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    border-color: #fff transparent transparent;
+    opacity: 1;
+    background-color: transparent;
+    left: calc(50% - 3px);
+    bottom: auto;
+    top: 5rem;
+    transform: none;
+    padding: 0;
+  }
+
+  & + & {
+    margin-left: 26px;
+  }
+
+  &-link {
+    &:hover {
+      all: unset;
+
+      .UadVideoItem-title {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-thumbnail {
+    width: 130px;
+    height: 73px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  }
+
+  &-title {
+    margin-top: 10px;
+    color: #303030;
+    font-weight: normal;
+  }
+
+  &-image {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-point {
+    > .FormattedNumber {
+      font-family: 'Avenir Next';
+      margin-right: 4px;
+    }
+  }
+
+  &-frame {
+    display: none;
+  }
+}

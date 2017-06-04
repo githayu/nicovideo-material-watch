@@ -233,6 +233,29 @@ body {
       }
     }
 
+    // ニコニ広告
+    &:nth-child(3) {
+      float: left;
+      width: var(--left-content-width);
+      margin-top: 20px;
+
+      .BottomContainer-cardHeader {
+        padding: 16px;
+        text-align: center;
+      }
+
+      .BottomContainer-cardTitle {
+        all: unset;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      .BottomContainer-cardMain {
+        background-color: var(--background-color-2);
+        border-radius: 2px;
+      }
+    }
+
     // 市場
     &:last-child {
       clear: left;
@@ -259,7 +282,7 @@ body {
 .FooterContainer {
   clear: both;
   min-width: var(--width);
-  background-color: var(--background-color-2);
+  background-color: #fff;
   margin: 16px 0 0;
 
   a {
@@ -286,9 +309,19 @@ body {
     margin: 0;
     width: 160px;
     height: auto;
+    text-decoration: none;
 
     > svg {
       fill: #303030;
+    }
+
+    &::after {
+      content: 'redesigned by HAYU';
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: block;
+      color: #e0e0e0;
+      margin-top: 8px;
     }
   }
 

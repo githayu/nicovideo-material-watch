@@ -1,0 +1,96 @@
+.ContentTree {
+  &-parent {
+    all: unset;
+    width: 130px;
+
+    & + & {
+      margin-left: 20px;
+    }
+  }
+
+  &-parentThumbnailContainer {
+    width: 130px;
+    height: auto;
+    float: none;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 56.25%;
+    }
+  }
+
+  &-parentThumbnail {
+    all: unset;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-parentTitle {
+    width: 100%;
+    font-weight: normal;
+    padding: 0;
+    margin-top: 8px;
+    height: 4rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    > a {
+      color: #303030;
+    }
+  }
+
+  &-parentSummary {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+
+    &::before {
+      content: '';
+      background: repeat-y radial-gradient(circle, var(--primary-color-2) 2px, transparent 0) top center / 6px;
+      flex: 0 0 80px;
+    }
+
+    > .Link {
+      all: unset;
+
+      &:hover {
+        all: unset;
+
+        .FormattedNumber {
+          color: #f0f0f0;
+          background-color: var(--primary-color-1);
+        }
+      }
+    }
+  }
+
+  &-parentSummaryLabel {
+    display: none;
+
+    + .FormattedNumber {
+      color: var(--primary-color-1);
+      display: block;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      border: 2px var(--primary-color-1) solid;
+      border-radius: 100%;
+      line-height: 28px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      transition: all .2s ease-out;
+    }
+  }
+}
