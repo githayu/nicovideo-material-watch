@@ -3,6 +3,10 @@
     all: unset;
     width: 130px;
 
+    &:hover {
+      text-decoration: underline;
+    }
+
     & + & {
       margin-left: 20px;
     }
@@ -55,10 +59,11 @@
     display: flex;
     flex-direction: column;
     margin-right: 20px;
+    justify-content: space-around;
 
     &::before {
       content: '';
-      background: repeat-y radial-gradient(circle, var(--primary-color-2) 2px, transparent 0) top center / 6px;
+      background: repeat-y radial-gradient(circle, var(--primary-color-2) 2px, transparent 0) top center / 4px 16px;
       flex: 0 0 80px;
     }
 

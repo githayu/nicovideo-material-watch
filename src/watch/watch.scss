@@ -200,6 +200,7 @@ body {
 
       .BottomContainer-cardTitle {
         width: 100%;
+        font-size: 1.4rem;
       }
 
       .BottomContainer-cardMenu {
@@ -247,12 +248,7 @@ body {
       .BottomContainer-cardTitle {
         all: unset;
         font-weight: bold;
-        font-size: 1.5rem;
-      }
-
-      .BottomContainer-cardMain {
-        background-color: var(--background-color-2);
-        border-radius: 2px;
+        font-size: 1.6rem;
       }
     }
 

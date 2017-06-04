@@ -15,7 +15,7 @@
     position: absolute;
     top: 0;
     left: calc((var(--width) - 100vw) / 2);
-    right: calc((var(--width) - 100vw) / 2);
+    right: calc(((var(--width) - 100vw) / 2) + 40px);
   }
 
   // 左辺
