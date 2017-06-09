@@ -8,7 +8,7 @@
   background-color: #181818;
   box-sizing: content-box;
 
-  &:before {
+  &::before {
     content: '';
     height: 100%;
     background-color: #181818;
@@ -52,6 +52,11 @@
 .PlayerContainer {
   background-color: transparent;
   overflow: visible;
+  cursor: none;
+
+  &.is-mouseMoving {
+    cursor: default;
+  }
 }
 
 .VideoContainer {
@@ -121,6 +126,9 @@
   transition: .3s all $ease-out-quart;
   transform-origin: left calc(100% - 22px);
   display: block;
+  cursor: default;
+
+  @include scrollbar(light, #fff);
 
   &.is-hidden {
     opacity: 0;
@@ -549,6 +557,10 @@
     color: #f0f0f0;
   }
 
+  &-commentShutter {
+    display: none;
+  }
+
   &-commandInput {
     flex: 30%;
 
@@ -741,6 +753,7 @@
   right: 0;
   bottom: 20px;
   width: var(--right-width);
+  background-color: #202020;
 }
 
 // メニュー内アクションボタン共通設定
@@ -781,7 +794,6 @@
   left: 0;
   top: 0;
   display: flex;
-  z-index: 10;
   width: auto;
   height: auto;
 
@@ -789,14 +801,16 @@
     display: none;
   }
 
+  // 動画メニューボタン
+  .VideoMenuButton {
+    @include tooltip(left);
+  }
+
   .ActionButton {
     // とりあえずマイリスト
     &.InstantMylistButton {
       &::before {
         content: '\f278';
-      }
-
-      &::after {
       }
 
       &.is-succeeded,
@@ -894,6 +908,7 @@
       margin: 16px 16px 0 0;
       opacity: 0;
       transition: opacity .2s ease-out;
+      z-index: 10;
 
       &:hover {
         opacity: 1;
@@ -933,7 +948,7 @@
 
 
 .CommentPanelContainer {
-  top: 0;
+  top: 32px;
   bottom: 0;
   width: var(--right-width);
   background-color: #202020;
@@ -967,6 +982,9 @@
 // コメントパネルメニュー
 .CommentPanelMenuContainer {
   border: none;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
 
   // 過去ログ
   &.is-pastCommentMode {
@@ -1094,79 +1112,82 @@
   }
 }
 
-.CommentPanel {
-  top: 32px;
+.CommentPanelDataGrid {
+  top: 0;
   color: #888;
 
-  .react-grid {
-    &-Header {
-      position: relative;
-      box-shadow: 0 1px 2px rgba(0,0,0,.3);
-      z-index: 5;
-      background-color: #303030;
+  &-headerCell {
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
+
+    // ソートの状態がCSSから分からなくなったため保留
+    //
+    // &-sortable {
+    //   overflow: hidden;
+
+    //   &--ascending,
+    //   &--descending {
+    //     &::before {
+    //       @include icon;
+    //       font-size: 1.4rem;
+    //       line-height: 2.8rem;
+    //       margin-right: 6px;
+    //       color: #505050;
+    //       vertical-align: top;
+    //     }
+    //   }
+
+    //   &--ascending {
+    //     &::before {
+    //       content: '\f1cd';
+    //     }
+    //   }
+
+    //   &--descending {
+    //     &::before {
+    //       content: '\f1ce';
+    //     }
+    //   }
+
+    //   .pull-right {
+    //     display: none;
+    //   }
+    // }
+
+    + hr {
+      background-color: rgba(0,0,0,.15);
+      width: 5px;
+    }
+  }
+
+  [class^='___header___'] {
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    z-index: 5;
+    background-color: #303030;
+  }
+
+  [class^='___body___'] {
+    @include scrollbar(dark, #202020);
+  }
+
+  [class^='___table-row___'] {
+    &:hover {
+      background-color: #282828;
     }
 
-    &-HeaderCell {
-      &-sortable {
-        overflow: hidden;
-
-        &--ascending,
-        &--descending {
-          &::before {
-            @include icon;
-            font-size: 1.4rem;
-            line-height: 2.8rem;
-            margin-right: 6px;
-            color: #505050;
-            vertical-align: top;
-          }
-        }
-
-        &--ascending {
-          &::before {
-            content: '\f1cd';
-          }
-        }
-
-        &--descending {
-          &::before {
-            content: '\f1ce';
-          }
-        }
-
-        .pull-right {
-          display: none;
-        }
-      }
-
-      &__draggable {
-        background-color: rgba(0,0,0,.15);
-        width: 5px;
-      }
-    }
-
-    &-Cell,
-    &-HeaderCell {
-      background-color: transparent;
-      border: none;
-      font-weight: normal;
-    }
-
-    &-Canvas {
-      @include commentPanelScrollbar;
-    }
-
-    &-Row {
-      &:hover {
-        background-color: #282828;
-      }
-
-      > div {
-        &:first-child {
-          color: #f0f0f0;
-        }
+    > div {
+      &:first-child {
+        color: #f0f0f0;
       }
     }
+  }
+
+  [class^='___table-cell___'] {
+    background-color: transparent;
+    border: none;
+    font-weight: normal;
   }
 }
 
@@ -1179,6 +1200,7 @@
   overflow: hidden;
 }
 
+// コメントパネル コンテキストメニュー
 .CommentPanelContextMenuContainer {
   border: none;
   max-width: initial;
@@ -1202,6 +1224,43 @@
 
   &-menuItem {
     line-height: 3.2rem;
+  }
+}
+
+// プレイヤー コンテキストメニュー
+.VideoContextMenuContainer {
+  background-color: #fff;
+  border: none;
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+
+  &-commentMenus {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  &-ngMenu {
+    border-bottom: 1px #e0e0e0 solid;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+
+  &-menuHeading {
+    background-color: var(--primary-color-1);
+    line-height: 4rem;
+    margin-bottom: 10px;
+    padding: 0 16px;
+    font-size: 1.3rem;
+  }
+
+  &-item {
+    color: #202020;
+    line-height: 3.2rem;
+    padding: 0 16px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
   }
 }
 
@@ -1458,6 +1517,8 @@
     position: static;
     flex: 1;
     color: #303030;
+
+    @include scrollbar(light, #fff);
   }
 
   &-item {
@@ -1484,4 +1545,14 @@
   &-itemSource {
     max-width: initial;
   }
+}
+
+// システムメッセージ
+.SystemMessageContainer {
+  @include scrollbar(dark, #202020);
+}
+
+// 一般会員へのメッセージ
+.PreVideoStartPremiumLinkContainer {
+  bottom: 60px;
 }

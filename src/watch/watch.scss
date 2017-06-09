@@ -134,6 +134,13 @@ body {
   }
 }
 
+// ツールチップ
+[data-title]:not([disabled]) {
+  &:not(.FollowButton):not(.VideoMenuButton) {
+    @include tooltip(top);
+  }
+}
+
 .WatchAppContainer {
   padding: 0;
   display: flex;
