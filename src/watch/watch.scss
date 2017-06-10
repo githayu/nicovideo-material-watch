@@ -1,20 +1,16 @@
 body {
+  --width: 1000px;
   --right-width: 360px;
   --right-content-width: calc(var(--right-width) - 10px);
+  --left-width: 640px;
+  --left-content-width: calc(var(--left-width) - 10px);
+  --content-top: calc(432px + 20px);
 
   background-color: var(--background-color);
-
-  &.is-middle {
-    --width: 1000px;
-    --left-width: 640px;
-    --left-content-width: calc(var(--left-width) - 10px);
-    --content-top: calc(432px + 20px);
-  }
 
   &.is-large {
     --width: 1214px;
     --left-width: 854px;
-    --left-content-width: calc(var(--left-width) - 10px);
     --content-top: calc(552px + 20px);
   }
 
@@ -23,6 +19,37 @@ body {
 
     .MainContainer {
       transform: none;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1286px) and (min-height:590px) {
+  body {
+    &.is-autoResize:not(.is-fullscreen) {
+      --width: 1214px;
+      --left-width: 854px;
+      --content-top: 572px;
+    }
+  }
+}
+
+@media screen and (min-width: 1392px) and (min-height:650px) {
+  body {
+    &.is-autoResize:not(.is-fullscreen) {
+      --width: 1320px;
+      --left-width: 960px;
+      --content-top: 632px;
+    }
+  }
+}
+
+@media screen and (min-width: 1736px) and (min-height:850px) {
+  body {
+    &.is-autoResize:not(.is-fullscreen) {
+      --width: 1640px;
+      --left-width: 1280px;
+      --content-top: 812px;
     }
   }
 }
@@ -44,7 +71,7 @@ body {
 .EditorMenuContainer {
   margin: 0;
   height: auto;
-  background-color: #fff;
+  background-color: #202020;
   position: relative;
   z-index: 100;
 
@@ -65,7 +92,7 @@ body {
       font-weight: normal;
       display: flex;
       justify-content: center;
-      color: #303030;
+      color: #f0f0f0;
       position: relative;
 
       &.is-open {
@@ -76,7 +103,7 @@ body {
       }
 
       &:hover {
-        background-color: #f0f0f0;
+        background-color: #181818;
       }
 
       &:first-child {
@@ -107,7 +134,7 @@ body {
         transform: scale(0);
         transform-origin: top left;
         transition: all .3s $ease-out-quart;
-        background-color: #fff;
+        background-color: #282828;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         border: none;
 
@@ -118,10 +145,10 @@ body {
 
           > .Link {
             padding: 0 16px;
-            color: #303030;
+            color: #f0f0f0;
 
             &:hover {
-              background-color: #f0f0f0;
+              background-color: #202020;
             }
           }
         }

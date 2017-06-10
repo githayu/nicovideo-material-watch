@@ -1,9 +1,12 @@
-@mixin icon {
-  font-family: icon, var(--fontFamily);
-  display: inline-block;
-  text-align: center;
-  font-weight: normal;
-  vertical-align: middle;
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale3d(0,0,0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+  }
 }
 
 @keyframes horizontal-scroll {
@@ -13,6 +16,14 @@
   100% {
     transform: translate3d(-100%,0,0);
   }
+}
+
+@mixin icon {
+  font-family: icon, var(--fontFamily);
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+  vertical-align: middle;
 }
 
 @mixin scrollbar ($isMode: dark, $color: #202020) {

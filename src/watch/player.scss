@@ -7,6 +7,7 @@
   width: var(--width);
   background-color: #181818;
   box-sizing: content-box;
+  margin: 0;
 
   &::before {
     content: '';
@@ -304,7 +305,7 @@
 }
 
 .RadioItem {
-  + .RadioItem {
+  &:not(.ViewerNGRegister-radioItem) + & {
     margin-top: 8px;
   }
 
@@ -333,6 +334,7 @@
     min-width: initial;
 
     &::before {
+      all: unset;
       content: '';
       width: 16px;
       height: 16px;
@@ -977,76 +979,74 @@
       }
     }
   }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 // コメントパネルメニュー
 .CommentPanelMenuContainer {
   border: none;
-  position: absolute;
-  bottom: 100%;
-  right: 0;
 
-  // 過去ログ
-  &.is-pastCommentMode {
-    // おまけにスレッドセレクトを表示
-    > .CommentPanelMenuContainer-mainMenu {
-      > .CommentPanelMenuContainer-mainMenuArea {
-        &:first-child {
-          display: block;
+  &-mainMenuArea {
+    // コメント操作メニュー
+    &:last-child {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  // 過去ログメニュー
+  &-pastCommentMenu {
+    all: unset;
+    background-color: #202020;
+    padding: 16px;
+    display: none;
+    height: auto;
+
+    .is-pastCommentMode & {
+      display: block;
+    }
+
+    > div {
+      display: flex;
+    }
+
+    .DateTimeInput {
+      margin: 0;
+      display: flex;
+      flex: 1;
+
+      > input {
+        all: unset;
+        color: #f0f0f0;
+        box-shadow: 0 -1px #383838 inset;
+        transition: box-shadow .2s ease-out;
+
+        &:focus {
+          box-shadow: 0 -2px var(--primary-color-1) inset;
+        }
+
+        + input {
+          margin-left: 8px;
+        }
+
+        &.DateTimeInput-date {
+          flex: 1;
         }
       }
     }
 
-    .CommentPanelMenuContainer-pastCommentMenu {
-      position: absolute;
-      background-color: #fff;
-      top: 50px;
-      left: calc(50% - 160px);
-      z-index: 10;
-      padding: 20px;
-      height: auto;
-      width: 320px;
-      box-shadow: 0 1px 15px rgba(0,0,0,.5);
-      border-radius: 2px;
-
-      > .GridCell {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .DateTimeInput {
-        margin: 0;
-        display: flex;
-
-        > input {
-          @include textField;
-          margin: 0;
-          box-shadow: none;
-          height: auto;
-
-          + input {
-            margin-left: 8px;
-          }
-
-          &.DateTimeInput-date {
-            flex: 1;
-          }
-
-          &.DateTimeInput-time {
-            width: 92px;
-          }
-        }
-      }
-
-      .PastCommentFetchButton {
-        @include raisedButton--primary;
-        width: auto;
-        height: auto;
-        line-height: inherit;
-        align-self: flex-end;
-        margin-top: 8px;
-        font-size: 1.2rem;
-      }
+    .PastCommentFetchButton {
+      all: unset;
+      @include flatButton;
+      margin-left: 8px;
+      font-size: 1.2rem;
+      line-height: inherit;
     }
   }
 
@@ -1113,8 +1113,19 @@
 }
 
 .CommentPanelDataGrid {
-  top: 0;
-  color: #888;
+  all: unset;
+  color: #808080;
+  flex: 1;
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  overflow: hidden;
+
+  &-cell {
+    text-overflow: clip;
+  }
 
   &-headerCell {
     background-color: transparent;
@@ -1188,6 +1199,11 @@
     background-color: transparent;
     border: none;
     font-weight: normal;
+    color: #505050;
+
+    &[data-name='content'] {
+      color: #c0c0c0;
+    }
   }
 }
 
@@ -1266,7 +1282,7 @@
 
 // NGパネル
 .NGSettingPanelContainer {
-  top: 42px;
+  top: 10px;
   bottom: 10px;
   left: 10px;
   right: 10px;
@@ -1289,6 +1305,10 @@
     background-color: transparent;
     height: auto;
     position: static;
+
+    .is-modalView & {
+      display: none;
+    }
   }
 
   &-headerText {
@@ -1307,6 +1327,10 @@
 
     > .GridCell {
       flex: 0 0 auto;
+    }
+
+    .is-modalView & {
+      display: none;
     }
   }
 
@@ -1404,6 +1428,10 @@
     flex-direction: column;
     border-bottom: 1px #e0e0e0 solid;
     padding: 4px 0 0;
+
+    .is-modalView & {
+      display: none;
+    }
   }
 
   &-contentBottom {
@@ -1411,6 +1439,10 @@
     text-align: right;
     padding: 10px 16px;
     height: auto;
+
+    .is-modalView & {
+      display: none;
+    }
   }
 
   &-removeButton {
@@ -1433,6 +1465,73 @@
 
     > svg {
       display: none;
+    }
+  }
+
+  // NG追加モーダル
+  &-contentModal {
+    position: static;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.ViewerNGRegister {
+  all: unset;
+  margin: 0;
+  width: 100%;
+
+  &-title {
+    all: unset;
+    padding: 16px;
+    display: block;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  &-radioGroup {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &-radioItem {
+    all: unset;
+    margin: 0;
+
+    > .RadioItem-label {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &-inputArea {
+    padding: 16px;
+  }
+
+  &-input {
+    @include textField;
+    padding: 8px;
+  }
+
+  &-bottom {
+    all: unset;
+    display: flex;
+    justify-content: center;
+
+    > button {
+      all: unset;
+      color: inherit;
+      line-height: inherit;
+
+      @include flatButton;
+
+      + button {
+        margin-left: 16px;
+      }
     }
   }
 }
@@ -1544,6 +1643,95 @@
 
   &-itemSource {
     max-width: initial;
+  }
+}
+
+// 共有パネル
+.SharePanelContainer {
+  position: absolute;
+  top: 42px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 10;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  animation: show .2s $ease-out-quart forwards;
+  transform-origin: top left;
+
+  &::before {
+    display: none;
+  }
+
+  &-header {
+    all: unset;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  &-close {
+    all: unset;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    &::before {
+      @include icon;
+      content: '\f136';
+      width: 32px;
+      height: 32px;
+      line-height: 3.2rem;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  &-content {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-radioItem {
+    .RadioItem-label {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &-radioGroup {
+    + div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &-textarea {
+    all: unset;
+    @include textField;
+    @include scrollbar(light, #fff);
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &-copyButton {
+    all: unset;
+    @include flatButton;
+    margin-top: 16px;
+
+    svg {
+      display: none;
+    }
   }
 }
 

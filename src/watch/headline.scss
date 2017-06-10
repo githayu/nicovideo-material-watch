@@ -220,6 +220,7 @@
   }
 
   .FollowButton {
+    all: unset;
     position: absolute;
     width: auto;
     height: auto;
@@ -228,7 +229,7 @@
     left: auto;
 
     &.is-following {
-      @include raisedButton--default;
+      @include flatButton;
     }
 
     &:not(.is-following) {
