@@ -32,11 +32,11 @@
       margin-right: 0;
     }
 
-    body.is-middle & &:nth-of-type(3n) {
+    body.is-middle &:nth-of-type(3n) {
       margin-right: 0;
     }
 
-    body.is-large & &:nth-of-type(4n) {
+    body.is-large &:nth-of-type(4n) {
       margin-right: 0;
     }
 
