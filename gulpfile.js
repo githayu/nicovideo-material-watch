@@ -25,6 +25,7 @@ if (options.production) {
     postcssStylish,
     cssnano({
       safe: true,
+      core: false,
       discardComments: false
     })
   );

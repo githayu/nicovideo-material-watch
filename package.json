@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "cssnano": "^3.10.0",
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
