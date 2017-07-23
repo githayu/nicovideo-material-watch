@@ -22,12 +22,11 @@
   // 左辺
   &-player {
     width: var(--left-width);
-    padding-bottom: 32px;
 
     &:hover {
       > .PlayerContainer {
         .ControllerBoxContainer {
-          background: transparent linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+          background: transparent linear-gradient(transparent 40%, rgba(0, 0, 0, 0.5));
         }
 
         .SeekBarContainer,
@@ -61,6 +60,9 @@
 }
 
 .VideoContainer {
+  padding-bottom: 32px;
+  box-sizing: content-box;
+
   // 準備中...
   &.is-preparing {
     > .Spinner {
@@ -116,7 +118,7 @@
 .PlayerOptionContainer {
   position: absolute;
   top: 42px;
-  bottom: -22px;
+  bottom: 10px;
   left: calc(100% + 10px);
   right: auto;
   padding: 0;
@@ -458,8 +460,9 @@
   z-index: 10;
   width: 100%;
   height: auto;
-  padding-top: 8px;
+  padding-top: 94px;
   background-color: transparent;
+  overflow: hidden;
 }
 
 .SeekBarContainer,
@@ -546,8 +549,6 @@
 // コメント投稿
 .CommentPostContainer {
   display: flex;
-  position: absolute;
-  top: 100%;
 
   &.is-fullscreen {
     position: relative;
@@ -958,7 +959,7 @@
   // 読み込み中
   &-loadingContainer {
     position: absolute;
-    top: 62px;
+    top: 28px;
     left: 0;
     bottom: 0;
     right: 0;
@@ -1657,7 +1658,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  animation: show .2s $ease-out-quart forwards;
+  animation: show .3s $ease-out-quart forwards;
   transform-origin: top left;
 
   &::before {

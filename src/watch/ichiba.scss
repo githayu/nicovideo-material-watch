@@ -179,7 +179,7 @@
       align-items: center;
       position: relative;
       min-height: 200px;
-      font-family: var(--fontFamily);
+      font-family: var(--font-family);
       color: #f0f0f0;
       overflow: hidden;
 
@@ -234,7 +234,7 @@
       right: 8px;
       background-color: rgba(0,0,0,.6);
       border-radius: 2px;
-      font-family: 'Avenir Next', var(--fontFamily);
+      font-family: 'Avenir Next', var(--font-family);
       pointer-events: none;
 
       > span {

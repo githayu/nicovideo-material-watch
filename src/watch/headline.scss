@@ -388,7 +388,7 @@
     box-shadow: 0 1px 5px rgba(0,0,0,.3);
     transform: scale(0);
     opacity: 0;
-    animation: videoMetaOverflowMenu .3s $ease-out-quart forwards;
+    animation: show .3s $ease-out-quart forwards;
     transform-origin: top right;
 
     > .CloseButton {
@@ -452,17 +452,6 @@
 
   > svg {
     display: none;
-  }
-}
-
-@keyframes videoMetaOverflowMenu {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 

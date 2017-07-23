@@ -13,7 +13,7 @@ Material Watch は現在、Google Chrome のみをサポートしています。
 ~~~sh
 git clone https://github.com/githayu/nicovideo-material-watch.git
 cd nicovideo-material-watch
-npm i && npm start
+yarn i && yarn start
 ~~~
 
 ## License

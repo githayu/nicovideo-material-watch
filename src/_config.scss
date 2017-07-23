@@ -19,7 +19,7 @@
 }
 
 @mixin icon {
-  font-family: icon, var(--fontFamily);
+  font-family: icon, var(--font-family);
   display: inline-block;
   text-align: center;
   font-weight: normal;
