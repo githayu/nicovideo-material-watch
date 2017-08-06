@@ -10,7 +10,7 @@
   }
 }
 
-@mixin flatButton {
+@mixin flatButton($type: after) {
   border: none;
   outline: none;
   border-radius: 2px;
@@ -18,13 +18,48 @@
   transition: all .2s ease-out;
   padding: 8px 16px;
   user-select: none;
+  overflow: hidden;
+  position: relative;
+
+  @content;
+
+  &::#{$type} {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    pointer-events: none;
+  }
 
   &:hover {
     text-decoration: none;
-    background-color: rgba(0,0,0,.1);
+
+    &::#{$type} {
+      animation: ripple 1.5s ease-in forwards;
+    }
   }
 
   &:active {
+    background-color: rgba(0,0,0,.1);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    background-color: rgba(0,0,0,.1);
+  }
+  100% {
+    width: 5000%;
+    height: 5000%;
+    border-radius: 0;
     background-color: rgba(0,0,0,.2);
   }
 }

@@ -156,7 +156,6 @@
   &-switch {
     @include flatButton;
     color: #323232;
-    position: static;
     line-height: inherit;
     font-size: 1.3rem;
     background: none;
@@ -229,7 +228,9 @@
     left: auto;
 
     &.is-following {
-      @include flatButton;
+      @include flatButton(before) {
+        position: absolute;
+      };
     }
 
     &:not(.is-following) {

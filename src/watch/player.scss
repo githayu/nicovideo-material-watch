@@ -90,30 +90,6 @@
   }
 }
 
-// 再生ボタン
-.VideoStartButtonContainer {
-  position: absolute;
-  top: auto;
-  left: auto;
-  transform: none;
-  width: 100%;
-  height: 100%;
-
-  &:empty {
-    display: none;
-  }
-
-  &-button {
-    width: 100%;
-    height: 100%;
-    cursor: default;
-
-    > svg {
-      display: none;
-    }
-  }
-}
-
 // 設定
 .PlayerOptionContainer {
   position: absolute;
