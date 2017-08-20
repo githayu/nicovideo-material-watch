@@ -26,7 +26,7 @@
   vertical-align: middle;
 }
 
-@mixin scrollbar ($isMode: dark, $color: #202020) {
+@mixin scrollbar ($theme: dark, $color: #202020) {
   &::-webkit-scrollbar {
     width: 10px;
     background-color: $color;
@@ -41,10 +41,10 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: if($isMode == dark, lighten($color, 5%), darken($color, 10%));
+    background-color: if($theme == dark, lighten($color, 10%), darken($color, 10%));
 
     &:hover {
-      background-color: if($isMode == dark, lighten($color, 10%), darken($color, 15%));
+      background-color: if($theme == dark, lighten($color, 20%), darken($color, 15%));
     }
   }
 }

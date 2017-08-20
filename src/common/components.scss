@@ -10,7 +10,7 @@
   }
 }
 
-@mixin flatButton($type: after) {
+@mixin flatButton($type: after, $ripple: dark) {
   border: none;
   outline: none;
   border-radius: 2px;
@@ -40,7 +40,11 @@
     text-decoration: none;
 
     &::#{$type} {
-      animation: ripple 1.5s ease-in forwards;
+      @if $ripple == dark {
+        animation: ripple-darker 1.5s ease-in forwards;
+      } @else if $ripple == light {
+        animation: ripple-lighten 1.5s ease-in forwards;
+      }
     }
   }
 
@@ -49,20 +53,30 @@
   }
 }
 
-@keyframes ripple {
-  0% {
-    width: 1px;
-    height: 1px;
-    border-radius: 100%;
-    background-color: rgba(0,0,0,.1);
-  }
-  100% {
-    width: 5000%;
-    height: 5000%;
-    border-radius: 0;
-    background-color: rgba(0,0,0,.2);
+@mixin createRippleAnimation($name, $fromColor, $toType) {
+  @keyframes #{$name} {
+    0% {
+      width: 1px;
+      height: 1px;
+      border-radius: 100%;
+      background-color: $fromColor;
+    }
+    100% {
+      width: 5000%;
+      height: 5000%;
+      border-radius: 0;
+
+      @if $toType == dark {
+        background-color: darken($fromColor, 1%);
+      } @else if $toType == light {
+        background-color: lighten($fromColor, 1%);
+      }
+    }
   }
 }
+
+@include createRippleAnimation('ripple-darker', rgba(0,0,0,.1), dark);
+@include createRippleAnimation('ripple-lighten', hsla(0,0%,100%,.1), light);
 
 @mixin raisedButton--base {
   border: none;

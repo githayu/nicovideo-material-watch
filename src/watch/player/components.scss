@@ -1,0 +1,95 @@
+@mixin player-toggleButton($className: '.CheckboxInput') {
+  #{$className} {
+    &:checked {
+      + .Checkbox-check {
+        background-color: var(--primary-color-2);
+
+        &::before {
+          background-color: var(--primary-color-1);
+          transform: translate3d(100%, 0, 0);
+        }
+      }
+    }
+
+    + .Checkbox-check {
+      width: 36px;
+      height: 14px;
+      background-color: #e0e0e0;
+      border-radius: 18px;
+      margin: 5px 0;
+      transition: all .3s $ease-out-quart;
+
+      &::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border: none;
+        background-color: #f0f0f0;
+        border-radius: 100%;
+        box-shadow: 0 1px 2px rgba(0,0,0,.4);
+        position: absolute;
+        top: calc(50% - 10px);
+        left: 0;
+        transition: inherit;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin player-checkbox($className: '.Checkbox', $theme: light) {
+  #{$className} {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    input[type=checkbox] {
+      &:checked {
+        + .Checkbox-check {
+          border-color: var(--primary-color-1);
+          background-color: var(--primary-color-1);
+
+          &::before {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    &-check {
+      border: 2px if($theme == dark, hsla(0,0%,100%,.08), rgba(0,0,0,.1)) solid;
+      border-radius: 2px;
+      width: 16px;
+      height: 16px;
+      box-sizing: content-box;
+      background-color: transparent;
+      transition: all .3s $ease-out-quart;
+
+      &::before {
+        all: unset;
+        @include icon;
+        content: '\f26b';
+        line-height: 1.6rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        color: if($theme == dark, #202020, #fff);
+        transform: scale(0);
+        transition: inherit;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

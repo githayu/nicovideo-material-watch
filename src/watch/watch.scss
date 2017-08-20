@@ -21,6 +21,21 @@ body {
       transform: none;
     }
   }
+
+  &.is-ownerEdit {
+    .WatchAppContainer {
+      background-color: transparent;
+    }
+
+    .BottomContainer,
+    .HeaderContainer {
+      overflow: visible;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
 }
 
 
@@ -85,6 +100,16 @@ body {
     height: auto;
     float: none;
 
+    body.is-ownerEdit & {
+      &::after {
+        content: 'このページでは一部のスタイルが崩れます';
+        color: #707070;
+        line-height: 4rem;
+        margin-left: 16px;
+        font-size: 1.2rem;
+      }
+    }
+
     &-menu {
       line-height: 4rem;
       height: 40px;
@@ -143,7 +168,7 @@ body {
           height: 3.2rem;
           background-color: transparent;
 
-          > .Link {
+          > a {
             padding: 0 16px;
             color: #f0f0f0;
 

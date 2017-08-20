@@ -1,0 +1,160 @@
+.MainContainer {
+  &-ownerEditMenu {
+    all: unset;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    z-index: 100;
+    background-color: transparent;
+  }
+}
+
+.OwnerEditMenuContainer {
+  all: unset;
+
+  &-left {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  &-heading {
+    display: none;
+  }
+
+  &-toFlashLink {
+    all: unset;
+    color: #f0f0f0;
+    line-height: 4rem;
+    padding: 0 16px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #101010;
+    }
+  }
+
+  &-right {
+    all: unset;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    padding: 0 10px;
+
+    .ActionButton {
+      all: unset;
+      color: #f0f0f0;
+      line-height: 4rem;
+      padding: 0 16px;
+
+      &:hover {
+        background-color: #101010;
+      }
+    }
+  }
+}
+
+.OwnerEditPanelHeader {
+  height: 40px;
+  border: none;
+
+  &-left {
+    flex: 1;
+  }
+
+  &-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .OwnerEditButton {
+    all: unset;
+    @include flatButton(before, light);
+    color: #909090;
+  }
+}
+
+.OwnerCommentEditContainer {
+  background-color: transparent;
+
+  &-commentPanel {
+    @include player-checkbox($theme: dark);
+  }
+
+  &-commentDeleteButton {
+    all: unset;
+    background-color: transparent;
+    @include flatButton(before, light);
+    color: #808080;
+  }
+
+  &-inlineEdit {
+    &.is-editing {
+      background-color: #181818;
+      border: none;
+      color: #f0f0f0;
+
+      &::selection {
+        background-color: var(--primary-color-3);
+      }
+    }
+  }
+
+  [class^=___table-row___] {
+    &[data-is-checked] {
+      background-color: #181818;
+    }
+  }
+}
+
+.OwnerEditPanelContent {
+  display: flex;
+  z-index: 5;
+}
+
+.OwnerEditPanelHeading {
+  color: #808080;
+}
+
+// フッター
+.OwnerEditPanelFooter {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// エディター
+.OwnerCommentEditEditorContainer {
+  all: usnet;
+  background-color: #202020;
+  position: fixed;
+  z-index: 100;
+  top: 50px;
+  left: 64px;
+  right: 0;
+  bottom: 0;
+
+  &-right {
+    all: unset;
+  }
+
+  &-textarea {
+    all: unset;
+    @include scrollbar;
+    background-color: #202020;
+    color: #c0c0c0;
+    box-shadow: none;
+    font-family: Ricty monospace;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}
+
+// モーダル
+.OwnerEditModal {
+  z-index: 5;
+}
