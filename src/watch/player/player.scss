@@ -777,7 +777,11 @@
   width: auto;
   height: auto;
 
-  &:before {
+  &::before {
+    display: none;
+  }
+
+  &::after {
     display: none;
   }
 
@@ -880,6 +884,7 @@
 
   &-area {
     padding: 0;
+    background-color: transparent;
 
     // 動画操作メニュー
     &:first-child {
@@ -891,7 +896,7 @@
       z-index: 10;
       white-space: normal;
 
-      .MainContainer-player:hover & {
+      .MainContainer-player:hover + .MainContainer-commentPanel & {
         opacity: 1;
       }
 
@@ -1026,7 +1031,7 @@
 
     .PastCommentFetchButton {
       all: unset;
-      @include flatButton;
+      @include flatButton(after, light);
       margin-left: 8px;
       font-size: 1.2rem;
       line-height: inherit;
@@ -1410,7 +1415,7 @@
       content: 'キャンセル';
     }
 
-    > svg {
+    .CloseButton-inner {
       display: none;
     }
   }

@@ -43,6 +43,7 @@
   &-editButton {
     line-height: 3.2rem;
     height: 32px;
+    width: auto;
     border-radius: 16px;
     padding: 0 16px;
     background-color: #b0b0b0;
@@ -72,6 +73,7 @@
   padding: 0 16px 0 16px;
   border-radius: 32px;
   transition: all .2s $ease-out-quart;
+  line-height: 1.6rem;
 
   &:hover {
     background-color: #d0d0d0;
@@ -125,6 +127,7 @@
     &::before {
       @include icon;
       content: '\f191';
+      vertical-align: top;
       width: 32px;
       line-height: 32px;
       font-size: 1.4rem;
