@@ -24,7 +24,6 @@
   }
 }
 
-
 .PlayerContainer {
   background-color: transparent;
   overflow: visible;
@@ -78,7 +77,7 @@
   width: 340px;
   border-radius: 2px;
   overflow: auto;
-  transition: .3s all $ease-out-quart;
+  transition: 0.3s all $ease-out-quart;
   transform-origin: left calc(100% - 22px);
   display: block;
   cursor: default;
@@ -176,10 +175,10 @@
           padding-right: 5px;
         }
 
-        input[type="radio"] {
+        input[type='radio'] {
           &:checked {
             + .RadioItem-label {
-              &[for$="-on"] {
+              &[for$='-on'] {
                 background-color: var(--primary-color-2);
 
                 &::before {
@@ -188,7 +187,7 @@
                 }
               }
 
-              &[for$="off"] {
+              &[for$='off'] {
                 background-color: #d0d0d0;
 
                 &::before {
@@ -209,7 +208,7 @@
           line-height: inherit;
           position: relative;
 
-          &[for$="-on"] {
+          &[for$='-on'] {
             background-color: #d0d0d0;
             border-radius: 0 8px 8px 0;
 
@@ -219,7 +218,7 @@
             }
           }
 
-          &[for$="-off"] {
+          &[for$='-off'] {
             background-color: var(--primary-color-2);
             border-radius: 8px 0 0 8px;
 
@@ -235,11 +234,11 @@
             width: 20px;
             height: 20px;
             border-radius: 100%;
-            box-shadow: 0 1px 2px rgba(0,0,0,.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             position: absolute;
             top: calc(50% - 10px);
             left: 0;
-            transition: all .3s $ease-out-quart;
+            transition: all 0.3s $ease-out-quart;
           }
         }
       }
@@ -263,7 +262,7 @@
     margin-top: 8px;
   }
 
-  input[type="radio"]:not([id$="-on"]):not([id$="-off"]) {
+  input[type='radio']:not([id$='-on']):not([id$='-off']) {
     &:checked {
       + .RadioItem-label {
         color: inherit;
@@ -273,13 +272,13 @@
         &::before {
           background-color: var(--primary-color-1);
           box-shadow: 0 0 0 2px var(--primary-color-1);
-          animation: radioButton .3s $ease-out-quart;
+          animation: radioButton 0.3s $ease-out-quart;
         }
       }
     }
   }
 
-  &-label:not([for$="-on"]):not([for$="-off"]) {
+  &-label:not([for$='-on']):not([for$='-off']) {
     padding: 0;
     font-size: 1.2rem;
     text-align: left;
@@ -299,14 +298,14 @@
       border-radius: 100%;
       margin-right: 8px;
       vertical-align: middle;
-      transition: all .3s $ease-out-quart;
+      transition: all 0.3s $ease-out-quart;
     }
   }
 }
 
 @keyframes radioButton {
   0% {
-    transform: scale(.5);
+    transform: scale(0.5);
   }
   100% {
     transform: scale(1);
@@ -320,7 +319,7 @@
 
   &.dropdown--active {
     .dropdown__content {
-      transition: all .3s $ease-out-quart;
+      transition: all 0.3s $ease-out-quart;
       transform: scaleY(1);
       opacity: 1;
     }
@@ -363,12 +362,12 @@
     border: none;
     border-radius: 0;
     padding: 10px 0;
-    box-shadow: 0 1px 2px rgba(0,0,0,.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     display: block;
     opacity: 0;
     transform: scaleY(0);
     transform-origin: top;
-    transition: opacity .3s $ease-out-quart, transform 0s .5s;
+    transition: opacity 0.3s $ease-out-quart, transform 0s 0.5s;
     top: -10px;
     left: 0;
     right: 0;
@@ -398,7 +397,7 @@
     border-radius: 0;
     overflow: visible;
     cursor: pointer;
-    transition: background-color .3s $ease-out-quart;
+    transition: background-color 0.3s $ease-out-quart;
 
     &:hover {
       all: inherit;
@@ -428,7 +427,7 @@
 .SeekBarContainer,
 .ControllerContainer {
   opacity: 0;
-  transition: opacity .2s ease-out;
+  transition: opacity 0.2s ease-out;
 
   .MainContainer-player:hover & {
     opacity: 1;
@@ -439,7 +438,7 @@
   padding: 0;
 
   &-area {
-    &:nth-child(-n+2) {
+    &:nth-child(-n + 2) {
       flex: 0;
     }
   }
@@ -464,14 +463,14 @@
 }
 
 .SeekBar {
-  background-color: rgba(255,255,255,.3);
+  background-color: rgba(255, 255, 255, 0.3);
 
   &-hover {
-    background-color: rgba(255,255,255,.7);
+    background-color: rgba(255, 255, 255, 0.7);
   }
 
   &-buffered {
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   &-played,
@@ -493,7 +492,7 @@
       border-radius: 2px 2px 0 0;
 
       &::before {
-        border-top-color: rgba(0,0,0,.8);
+        border-top-color: rgba(0, 0, 0, 0.8);
       }
     }
   }
@@ -503,7 +502,7 @@
   top: -12px;
 
   &-time {
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 0 5px;
     line-height: 2rem;
     font-weight: bold;
@@ -564,7 +563,7 @@
       width: 100%;
       background-color: #202020;
       color: #f0f0f0;
-      transition: background .2s ease-out;
+      transition: background 0.2s ease-out;
 
       &:hover {
         background-color: var(--primary-color-1);
@@ -583,7 +582,7 @@
   height: 36px;
   padding: 0;
   color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0,0,0,.3);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 
   &:hover {
     color: #f0f0f0;
@@ -691,14 +690,14 @@
 // 音量
 .VolumeBarContainer {
   width: 0;
-  transition: width .2s ease-out;
+  transition: width 0.2s ease-out;
 
   &:hover {
     width: 60px;
   }
 
   .VolumeBar {
-    background-color: rgba(255,255,255,.3);
+    background-color: rgba(255, 255, 255, 0.3);
 
     &:hover {
       height: 4px;
@@ -882,60 +881,57 @@
     display: none;
   }
 
-  &-area {
+  // 動画操作メニュー
+  &-areaLeft {
     padding: 0;
     background-color: transparent;
+    position: absolute;
+    right: 100%;
+    margin: 16px 16px 0 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    z-index: 10;
+    white-space: normal;
 
-    // 動画操作メニュー
-    &:first-child {
-      position: absolute;
-      right: 100%;
-      margin: 16px 16px 0 0;
-      opacity: 0;
-      transition: opacity .2s ease-out;
-      z-index: 10;
-      white-space: normal;
+    .MainContainer-player:hover + .MainContainer-commentPanel & {
+      opacity: 1;
+    }
 
-      .MainContainer-player:hover + .MainContainer-commentPanel & {
-        opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+
+    > * {
+      + * {
+        margin-top: 10px;
+      }
+    }
+
+    .ActionButton {
+      color: #f0f0f0;
+
+      &::before {
+        font-size: 1.8rem;
+        line-height: 3.6rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       &:hover {
-        opacity: 1;
+        color: var(--primary-color-1);
       }
-
-      > * {
-        + * {
-          margin-top: 10px;
-        }
-      }
-
-      .ActionButton {
-        color: #f0f0f0;
-
-        &::before {
-          font-size: 1.8rem;
-          line-height: 3.6rem;
-          background-color: rgba(0,0,0,.6);
-          width: 36px;
-          height: 36px;
-          border-radius: 100%;
-          box-shadow: 0 1px 2px rgba(0,0,0,.3);
-        }
-
-        &:hover {
-          color: var(--primary-color-1);
-        }
-      }
-    }
-
-    // 動画共有メニュー
-    &:last-child {
-      padding-left: 8px;
     }
   }
-}
 
+  // 動画共有メニュー
+  &-areaRight {
+    background-color: transparent;
+    padding-left: 8px;
+  }
+}
 
 .CommentPanelContainer {
   top: 32px;
@@ -1013,7 +1009,7 @@
         all: unset;
         color: #f0f0f0;
         box-shadow: 0 -1px #383838 inset;
-        transition: box-shadow .2s ease-out;
+        transition: box-shadow 0.2s ease-out;
 
         &:focus {
           box-shadow: 0 -2px var(--primary-color-1) inset;
@@ -1120,7 +1116,7 @@
     border: none;
     font-weight: normal;
 
-    &[data-name=content] {
+    &[data-name='content'] {
       padding-left: 10px;
     }
 
@@ -1159,14 +1155,14 @@
     // }
 
     + hr {
-      background-color: rgba(0,0,0,.15);
+      background-color: rgba(0, 0, 0, 0.15);
       width: 5px;
     }
   }
 
   [class^='___header___'] {
     position: relative;
-    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     z-index: 5;
     background-color: #303030;
   }
@@ -1201,7 +1197,7 @@
 .ContextMenu {
   position: absolute;
   width: 300px;
-  box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1283,7 +1279,7 @@
   transform: scale(0);
   transform-origin: top right;
   flex-direction: column;
-  transition: .3s all $ease-out-quart;
+  transition: 0.3s all $ease-out-quart;
   display: flex;
 
   &:not([hidden]) {
@@ -1559,7 +1555,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  animation: show .3s $ease-out-quart forwards;
+  animation: show 0.3s $ease-out-quart forwards;
   transform-origin: top left;
 
   &::before {
@@ -1684,9 +1680,9 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 8px;
-    transition: .2s ease-out;
+    transition: 0.2s ease-out;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {
       opacity: 1;
@@ -1717,7 +1713,7 @@
     color: #f0f0f0;
     padding: 4px;
     border-radius: 2px;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, 0.7);
     font-size: 1rem;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {
