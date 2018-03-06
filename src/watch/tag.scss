@@ -55,7 +55,7 @@
 
     &:hover {
       background-color: #a0a0a0;
-      box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
     }
   }
 }
@@ -126,15 +126,16 @@
 
     &::before {
       @include icon;
+
       content: '\f191';
       vertical-align: top;
       width: 32px;
       line-height: 32px;
       font-size: 1.4rem;
-      background-color: rgba(0,0,0,.1);
+      background-color: rgba(0, 0, 0, .1);
       border-radius: 100%;
       margin-right: 8px;
-      color: rgba(0,0,0,.5);
+      color: rgba(0, 0, 0, .5);
     }
   }
 
@@ -165,16 +166,17 @@
           color: #d8d8d8;
 
           &::before {
-            background-color: rgba(0,0,0,.25);
+            background-color: rgba(0, 0, 0, .25);
           }
         }
 
         &::before {
           @include icon;
+
           content: '\f11e';
           font-size: 1.2rem;
           line-height: 2.2rem;
-          background-color: rgba(0,0,0,.2);
+          background-color: rgba(0, 0, 0, .2);
           border-radius: 100%;
           width: 22px;
           font-weight: bold;
@@ -222,16 +224,17 @@
         color: #d8d8d8;
 
         &::before {
-          background-color: rgba(0,0,0,.25);
+          background-color: rgba(0, 0, 0, .25);
         }
       }
 
       &::before {
         @include icon;
+
         content: '\f136';
         font-size: 1.4rem;
         line-height: 2.2rem;
-        background-color: rgba(0,0,0,.2);
+        background-color: rgba(0, 0, 0, .2);
         border-radius: 100%;
         width: 22px;
         font-weight: bold;
@@ -282,7 +285,6 @@
   .TagSuggestionInput {
     &-input {
       padding: 0 16px;
-      box-shadow: none;
       border-radius: 0;
       line-height: 3rem;
       background-color: transparent;

@@ -69,7 +69,9 @@
 
   .OwnerEditButton {
     all: unset;
+
     @include flatButton(before, light);
+
     color: #909090;
   }
 }
@@ -84,7 +86,9 @@
   &-commentDeleteButton {
     all: unset;
     background-color: transparent;
+
     @include flatButton(before, light);
+
     color: #808080;
   }
 
@@ -100,7 +104,7 @@
     }
   }
 
-  [class^=___table-row___] {
+  [class^='___table-row___'] {
     &[data-is-checked] {
       background-color: #181818;
     }
@@ -141,11 +145,13 @@
 
   &-textarea {
     all: unset;
+
     @include scrollbar;
+
     background-color: #202020;
     color: #c0c0c0;
     box-shadow: none;
-    font-family: Ricty monospace;
+    font-family: Ricty, monospace;
     font-size: 1.5rem;
     width: 100%;
     height: 100%;

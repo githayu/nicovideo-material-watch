@@ -26,7 +26,7 @@
         border: none;
         background-color: #f0f0f0;
         border-radius: 100%;
-        box-shadow: 0 1px 2px rgba(0,0,0,.4);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
         position: absolute;
         top: calc(50% - 10px);
         left: 0;
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
 
-    input[type=checkbox] {
+    input[type='checkbox'] {
       &:checked {
         + .Checkbox-check {
           border-color: var(--primary-color-1);
@@ -61,7 +61,8 @@
     }
 
     &-check {
-      border: 2px if($theme == dark, hsla(0,0%,100%,.08), rgba(0,0,0,.1)) solid;
+      border: 2px
+        if($theme == dark, hsla(0, 0%, 100%, .08), rgba(0, 0, 0, .1)) solid;
       border-radius: 2px;
       width: 16px;
       height: 16px;
@@ -71,7 +72,9 @@
 
       &::before {
         all: unset;
+
         @include icon;
+
         content: '\f26b';
         line-height: 1.6rem;
         font-size: 1.6rem;

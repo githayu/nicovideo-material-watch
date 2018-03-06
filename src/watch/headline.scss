@@ -4,7 +4,7 @@
   margin: var(--content-top) 0 0;
   width: var(--left-content-width);
   float: left;
-  box-shadow: 0 0 2px rgba(0,0,0,.4);
+  box-shadow: 0 0 2px rgba(0, 0, 0, .4);
   display: flex;
   flex-direction: column;
   border-radius: 2px;
@@ -77,6 +77,7 @@
 
     &::before {
       @include icon;
+
       content: '\f1c3';
       font-size: 2rem;
       line-height: 2rem;
@@ -113,7 +114,7 @@
 
       &:focus {
         background-color: #fff;
-        box-shadow: 0 1px 5px rgba(0,0,0,.2);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
         color: #222;
       }
     }
@@ -155,6 +156,7 @@
 
   &-switch {
     @include flatButton;
+
     color: #323232;
     line-height: inherit;
     font-size: 1.3rem;
@@ -172,14 +174,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   position: absolute;
   top: 0;
   left: calc(100% + 20px);
   width: 350px;
   height: 132px;
   margin: 0;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 2px rgba(0, 0, 0, .4);
   border-radius: 2px;
   overflow: hidden;
 
@@ -230,7 +231,7 @@
     &.is-following {
       @include flatButton(before) {
         position: absolute;
-      };
+      }
     }
 
     &:not(.is-following) {
@@ -254,7 +255,9 @@
   width: 100%;
   flex: 0 0 80px;
   padding: 10px 20px;
-  background: linear-gradient(transparent, rgba(0,0,0,.6)), #303030 url('https://api.nicofinder.net/v2/video/thumbnail') no-repeat center / cover;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .6)),
+    #303030 url(https://api.nicofinder.net/v2/video/thumbnail) no-repeat center /
+      cover;
   display: flex;
   align-items: center;
 
@@ -274,6 +277,7 @@
 
   &-button {
     @include flatButton;
+
     display: block;
     color: #323232;
     line-height: 1.4rem;
@@ -297,7 +301,7 @@
     }
 
     // カウンター
-    &:nth-child(n+2):nth-last-child(n+3) {
+    &:nth-child(n + 2):nth-last-child(n + 3) {
       text-align: center;
 
       + div {
@@ -315,6 +319,7 @@
 
   &::before {
     @include icon;
+
     margin-right: 12px;
     font-size: 1.6rem;
     width: 32px;
@@ -335,7 +340,7 @@
   margin: 0;
   color: #383838;
   font-weight: 600;
-  font-family: 'Avenir Next', 'Roboto', sans-serif;
+  font-family: 'Avenir Next', Roboto, sans-serif;
 }
 
 .VideoUploadDateMeta {
@@ -386,7 +391,7 @@
     padding: 10px 0;
     border: none;
     border-radius: 2px;
-    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
     transform: scale(0);
     opacity: 0;
     animation: show .3s $ease-out-quart forwards;
@@ -439,8 +444,9 @@
   padding: 0;
   color: #d8d8d8;
 
-  &:before {
+  &::before {
     @include icon;
+
     content: '\f19b';
     font-size: 2.2rem;
     width: 100%;
@@ -461,7 +467,6 @@
   order: 5;
   background-color: #f2f2f2;
 }
-
 
 .OwnerNicoliveBanner {
   background-color: transparent;
@@ -515,6 +520,7 @@
 
   &-lead {
     all: unset;
+
     @include raisedButton--default;
   }
 

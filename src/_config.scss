@@ -1,32 +1,34 @@
 @keyframes show {
   0% {
     opacity: 0;
-    transform: scale3d(0,0,0);
+    transform: scale3d(0, 0, 0);
   }
+
   100% {
     opacity: 1;
-    transform: scale3d(1,1,1);
+    transform: scale3d(1, 1, 1);
   }
 }
 
 @keyframes horizontal-scroll {
   0% {
-    transform: translate3d(100%,0,0);
+    transform: translate3d(100%, 0, 0);
   }
+
   100% {
-    transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
 @mixin icon {
-  font-family: icon, var(--font-family);
+  font-family: icon, var(--font-family), sans-serif;
   display: inline-block;
   text-align: center;
   font-weight: normal;
   vertical-align: middle;
 }
 
-@mixin scrollbar ($theme: dark, $color: #202020) {
+@mixin scrollbar($theme: dark, $color: #202020) {
   &::-webkit-scrollbar {
     width: 10px;
     background-color: $color;
@@ -41,15 +43,23 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: if($theme == dark, lighten($color, 10%), darken($color, 10%));
+    background-color: if(
+      $theme == dark,
+      lighten($color, 10%),
+      darken($color, 10%)
+    );
 
     &:hover {
-      background-color: if($theme == dark, lighten($color, 20%), darken($color, 15%));
+      background-color: if(
+        $theme == dark,
+        lighten($color, 20%),
+        darken($color, 15%)
+      );
     }
   }
 }
 
-@mixin tooltip ($position) {
+@mixin tooltip($position) {
   &:hover {
     &::after {
       opacity: 1;
@@ -57,13 +67,22 @@
       transition: all .2s ease-out, border-radius .3s linear;
 
       @if $position == top {
-        transform: translate3d(-50%,-8px,0) scale3d(1,1,1);
-      } @else if $position == bottom {
-        transform: translate3d(-50%,8px,0) scale3d(1,1,1);
-      } @else if $position == left {
-        transform: translate3d(-8px,-50%,0) scale3d(1,1,1);
-      } @else if $position == right {
-        transform: translate3d(8px,-50%,0) scale3d(1,1,1);
+        transform: translate3d(-50%, -8px, 0) scale3d(1, 1, 1);
+      }
+
+      // prettier-ignore
+      @else if $position == bottom {
+        transform: translate3d(-50%, 8px, 0) scale3d(1, 1, 1);
+      }
+
+      // prettier-ignore
+      @else if $position == left {
+        transform: translate3d(-8px, -50%, 0) scale3d(1, 1, 1);
+      }
+
+      // prettier-ignore
+      @else if $position == right {
+        transform: translate3d(8px, -50%, 0) scale3d(1, 1, 1);
       }
     }
   }
@@ -73,7 +92,7 @@
     content: attr(data-title);
     color: #f0f0f0;
     position: absolute;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
     white-space: nowrap;
     line-height: 2rem;
@@ -86,25 +105,34 @@
     @if $position == top {
       bottom: 100%;
       left: 50%;
-      transform: translate3d(-50%,0,0) scale3d(0,0,0);
+      transform: translate3d(-50%, 0, 0) scale3d(0, 0, 0);
       border-radius: 2rem 2rem 2px 2px;
       transform-origin: bottom;
-    } @else if $position == bottom {
+    }
+
+    // prettier-ignore
+    @else if $position == bottom {
       top: 100%;
       left: 50%;
-      transform: translate3d(-50%,0,0) scale3d(0,0,0);
+      transform: translate3d(-50%, 0, 0) scale3d(0, 0, 0);
       border-radius: 2px 2px 2rem 2rem;
       transform-origin: top;
-    } @else if $position == left {
+    }
+
+    // prettier-ignore
+    @else if $position == left {
       top: 50%;
       right: 100%;
-      transform: translate3d(0,-50%,0) scale3d(0,0,0);
+      transform: translate3d(0, -50%, 0) scale3d(0, 0, 0);
       border-radius: 2rem 2px 2px 2rem;
       transform-origin: right;
-    } @else if $position == right {
+    }
+
+    // prettier-ignore
+    @else if $position == right {
       top: 50%;
       left: 100%;
-      transform: translate3d(0,-50%,0) scale3d(0,0,0);
+      transform: translate3d(0, -50%, 0) scale3d(0, 0, 0);
       border-radius: 2px 2rem 2rem 2px;
       transform-origin: left;
     }

@@ -11,9 +11,12 @@
   "devDependencies": {
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
-    "gulp": "gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^2.4.0"
   }
 }

@@ -11,10 +11,7 @@ const options = minimist(process.argv.slice(2));
 const entries = {
   styles: {
     watch: './src/**/*.scss',
-    src: [
-      './src/*.scss',
-      './src/optionals/**/*.scss'
-    ]
+    src: ['./src/*.scss', './src/optionals/**/*.scss']
   }
 };
 
@@ -29,7 +26,6 @@ if (options.production) {
       discardComments: false
     })
   );
-
 } else {
   postcssOptions.push(
     postcssStylish({
@@ -37,7 +33,10 @@ if (options.production) {
       options: [
         {
           installKey: 'theme',
-          value: require('fs').readFileSync('./src/optionals/theme/hatsune-miku.scss', 'utf-8')
+          value: require('fs').readFileSync(
+            './src/optionals/theme/hatsune-miku.scss',
+            'utf-8'
+          )
         }
       ]
     })
@@ -45,7 +44,8 @@ if (options.production) {
 }
 
 gulp.task('styles', () =>
-  gulp.src(entries.styles.src)
+  gulp
+    .src(entries.styles.src)
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(postcssOptions))
     .pipe(gulp.dest('./dist'))
@@ -59,6 +59,9 @@ gulp.task('watch', () =>
 
 gulp.task('clean', () => del(['dist']));
 
-gulp.task('build', gulp.series('clean', gulp.parallel(...Object.keys(entries))));
+gulp.task(
+  'build',
+  gulp.series('clean', gulp.parallel(...Object.keys(entries)))
+);
 
 gulp.task('default', gulp.series('clean', 'watch'));

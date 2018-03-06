@@ -6,12 +6,11 @@ body {
   }
 }
 
-
 #siteHeader {
   background-color: var(--primary-color-1);
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 1px 5px rgba(0,0,0,.4);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .4);
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +52,7 @@ body {
       bottom: 0;
       width: 64px;
       background-color: #fff;
-      box-shadow: 1px 0 2px rgba(0,0,0,.3);
+      box-shadow: 1px 0 2px rgba(0, 0, 0, .3);
       flex-direction: column;
       padding: 10px 0;
 
@@ -93,8 +92,9 @@ body {
           text-align: center;
           margin: 0;
 
-          &:before {
+          &::before {
             @include icon;
+
             font-size: 2rem;
             color: #787878;
           }
@@ -117,7 +117,7 @@ body {
               left: calc(100% + 12px);
               top: calc(50% - 25%);
               white-space: nowrap;
-              background-color: rgba(0,0,0,.5);
+              background-color: rgba(0, 0, 0, .5);
               line-height: 2rem;
               color: #fff;
               padding: 0 8px;
@@ -201,7 +201,7 @@ body {
           #siteHeaderLeftMenuContainer {
             position: absolute;
             right: auto;
-            box-shadow: 1px 0 5px rgba(0,0,0,.4);
+            box-shadow: 1px 0 5px rgba(0, 0, 0, .4);
             top: 50%;
             left: 100%;
             width: 180px;
@@ -296,6 +296,7 @@ body {
 
             &::before {
               @include icon;
+
               content: '\f19b';
               color: currentColor;
               width: 32px;
@@ -318,7 +319,7 @@ body {
             top: 10px;
             right: 0;
             position: absolute;
-            box-shadow: 0 0 10px rgba(0,0,0,.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
             padding: 10px 0;
             opacity: 0;
             transform: scale(0);
@@ -418,7 +419,7 @@ body {
             padding: 0 0 16px;
             border-radius: 0;
             background: #f2f2f2;
-            box-shadow: 0 1px 10px rgba(0,0,0,.3);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, .3);
             position: absolute;
             border: 1px solid #c2c2c2;
             box-sizing: border-box;
@@ -464,7 +465,7 @@ body {
             }
 
             // 初期画面
-            &#siteHeaderNotificationWithoutNotification {
+            &#siteHeaderNotificationWithNotification {
               // 三角形
               > span:first-child {
                 all: unset;
@@ -486,8 +487,7 @@ body {
                 }
               }
 
-
-              #siteHeaderShowConfigButton {
+              #siteHeaderNotificationWithNotificationShowConfig {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -504,6 +504,7 @@ body {
 
                 &::before {
                   @include icon;
+
                   content: '\f1c6';
                   font-size: 2rem;
                   line-height: 3.2rem;
@@ -531,7 +532,7 @@ body {
                 background-color: #fff;
                 border-radius: 0;
                 line-height: inherit;
-                box-shadow: 0 0px 5px rgba(0,0,0,.3);
+                box-shadow: 0 0 5px rgba(0, 0, 0, .3);
                 font-size: 1.2rem;
                 padding: 8px 16px;
 
@@ -576,6 +577,7 @@ body {
 
                   &::before {
                     @include icon;
+
                     font-size: 2rem;
                     line-height: 3.2rem;
                     width: 32px;
@@ -594,16 +596,15 @@ body {
               }
             }
 
-
             // 適用ボタン
             #siteHeaderApplyConfigButton {
               background: none;
               margin: 10px 0 0;
               height: auto;
+
               @include raisedButton--primary;
             }
           }
-
 
           // お知らせ共通
           span.siteHeaderNotifications,
@@ -632,6 +633,7 @@ body {
 
             &::before {
               @include icon;
+
               content: '\f1fe';
               color: #fff;
               width: 100%;

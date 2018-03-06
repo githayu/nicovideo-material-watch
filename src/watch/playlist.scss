@@ -3,10 +3,10 @@
 .PlaylistContinuousActiveButton,
 .PlaylistContinuousInactiveButton {
   @include flatButton;
+
   margin: 0;
   padding: 0;
   font-size: 0;
-  height: auto;
   background-color: transparent;
   color: #323232;
   width: 32px;
@@ -14,6 +14,7 @@
 
   &::before {
     @include icon;
+
     font-size: 2rem;
     line-height: 3.2rem;
   }
@@ -39,13 +40,14 @@
   }
 }
 
-
 .PlaylistContainer {
   overflow: visible;
   background-color: transparent;
+  height: auto;
 
   .PlaylistPager-arrow {
     @include flatButton;
+
     padding: 0;
     background-color: transparent;
     height: 32px;
@@ -60,6 +62,7 @@
 
     &::before {
       @include icon;
+
       font-weight: bold;
     }
 
@@ -97,7 +100,7 @@
   width: 350px;
 }
 
-// アイテムベース
+// ベースアイテム
 .PlaylistEmptyCardItem,
 .PlaylistCardItem {
   width: 600px;
@@ -127,7 +130,6 @@
     background-color: #f2f2f2;
   }
 }
-
 
 .PlaylistItemContent {
   width: auto;
@@ -163,6 +165,7 @@
 
       &::before {
         @include icon;
+
         font-size: 1.4rem;
         color: #c2c2c2;
         margin-right: 6px;
@@ -179,7 +182,7 @@
   &-metCount,
   &-metaCount {
     letter-spacing: .5px;
-    font-family: 'Avenir Next', 'Roboto', sans-serif;
+    font-family: 'Avenir Next', Roboto, sans-serif;
   }
 
   &-viewCount {
@@ -221,8 +224,8 @@
     right: 2px;
     bottom: 2px;
     border-radius: 2px;
-    background-color: rgba(0,0,0,.7);
-    font-size: 1.0rem;
+    background-color: rgba(0, 0, 0, .7);
+    font-size: 1rem;
     transition: all .2s ease-out;
   }
 

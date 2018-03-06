@@ -23,7 +23,7 @@
     width: 190px;
     background-color: #fff;
     border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
     position: relative;
   }
 
@@ -54,12 +54,12 @@
       .mobile {
         > a {
           background: none;
-          width: auto;
           height: 36px;
           text-indent: initial;
           position: absolute;
           bottom: 0;
-          left: 0;background-color: var(--primary-color-1);
+          left: 0;
+          background-color: var(--primary-color-1);
           width: 100%;
           text-align: center;
           line-height: 3.6rem;
@@ -131,14 +131,13 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          background-color: rgba(0,0,0,.5);
+          background-color: rgba(0, 0, 0, .5);
         }
       }
 
       // ブロマガ
-      &[id^='ichibaitem_watch_ncar'] {
-
-      }
+      // &[id^='ichibaitem_watch_ncar'] {
+      // }
 
       // アニメイト
       &[id^='ichibaitem_watch_an'] {
@@ -190,7 +189,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,.3);
+        background-color: rgba(0, 0, 0, .3);
         opacity: 0;
         transition: opacity .2s $ease-out-quad;
         border-radius: 2px;
@@ -232,9 +231,9 @@
       position: absolute;
       bottom: 68px;
       right: 8px;
-      background-color: rgba(0,0,0,.6);
+      background-color: rgba(0, 0, 0, .6);
       border-radius: 2px;
-      font-family: 'Avenir Next', var(--font-family);
+      font-family: 'Avenir Next', var(--font-family), sans-serif;
       pointer-events: none;
 
       > span {
@@ -274,7 +273,7 @@
 
   > a {
     font-size: 1.6rem;
-    line-height: 3.2rem
+    line-height: 3.2rem;
   }
 }
 
@@ -312,6 +311,7 @@
   .commandArea {
     > input[type='button'] {
       @include raisedButton--default;
+
       margin: 0;
     }
   }

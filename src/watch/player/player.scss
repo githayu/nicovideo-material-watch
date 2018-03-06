@@ -77,7 +77,7 @@
   width: 340px;
   border-radius: 2px;
   overflow: auto;
-  transition: 0.3s all $ease-out-quart;
+  transition: .3s all $ease-out-quart;
   transform-origin: left calc(100% - 22px);
   display: block;
   cursor: default;
@@ -126,6 +126,7 @@
       // アンケート設定リンク
       .NicoenqueteSettingItem-link {
         @include flatButton;
+
         font-size: 0;
         height: auto;
         background-color: transparent;
@@ -143,6 +144,7 @@
 
         &::before {
           @include icon;
+
           content: '\f1a3';
           font-size: 1.6rem;
         }
@@ -154,7 +156,10 @@
     }
 
     // 無理やりトグルスイッチにする呪文
-    &.PlayerOptionPremiumMenuItem {
+    &.JihoMenuItem,
+    &.AutoPlayMenuItem,
+    &.ResumeMenuItem,
+    &.DisabledPrerollAdsMenuItem {
       .PlayerOptionRadioGroup {
         &-inner {
           flex-direction: row;
@@ -234,11 +239,11 @@
             width: 20px;
             height: 20px;
             border-radius: 100%;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
             position: absolute;
             top: calc(50% - 10px);
             left: 0;
-            transition: all 0.3s $ease-out-quart;
+            transition: all .3s $ease-out-quart;
           }
         }
       }
@@ -272,7 +277,7 @@
         &::before {
           background-color: var(--primary-color-1);
           box-shadow: 0 0 0 2px var(--primary-color-1);
-          animation: radioButton 0.3s $ease-out-quart;
+          animation: radioButton .3s $ease-out-quart;
         }
       }
     }
@@ -298,15 +303,16 @@
       border-radius: 100%;
       margin-right: 8px;
       vertical-align: middle;
-      transition: all 0.3s $ease-out-quart;
+      transition: all .3s $ease-out-quart;
     }
   }
 }
 
 @keyframes radioButton {
   0% {
-    transform: scale(0.5);
+    transform: scale(.5);
   }
+
   100% {
     transform: scale(1);
   }
@@ -319,7 +325,7 @@
 
   &.dropdown--active {
     .dropdown__content {
-      transition: all 0.3s $ease-out-quart;
+      transition: all .3s $ease-out-quart;
       transform: scaleY(1);
       opacity: 1;
     }
@@ -362,12 +368,12 @@
     border: none;
     border-radius: 0;
     padding: 10px 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
     display: block;
     opacity: 0;
     transform: scaleY(0);
     transform-origin: top;
-    transition: opacity 0.3s $ease-out-quart, transform 0s 0.5s;
+    transition: opacity .3s $ease-out-quart, transform 0s .5s;
     top: -10px;
     left: 0;
     right: 0;
@@ -397,7 +403,7 @@
     border-radius: 0;
     overflow: visible;
     cursor: pointer;
-    transition: background-color 0.3s $ease-out-quart;
+    transition: background-color .3s $ease-out-quart;
 
     &:hover {
       all: inherit;
@@ -419,7 +425,7 @@
     position: absolute;
     bottom: 32px;
     height: 80px;
-    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, .5));
     pointer-events: none;
   }
 }
@@ -427,7 +433,7 @@
 .SeekBarContainer,
 .ControllerContainer {
   opacity: 0;
-  transition: opacity 0.2s ease-out;
+  transition: opacity .2s ease-out;
 
   .MainContainer-player:hover & {
     opacity: 1;
@@ -463,14 +469,14 @@
 }
 
 .SeekBar {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, .3);
 
   &-hover {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, .7);
   }
 
   &-buffered {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, .5);
   }
 
   &-played,
@@ -492,7 +498,7 @@
       border-radius: 2px 2px 0 0;
 
       &::before {
-        border-top-color: rgba(0, 0, 0, 0.8);
+        border-top-color: rgba(0, 0, 0, .8);
       }
     }
   }
@@ -502,7 +508,7 @@
   top: -12px;
 
   &-time {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, .8);
     padding: 0 5px;
     line-height: 2rem;
     font-weight: bold;
@@ -563,7 +569,7 @@
       width: 100%;
       background-color: #202020;
       color: #f0f0f0;
-      transition: background 0.2s ease-out;
+      transition: background .2s ease-out;
 
       &:hover {
         background-color: var(--primary-color-1);
@@ -582,7 +588,7 @@
   height: 36px;
   padding: 0;
   color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 2px rgba(0, 0, 0, .3);
 
   &:hover {
     color: #f0f0f0;
@@ -590,6 +596,7 @@
 
   &::before {
     @include icon;
+
     font-size: 2rem;
     line-height: 2rem;
     color: currentColor;
@@ -690,14 +697,14 @@
 // 音量
 .VolumeBarContainer {
   width: 0;
-  transition: width 0.2s ease-out;
+  transition: width .2s ease-out;
 
   &:hover {
     width: 60px;
   }
 
   .VolumeBar {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, .3);
 
     &:hover {
       height: 4px;
@@ -755,6 +762,7 @@
 
     &::before {
       @include icon;
+
       font-size: 1.6rem;
       line-height: 3.2rem;
       width: 32px;
@@ -782,11 +790,6 @@
 
   &::after {
     display: none;
-  }
-
-  // 動画メニューボタン
-  .VideoMenuButton {
-    @include tooltip(left);
   }
 
   .ActionButton {
@@ -889,7 +892,7 @@
     right: 100%;
     margin: 16px 16px 0 0;
     opacity: 0;
-    transition: opacity 0.2s ease-out;
+    transition: opacity .2s ease-out;
     z-index: 10;
     white-space: normal;
 
@@ -902,25 +905,28 @@
     }
 
     > * {
+      margin: 0;
+
       + * {
         margin-top: 10px;
       }
     }
 
     .ActionButton {
-      color: #f0f0f0;
+      @include tooltip(left);
 
       &::before {
+        color: #f0f0f0;
         font-size: 1.8rem;
         line-height: 3.6rem;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, .6);
         width: 36px;
         height: 36px;
         border-radius: 100%;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
       }
 
-      &:hover {
+      &:hover::before {
         color: var(--primary-color-1);
       }
     }
@@ -1009,7 +1015,7 @@
         all: unset;
         color: #f0f0f0;
         box-shadow: 0 -1px #383838 inset;
-        transition: box-shadow 0.2s ease-out;
+        transition: box-shadow .2s ease-out;
 
         &:focus {
           box-shadow: 0 -2px var(--primary-color-1) inset;
@@ -1027,7 +1033,9 @@
 
     .PastCommentFetchButton {
       all: unset;
+
       @include flatButton(after, light);
+
       margin-left: 8px;
       font-size: 1.2rem;
       line-height: inherit;
@@ -1155,14 +1163,14 @@
     // }
 
     + hr {
-      background-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(0, 0, 0, .15);
       width: 5px;
     }
   }
 
   [class^='___header___'] {
     position: relative;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
     z-index: 5;
     background-color: #303030;
   }
@@ -1197,7 +1205,7 @@
 .ContextMenu {
   position: absolute;
   width: 300px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1279,7 +1287,7 @@
   transform: scale(0);
   transform-origin: top right;
   flex-direction: column;
-  transition: 0.3s all $ease-out-quart;
+  transition: .3s all $ease-out-quart;
   display: flex;
 
   &:not([hidden]) {
@@ -1334,6 +1342,7 @@
 
   &-openViewerNGRegisterButton {
     all: unset;
+
     @include flatButton;
   }
 
@@ -1395,13 +1404,17 @@
 
   &-removeButton {
     all: unset;
+
     @include flatButton;
+
     background: none;
   }
 
   &-close {
     all: unset;
+
     @include flatButton;
+
     position: absolute;
     top: auto;
     right: 168px;
@@ -1462,6 +1475,7 @@
 
   &-input {
     @include textField;
+
     padding: 8px;
   }
 
@@ -1555,7 +1569,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  animation: show 0.3s $ease-out-quart forwards;
+  animation: show .3s $ease-out-quart forwards;
   transform-origin: top left;
 
   &::before {
@@ -1576,6 +1590,7 @@
 
     &::before {
       @include icon;
+
       content: '\f136';
       width: 32px;
       height: 32px;
@@ -1615,8 +1630,10 @@
 
   &-textarea {
     all: unset;
+
     @include textField;
     @include scrollbar(light, #fff);
+
     flex: 1;
     width: 100%;
     box-sizing: border-box;
@@ -1624,7 +1641,9 @@
 
   &-copyButton {
     all: unset;
+
     @include flatButton;
+
     margin-top: 16px;
 
     svg {
@@ -1680,9 +1699,9 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, .5);
     padding: 8px;
-    transition: 0.2s ease-out;
+    transition: .2s ease-out;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {
       opacity: 1;
@@ -1713,7 +1732,7 @@
     color: #f0f0f0;
     padding: 4px;
     border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, .7);
     font-size: 1rem;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {

@@ -16,7 +16,7 @@
     width: 130px;
     height: auto;
     float: none;
-    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
 
     &::before {
       content: '';
@@ -64,7 +64,9 @@
 
     &::before {
       content: '';
-      background: repeat-y radial-gradient(circle, var(--primary-color-2) 2px, transparent 0) top center / 4px 16px;
+      background: repeat-y
+        radial-gradient(circle, var(--primary-color-2) 2px, transparent 0) top
+        center / 4px 16px;
       flex: 0 0 80px;
     }
 
