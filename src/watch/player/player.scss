@@ -18,9 +18,19 @@
     right: calc(((var(--width) - 100vw) / 2) + 40px);
   }
 
-  // 左辺
+  // プレイヤー
   &-player {
     width: var(--left-width);
+  }
+
+  // コメントパネル
+  &-commentPanel {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    bottom: 20px;
+    width: var(--right-width);
+    background-color: #202020;
   }
 }
 
@@ -143,9 +153,9 @@
         }
 
         &::before {
-          @include icon;
+          @include mdi;
 
-          content: '\f1a3';
+          content: mdi(open-in-new);
           font-size: 1.6rem;
         }
       }
@@ -263,8 +273,23 @@
 }
 
 .RadioItem {
-  &:not(.ViewerNGRegister-radioItem) + & {
-    margin-top: 8px;
+  .SharePanelContainer-radioGroup &,
+  .PerformanceMenuItem &,
+  .PlayerSizeMenuItem &,
+  .FullscreenModeMenuItem &,
+  .CommentTransparencyPercentMenuItem & {
+    + .RadioItem {
+      margin-top: 8px;
+    }
+  }
+
+  // マイリスト登録パネル
+  &.AddingMylistPanel-radioItem {
+    > .RadioItem-label {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   input[type='radio']:not([id$='-on']):not([id$='-off']) {
@@ -291,6 +316,13 @@
     height: auto;
     min-width: initial;
 
+    &[for^='AddingMylistPanel-radio'] {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 16px;
+    }
+
     &::before {
       all: unset;
       content: '';
@@ -305,16 +337,6 @@
       vertical-align: middle;
       transition: all .3s $ease-out-quart;
     }
-  }
-}
-
-@keyframes radioButton {
-  0% {
-    transform: scale(.5);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }
 
@@ -595,7 +617,7 @@
   }
 
   &::before {
-    @include icon;
+    @include mdi;
 
     font-size: 2rem;
     line-height: 2rem;
@@ -626,19 +648,19 @@
 
 .PlayerPlayButton {
   &::before {
-    content: '\f3aa';
+    content: mdi(play);
   }
 }
 
 .PlayerPauseButton {
   &::before {
-    content: '\f3a7';
+    content: mdi(pause);
   }
 }
 
 .MuteVideoButton {
   &::before {
-    content: '\f3bc';
+    content: mdi(volume-high);
   }
 
   &:hover {
@@ -650,47 +672,47 @@
 
 .UnMuteVideoButton {
   &::before {
-    content: '\f3bb';
+    content: mdi(volume-mute);
   }
 }
 
 .PlayerRepeatOnButton {
   &::before {
-    content: '\f3ae';
+    content: mdi(repeat-once);
   }
 }
 
 .PlayerRepeatOffButton {
   &::before {
-    content: '\f3ad';
+    content: mdi(repeat);
   }
 }
 
 .CommentOnOffButton {
   &[data-title='コメントを表示する']::before {
-    content: '\f261';
+    content: mdi(comment-outline);
   }
 
   &[data-title='コメントを表示しない']::before {
-    content: '\f265';
+    content: mdi(comment);
   }
 }
 
 .EnableFullScreenButton {
   &::before {
-    content: '\f16d';
+    content: mdi(fullscreen);
   }
 }
 
 .DisableFullScreenButton {
   &::before {
-    content: '\f16c';
+    content: mdi(fullscreen-exit);
   }
 }
 
 .PlayerOptionButton {
   &::before {
-    content: '\f1c6';
+    content: mdi(settings);
   }
 }
 
@@ -732,16 +754,6 @@
   display: none;
 }
 
-// 右辺
-.MainContainer-commentPanel {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  bottom: 20px;
-  width: var(--right-width);
-  background-color: #202020;
-}
-
 // メニュー内アクションボタン共通設定
 .VideoMenuContainer,
 .CommentPanelMenuContainer {
@@ -761,7 +773,7 @@
     }
 
     &::before {
-      @include icon;
+      @include mdi;
 
       font-size: 1.6rem;
       line-height: 3.2rem;
@@ -796,7 +808,7 @@
     // とりあえずマイリスト
     &.InstantMylistButton {
       &::before {
-        content: '\f278';
+        content: mdi(plus);
       }
 
       &.is-succeeded,
@@ -811,7 +823,7 @@
       // 登録成功!
       &.is-succeeded {
         &::before {
-          content: '\f26b';
+          content: mdi(check);
         }
 
         &::after {
@@ -829,13 +841,13 @@
 
     &[data-title='マイリスト'] {
       &::before {
-        content: '\f3ac';
+        content: mdi(playlist-plus);
       }
     }
 
     &.UadButton {
       &::before {
-        content: '\f166';
+        content: mdi(flash);
       }
     }
 
@@ -845,7 +857,7 @@
       }
 
       &::before {
-        content: '\f360';
+        content: mdi(twitter);
       }
     }
 
@@ -855,7 +867,7 @@
       }
 
       &::before {
-        content: '\f343';
+        content: mdi(facebook);
       }
     }
 
@@ -875,7 +887,7 @@
       background-color: transparent;
 
       &::before {
-        content: '\f35b';
+        content: mdi(share);
       }
     }
   }
@@ -1045,25 +1057,25 @@
   .ActionButton {
     &.CalendarButton {
       &::before {
-        content: '\f331';
+        content: mdi(calendar-text);
       }
     }
 
     &.ReloadButton {
       &::before {
-        content: '\f3b2';
+        content: mdi(reload);
       }
     }
 
     &.CommentPanelAutoScrollButton {
       &::before {
-        content: '\f2f1';
+        content: mdi(arrow-down-drop-circle);
       }
     }
 
     &[data-title='NG設定'] {
       &::before {
-        content: '\f15b';
+        content: mdi(comment-remove);
       }
     }
   }
@@ -1127,40 +1139,6 @@
     &[data-name='content'] {
       padding-left: 10px;
     }
-
-    // ソートの状態がCSSから分からなくなったため保留
-    //
-    // &-sortable {
-    //   overflow: hidden;
-
-    //   &--ascending,
-    //   &--descending {
-    //     &::before {
-    //       @include icon;
-    //       font-size: 1.4rem;
-    //       line-height: 2.8rem;
-    //       margin-right: 6px;
-    //       color: #505050;
-    //       vertical-align: top;
-    //     }
-    //   }
-
-    //   &--ascending {
-    //     &::before {
-    //       content: '\f1cd';
-    //     }
-    //   }
-
-    //   &--descending {
-    //     &::before {
-    //       content: '\f1ce';
-    //     }
-    //   }
-
-    //   .pull-right {
-    //     display: none;
-    //   }
-    // }
 
     + hr {
       background-color: rgba(0, 0, 0, .15);
@@ -1276,24 +1254,11 @@
 
 // NGパネル
 .NGSettingPanelContainer {
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  border-radius: 2px;
-  z-index: 10;
   background-color: #fff;
-  opacity: 0;
-  transform: scale(0);
-  transform-origin: top right;
   flex-direction: column;
-  transition: .3s all $ease-out-quart;
   display: flex;
-
-  &:not([hidden]) {
-    opacity: 1;
-    transform: scale(1);
-  }
+  animation: show .3s $ease-out-quart forwards;
+  transform-origin: top right;
 
   &-header {
     background-color: transparent;
@@ -1560,13 +1525,6 @@
 
 // 共有パネル
 .SharePanelContainer {
-  position: absolute;
-  top: 42px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  z-index: 10;
-  border-radius: 2px;
   display: flex;
   flex-direction: column;
   animation: show .3s $ease-out-quart forwards;
@@ -1589,14 +1547,15 @@
     right: 8px;
 
     &::before {
-      @include icon;
+      @include mdi;
 
-      content: '\f136';
+      content: mdi(close);
       width: 32px;
       height: 32px;
       line-height: 3.2rem;
       border-radius: 100%;
       cursor: pointer;
+      font-size: 1.6rem;
     }
 
     svg {
@@ -1764,4 +1723,160 @@
 // 一般会員へのメッセージ
 .PreVideoStartPremiumLinkContainer {
   bottom: 60px;
+}
+
+.FloatingPanelContainer {
+  all: unset;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  bottom: 30px;
+  width: 340px;
+  z-index: 10;
+  background: none;
+  margin-top: 32px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.AddingMylistPanel {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-mylist {
+    all: unset;
+    flex: 1;
+    overflow: auto;
+
+    @include scrollbar($theme: light, $color: #fff);
+  }
+
+  &-radioItem {
+    all: unset;
+    height: 42px;
+    display: block;
+
+    &:hover,
+    &.is-checked {
+      all: unset;
+    }
+  }
+
+  &-radioContent {
+    all: unset;
+    display: flex;
+    flex: 1;
+  }
+
+  &-name {
+    all: unset;
+    flex: 1;
+  }
+
+  &-status {
+    all: unset;
+    flex: 0 0 auto;
+
+    > span {
+      font-size: 0;
+
+      &::before {
+        @include mdi;
+
+        font-size: 1.6rem;
+        width: 16px;
+        height: 16px;
+        line-height: 1.6rem;
+      }
+
+      &.public {
+        &::before {
+          content: mdi(earth);
+        }
+      }
+
+      &.private {
+        &::before {
+          content: mdi(lock);
+        }
+      }
+    }
+  }
+
+  &-controls {
+    all: unset;
+    flex: 0 0 64px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  &-mylistComment {
+    all: unset;
+    flex: 1;
+    line-height: 2.6rem;
+    background-color: #fff;
+
+    @include textField;
+  }
+
+  &-actionButton {
+    all: unset;
+    background-color: transparent;
+    margin-left: 8px;
+
+    @include flatButton($ripple: dark);
+  }
+}
+
+.AddingMylistPanelContainer {
+  background-color: #fff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  animation: show .3s $ease-out-quart forwards;
+  transform-origin: top left;
+
+  &::before {
+    all: unset;
+  }
+
+  &-header {
+    all: unset;
+    font-size: 1.6rem;
+    line-height: 48px;
+    padding: 0 16px;
+
+    &-closeButton {
+      all: unset;
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      width: 32px;
+      height: 32px;
+
+      &::before {
+        content: mdi(close);
+        width: 100%;
+        height: 100%;
+        line-height: 3.2rem;
+        font-size: 1.6rem;
+
+        @include mdi;
+
+        vertical-align: top;
+      }
+
+      > .CloseButton-inner {
+        display: none;
+      }
+    }
+  }
 }

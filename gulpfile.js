@@ -4,6 +4,7 @@ const postcss = require('gulp-postcss');
 const minimist = require('minimist');
 const cssnano = require('cssnano');
 const del = require('del');
+const nodeSassPackageImporter = require('node-sass-package-importer');
 const postcssStylish = require('./lib/postcss-stylish');
 
 const options = minimist(process.argv.slice(2));
@@ -46,7 +47,11 @@ if (options.production) {
 gulp.task('styles', () =>
   gulp
     .src(entries.styles.src)
-    .pipe(sass().on('error', sass.logError))
+    .pipe(
+      sass({
+        importer: nodeSassPackageImporter()
+      }).on('error', sass.logError)
+    )
     .pipe(postcss(postcssOptions))
     .pipe(gulp.dest('./dist'))
 );

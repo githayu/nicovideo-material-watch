@@ -76,9 +76,9 @@
     color: #f2f2f2;
 
     &::before {
-      @include icon;
+      @include mdi;
 
-      content: '\f1c3';
+      content: mdi(magnify);
       font-size: 2rem;
       line-height: 2rem;
     }
@@ -318,7 +318,7 @@
   min-width: initial;
 
   &::before {
-    @include icon;
+    @include mdi;
 
     margin-right: 12px;
     font-size: 1.6rem;
@@ -347,13 +347,13 @@
   flex: 1;
 
   &::before {
-    content: '\f21e';
+    content: mdi(cloud-upload);
   }
 }
 
 .VideoViewCountMeta {
   &::before {
-    content: '\f3aa';
+    content: mdi(play);
     font-size: 2rem;
     text-indent: 4px;
   }
@@ -361,14 +361,14 @@
 
 .CommentCountMeta {
   &::before {
-    content: '\f265';
+    content: mdi(comment);
     font-size: 1.4rem;
   }
 }
 
 .MylistCountMeta {
   &::before {
-    content: '\f228';
+    content: mdi(folder);
   }
 }
 
@@ -445,9 +445,9 @@
   color: #d8d8d8;
 
   &::before {
-    @include icon;
+    @include mdi;
 
-    content: '\f19b';
+    content: mdi(dots-vertical);
     font-size: 2.2rem;
     width: 100%;
     line-height: 3.2rem;

@@ -13,7 +13,7 @@
   height: 32px;
 
   &::before {
-    @include icon;
+    @include mdi;
 
     font-size: 2rem;
     line-height: 3.2rem;
@@ -22,7 +22,7 @@
 
 .PlaylistShuffleButton {
   &::before {
-    content: '\f3b3';
+    content: mdi(shuffle);
   }
 }
 
@@ -30,13 +30,13 @@
   color: var(--primary-color-1);
 
   &::before {
-    content: '\f3a9';
+    content: mdi(play-circle);
   }
 }
 
 .PlaylistContinuousInactiveButton {
   &::before {
-    content: '\f3a8';
+    content: mdi(play-circle-outline);
   }
 }
 
@@ -61,7 +61,7 @@
     }
 
     &::before {
-      @include icon;
+      @include mdi;
 
       font-weight: bold;
     }
@@ -70,7 +70,7 @@
       left: 20px;
 
       &::before {
-        content: '\f2ea';
+        content: mdi(chevron-left);
       }
     }
 
@@ -78,7 +78,7 @@
       right: 20px;
 
       &::before {
-        content: '\f2ee';
+        content: mdi(chevron-right);
       }
     }
   }
@@ -164,7 +164,7 @@
       justify-content: space-between;
 
       &::before {
-        @include icon;
+        @include mdi;
 
         font-size: 1.4rem;
         color: #c2c2c2;
@@ -187,19 +187,19 @@
 
   &-viewCount {
     &::before {
-      content: '\f3aa';
+      content: mdi(play);
     }
   }
 
   &-commentCount {
     &::before {
-      content: '\f265';
+      content: mdi(comment);
     }
   }
 
   &-mylistCount {
     &::before {
-      content: '\f228';
+      content: mdi(folder);
     }
   }
 

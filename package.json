@@ -15,8 +15,12 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
     "minimist": "^1.2.0",
+    "node-sass-package-importer": "^5.1.1",
     "prettier-stylelint": "^0.4.2",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^2.4.0"
+  },
+  "dependencies": {
+    "@mdi/font": "^2.2.43"
   }
 }

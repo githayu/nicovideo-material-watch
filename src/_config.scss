@@ -20,14 +20,6 @@
   }
 }
 
-@mixin icon {
-  font-family: icon, var(--font-family), sans-serif;
-  display: inline-block;
-  text-align: center;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
 @mixin scrollbar($theme: dark, $color: #202020) {
   &::-webkit-scrollbar {
     width: 10px;
