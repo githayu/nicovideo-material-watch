@@ -678,13 +678,13 @@
 
 .PlayerRepeatOnButton {
   &::before {
-    content: mdi(repeat-once);
+    content: mdi(repeat);
   }
 }
 
 .PlayerRepeatOffButton {
   &::before {
-    content: mdi(repeat);
+    content: mdi(repeat-once);
   }
 }
 
