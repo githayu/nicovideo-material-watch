@@ -157,9 +157,9 @@ body {
         opacity: 0;
         transform: scale(0);
         transform-origin: top left;
-        transition: all .3s $ease-out-quart;
+        transition: all 0.3s $ease-out-quart;
         background-color: #282828;
-        box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         border: none;
 
         > .menuItem {
@@ -213,13 +213,11 @@ body {
 .BottomContainer {
   width: auto;
   margin: 0;
+  display: contents;
 
   > div {
     &:first-child {
-      > .Grid {
-        position: static;
-        display: block;
-      }
+      display: contents;
     }
   }
 
@@ -246,7 +244,7 @@ body {
       width: var(--right-content-width);
       float: right;
       position: relative;
-      box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
       padding: 0 0 52px;
       background-color: #f2f2f2;
       margin: calc(var(--content-top) + 132px + 20px) 0 0;

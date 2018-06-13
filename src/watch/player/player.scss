@@ -87,7 +87,7 @@
   width: 340px;
   border-radius: 2px;
   overflow: auto;
-  transition: .3s all $ease-out-quart;
+  transition: 0.3s all $ease-out-quart;
   transform-origin: left calc(100% - 22px);
   display: block;
   cursor: default;
@@ -249,11 +249,11 @@
             width: 20px;
             height: 20px;
             border-radius: 100%;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             position: absolute;
             top: calc(50% - 10px);
             left: 0;
-            transition: all .3s $ease-out-quart;
+            transition: all 0.3s $ease-out-quart;
           }
         }
       }
@@ -302,7 +302,7 @@
         &::before {
           background-color: var(--primary-color-1);
           box-shadow: 0 0 0 2px var(--primary-color-1);
-          animation: radioButton .3s $ease-out-quart;
+          animation: radioButton 0.3s $ease-out-quart;
         }
       }
     }
@@ -335,7 +335,7 @@
       border-radius: 100%;
       margin-right: 8px;
       vertical-align: middle;
-      transition: all .3s $ease-out-quart;
+      transition: all 0.3s $ease-out-quart;
     }
   }
 }
@@ -347,9 +347,10 @@
 
   &.dropdown--active {
     .dropdown__content {
-      transition: all .3s $ease-out-quart;
+      transition: all 0.3s $ease-out-quart;
       transform: scaleY(1);
       opacity: 1;
+      z-index: 20;
     }
   }
 
@@ -390,12 +391,12 @@
     border: none;
     border-radius: 0;
     padding: 10px 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
     display: block;
     opacity: 0;
     transform: scaleY(0);
     transform-origin: top;
-    transition: opacity .3s $ease-out-quart, transform 0s .5s;
+    transition: opacity 0.3s $ease-out-quart, transform 0s 0.5s;
     top: -10px;
     left: 0;
     right: 0;
@@ -425,7 +426,7 @@
     border-radius: 0;
     overflow: visible;
     cursor: pointer;
-    transition: background-color .3s $ease-out-quart;
+    transition: background-color 0.3s $ease-out-quart;
 
     &:hover {
       all: inherit;
@@ -447,7 +448,7 @@
     position: absolute;
     bottom: 32px;
     height: 80px;
-    background-image: linear-gradient(transparent, rgba(0, 0, 0, .5));
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
     pointer-events: none;
   }
 }
@@ -455,7 +456,7 @@
 .SeekBarContainer,
 .ControllerContainer {
   opacity: 0;
-  transition: opacity .2s ease-out;
+  transition: opacity 0.2s ease-out;
 
   .MainContainer-player:hover & {
     opacity: 1;
@@ -491,14 +492,14 @@
 }
 
 .SeekBar {
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, 0.3);
 
   &-hover {
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, 0.7);
   }
 
   &-buffered {
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   &-played,
@@ -520,7 +521,7 @@
       border-radius: 2px 2px 0 0;
 
       &::before {
-        border-top-color: rgba(0, 0, 0, .8);
+        border-top-color: rgba(0, 0, 0, 0.8);
       }
     }
   }
@@ -530,7 +531,7 @@
   top: -12px;
 
   &-time {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 0 5px;
     line-height: 2rem;
     font-weight: bold;
@@ -591,7 +592,7 @@
       width: 100%;
       background-color: #202020;
       color: #f0f0f0;
-      transition: background .2s ease-out;
+      transition: background 0.2s ease-out;
 
       &:hover {
         background-color: var(--primary-color-1);
@@ -610,7 +611,7 @@
   height: 36px;
   padding: 0;
   color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0, 0, 0, .3);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 
   &:hover {
     color: #f0f0f0;
@@ -719,14 +720,14 @@
 // 音量
 .VolumeBarContainer {
   width: 0;
-  transition: width .2s ease-out;
+  transition: width 0.2s ease-out;
 
   &:hover {
     width: 60px;
   }
 
   .VolumeBar {
-    background-color: rgba(255, 255, 255, .3);
+    background-color: rgba(255, 255, 255, 0.3);
 
     &:hover {
       height: 4px;
@@ -904,7 +905,7 @@
     right: 100%;
     margin: 16px 16px 0 0;
     opacity: 0;
-    transition: opacity .2s ease-out;
+    transition: opacity 0.2s ease-out;
     z-index: 10;
     white-space: normal;
 
@@ -931,11 +932,11 @@
         color: #f0f0f0;
         font-size: 1.8rem;
         line-height: 3.6rem;
-        background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(0, 0, 0, 0.6);
         width: 36px;
         height: 36px;
         border-radius: 100%;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       &:hover::before {
@@ -948,6 +949,34 @@
   &-areaRight {
     background-color: transparent;
     padding-left: 8px;
+
+    .ClickInterceptor {
+      all: unset;
+    }
+
+    a[href*='mtm.nicovideo.jp'] {
+      all: unset;
+      position: relative;
+
+      &:hover::before {
+        color: #626262;
+      }
+
+      > svg {
+        display: none;
+      }
+
+      &::before {
+        @include mdi;
+        content: mdi(newspaper);
+        color: #424242;
+        line-height: 3.2rem;
+        width: 3.2rem;
+        font-size: 1.6rem;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -1027,7 +1056,7 @@
         all: unset;
         color: #f0f0f0;
         box-shadow: 0 -1px #383838 inset;
-        transition: box-shadow .2s ease-out;
+        transition: box-shadow 0.2s ease-out;
 
         &:focus {
           box-shadow: 0 -2px var(--primary-color-1) inset;
@@ -1141,14 +1170,14 @@
     }
 
     + hr {
-      background-color: rgba(0, 0, 0, .15);
+      background-color: rgba(0, 0, 0, 0.15);
       width: 5px;
     }
   }
 
   [class^='___header___'] {
     position: relative;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     z-index: 5;
     background-color: #303030;
   }
@@ -1183,7 +1212,7 @@
 .ContextMenu {
   position: absolute;
   width: 300px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1257,7 +1286,7 @@
   background-color: #fff;
   flex-direction: column;
   display: flex;
-  animation: show .3s $ease-out-quart forwards;
+  animation: show 0.3s $ease-out-quart forwards;
   transform-origin: top right;
 
   &-header {
@@ -1527,7 +1556,7 @@
 .SharePanelContainer {
   display: flex;
   flex-direction: column;
-  animation: show .3s $ease-out-quart forwards;
+  animation: show 0.3s $ease-out-quart forwards;
   transform-origin: top left;
 
   &::before {
@@ -1658,9 +1687,9 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 8px;
-    transition: .2s ease-out;
+    transition: 0.2s ease-out;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {
       opacity: 1;
@@ -1691,7 +1720,7 @@
     color: #f0f0f0;
     padding: 4px;
     border-radius: 2px;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, 0.7);
     font-size: 1rem;
 
     .VideoEndScreenRelatedVideosContainer-video:hover & {
@@ -1841,7 +1870,7 @@
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  animation: show .3s $ease-out-quart forwards;
+  animation: show 0.3s $ease-out-quart forwards;
   transform-origin: top left;
 
   &::before {
