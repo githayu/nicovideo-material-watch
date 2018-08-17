@@ -157,9 +157,9 @@ body {
         opacity: 0;
         transform: scale(0);
         transform-origin: top left;
-        transition: all 0.3s $ease-out-quart;
+        transition: all .3s $ease-out-quart;
         background-color: #282828;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .5);
         border: none;
 
         > .menuItem {
@@ -221,115 +221,106 @@ body {
     }
   }
 
-  &-card {
-    background-color: transparent;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  &-cardHeader,
-  &-cardMain {
-    padding: 0;
-  }
-
-  &-main {
-    padding: 0;
-  }
-
-  &-card {
-    margin: 0;
-
-    // プレイリスト
-    &:first-child {
-      width: var(--right-content-width);
-      float: right;
-      position: relative;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-      padding: 0 0 52px;
-      background-color: #f2f2f2;
-      margin: calc(var(--content-top) + 132px + 20px) 0 0;
-      border-radius: 2px;
-
-      .BottomContainer-cardHeader {
-        padding: 16px;
-        border-bottom: 1px #ddd solid;
-        position: static;
-      }
-
-      .BottomContainer-cardTitle {
-        width: 100%;
-        font-size: 1.4rem;
-      }
-
-      .BottomContainer-cardMenu {
-        right: auto;
-        position: absolute;
-        transform: translateX(-50%);
-        top: auto;
-        bottom: 10px;
-        left: 50%;
-
-        .ToggleAndDisplayPattern {
-          margin-left: 8px;
-        }
-      }
-    }
-
-    // コンテンツツリー
-    &:nth-child(2) {
-      clear: left;
-      float: left;
-      position: relative;
-      width: var(--left-content-width);
-      margin: 20px 0 0;
-
-      .BottomContainer-cardHeader {
-        display: none;
-      }
-
-      .BottomContainer-cardMain {
-        padding: 0;
-      }
-    }
-
-    // ニコニ広告
-    &:nth-child(3) {
-      float: left;
-      width: var(--left-content-width);
-      margin-top: 20px;
-
-      .BottomContainer-cardHeader {
-        padding: 16px;
-        text-align: center;
-      }
-
-      .BottomContainer-cardTitle {
-        all: unset;
-        font-weight: bold;
-        font-size: 1.6rem;
-      }
-    }
-
-    // 市場
-    &:last-child {
-      clear: left;
-      float: left;
-      width: var(--left-content-width);
-      position: relative;
-      margin-top: 20px;
-    }
-  }
-
-  // サービスリンク / 広告
-  &-side,
+  // 広告
   &-adContainer {
     display: none;
   }
 }
+// サービスリンク
+.BottomSideContainer {
+  display: none;
+}
 
-.ContentTree-parentSummary {
-  padding: 0;
-  width: auto;
+.Card {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+
+  &-header,
+  &-main {
+    padding: 0;
+    margin: 0;
+  }
+
+  // プレイリスト
+  &.PlaylistContainer {
+    width: var(--right-content-width);
+    float: right;
+    position: relative;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+    padding: 0 0 52px;
+    background-color: #f2f2f2;
+    margin: calc(var(--content-top) + 132px + 20px) 0 0;
+    border-radius: 2px;
+
+    .Card-header {
+      padding: 16px;
+      border-bottom: 1px #e2e2e2 solid;
+      position: static;
+    }
+
+    .Card-title {
+      width: 100%;
+      font-size: 1.4rem;
+    }
+
+    .Card-menu {
+      right: auto;
+      position: absolute;
+      transform: translateX(-50%);
+      top: auto;
+      bottom: 10px;
+      left: 50%;
+
+      .ToggleAndDisplayPattern {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  // コンテンツツリー
+  &.ContentTreeContainer {
+    clear: left;
+    float: left;
+    position: relative;
+    width: var(--left-content-width);
+    margin: 20px 0 0;
+
+    .Card-header {
+      display: none;
+    }
+
+    .Card-main {
+      padding: 0;
+    }
+  }
+
+  // ニコニ広告
+  &.UadVideosContainer {
+    float: left;
+    width: var(--left-content-width);
+    margin-top: 20px;
+
+    .Card-header {
+      padding: 16px;
+      text-align: center;
+    }
+
+    .Card-title {
+      all: unset;
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+  }
+
+  // 市場
+  &.IchibaContainer {
+    clear: left;
+    float: left;
+    width: var(--left-content-width);
+    position: relative;
+    margin-top: 20px;
+  }
 }
 
 // フッター

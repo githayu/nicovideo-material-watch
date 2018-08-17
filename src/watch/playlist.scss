@@ -40,7 +40,8 @@
   }
 }
 
-.PlaylistContainer {
+.InView.PlaylistContainer {
+  all: unset;
   overflow: visible;
   background-color: transparent;
   height: auto;

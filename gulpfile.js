@@ -22,9 +22,9 @@ if (options.production) {
   postcssOptions.push(
     postcssStylish,
     cssnano({
-      safe: true,
-      core: false,
-      discardComments: false
+      preset: ['default', {
+        normalizeWhitespace: false
+      }]
     })
   );
 } else {
